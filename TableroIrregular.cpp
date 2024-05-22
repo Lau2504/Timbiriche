@@ -38,6 +38,66 @@ void TableroIrregular::llenarMatriz()
 {
 }
 
+void TableroIrregular::añadirIzquierda(Tablero* tab)
+{
+	int ancho = tab->getFilas() * 2;
+	int largo = tab->getColumnas() * 2;
+	int FOri = -1;
+	int COri = -1;
+
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			if (mat[i][j] == '+') {
+				FOri = i;
+				COri = j;
+				break;
+			}
+			
+		}
+		if (FOri != -1) break; // ya se encontro el punto de origen
+
+	}
+	for (int i = FOri - ancho + 1; i <= FOri; i++) {
+		for (int j = COri - largo; j < COri; j++) {
+			if (mat[i][j] != ' ') {
+				cout << "Excepcion lugar ocupado" << endl;
+				return;
+			}
+		}
+	}
+	if (COri < largo) {
+		cout << "No hay espacio para poner la matriz a la izquierda" << endl;
+		return;
+	}
+	else {
+		for (int i = FOri - ancho + 1; i <= FOri; i++) {
+			for (int j = COri - largo - 1; j < COri; j++) {
+				if (j % 2 == 0)
+					mat[i][j] = '|';
+				else mat[i][j] = '-';
+				if (i % 2 == 0 && j % 2 == 0)
+					mat[i][j] = '+';
+				if (i % 2 != 0 && j % 2 != 0)
+					mat[i][j] = 'o';
+			}
+		}
+	}
+
+}
+//if (j == COri - 1) {
+			
+void TableroIrregular::añadirDerecha(Tablero* tab)
+{
+}
+
+void TableroIrregular::añadirArriba(Tablero* tab)
+{
+}
+
+void TableroIrregular::añadirAbajo(Tablero* tab)
+{
+}
+
 void TableroIrregular::Add(Tablero* tab, int f, int c)
 {
 	int ancho = tab->getFilas() * 2;
@@ -51,7 +111,7 @@ void TableroIrregular::Add(Tablero* tab, int f, int c)
 
 	// Verificar si el lugar está ocupado
 	for (int i = f; i < f + ancho-1; i++) {
-		for (int j = c; j < c + largo-1; j++) {
+		for (int j = c; j < c + largo - 1; j++) {
 			if (mat[i][j] != ' ') {
 				cout << "Excepcion lugar ocupado" << endl;
 				return;
@@ -134,4 +194,13 @@ int TableroIrregular::getFilas()
 int TableroIrregular::getColumnas()
 {
 	return columnas;
+}
+
+char TableroIrregular::getValor(int f, int c)
+{
+	if (f < 0 || f  > 30 || c < 0 || c  > 30)
+		//throw Excepcion Fuera de Rango
+		return ' ';
+	else
+		return mat[f][c];
 }

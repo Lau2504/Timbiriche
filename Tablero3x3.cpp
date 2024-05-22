@@ -48,3 +48,24 @@ int Tablero3x3::getColumnas()
 {
 	return columnas;
 }
+
+char Tablero3x3::getValor(int f, int c)
+{
+	return 0;
+}
+
+void Tablero3x3::añadirIzquierda(Tablero* tab)
+{
+}
+
+void Tablero3x3::añadirDerecha(Tablero* tab)
+{
+}
+
+void Tablero3x3::añadirArriba(Tablero* tab)
+{
+}
+
+void Tablero3x3::añadirAbajo(Tablero* tab)
+{
+}

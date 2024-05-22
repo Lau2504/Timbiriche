@@ -11,5 +11,11 @@ public:
 	virtual void Delete();
 	virtual int getFilas();
 	virtual int getColumnas();
+	virtual char getValor(int f, int c);
+	virtual void añadirIzquierda(Tablero* tab);
+	virtual void añadirDerecha(Tablero* tab);
+	virtual void añadirArriba(Tablero* tab);
+	virtual void añadirAbajo(Tablero* tab);
+
 
 };

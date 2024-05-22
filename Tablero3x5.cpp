@@ -51,3 +51,24 @@ int Tablero3x5::getColumnas()
 {
 	return columnas;
 }
+
+char Tablero3x5::getValor(int f, int c)
+{
+	return 0;
+}
+
+void Tablero3x5::añadirIzquierda(Tablero* tab)
+{
+}
+
+void Tablero3x5::añadirDerecha(Tablero* tab)
+{
+}
+
+void Tablero3x5::añadirArriba(Tablero* tab)
+{
+}
+
+void Tablero3x5::añadirAbajo(Tablero* tab)
+{
+}
