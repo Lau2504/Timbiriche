@@ -14,6 +14,7 @@ int main() {
 	/*tab->añadirIzquierda(tab1);*/ //Existe la matriz base y de ahí se agregan las otras matrices no se puede agregar a la izquierda porque ya hay una en ese lado
 	tab->añadirDerecha(tab2);
 	tab->añadirArriba(tab1);
+	tab->añadirAbajo(tab1);
 	cout << tab->toString();
 	
 

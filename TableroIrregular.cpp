@@ -220,12 +220,65 @@ void TableroIrregular::añadirArriba(Tablero* tab)
 
 
 
-
 void TableroIrregular::añadirAbajo(Tablero* tab)
 {
+	int ancho = tab->getFilas() * 2;
+	int largo = tab->getColumnas() * 2;
+	int Ffin = -1;
+	int Cfin = -1;
 
+	// Encontrar el último punto de origen ('+')
+	for (int i = filas - 1; i >= 0; i--) {
+		for (int j = columnas - 1; j >= 0; j--) {
+			if (mat[i][j] == '+') {
+				Ffin = i;
+				Cfin = j;
+				break;
+			}
+		}
+		if (Ffin != -1) break; // ya se encontró el punto final
+	}
 
+	if (Ffin == -1 || Cfin == -1) {
+		cout << "No se encontró un punto final válido." << endl;
+		return;
+	}
+
+	// Verificar si hay suficiente espacio abajo
+	if (Ffin + 1 + ancho > filas || Cfin - largo + 1 < 0) {
+		cout << "No hay espacio para poner la matriz abajo" << endl;
+		return;
+	}
+
+	// Verificar si el espacio está ocupado
+	for (int i = Ffin + 1; i <= Ffin + ancho; i++) {
+		for (int j = Cfin - largo + 1; j <= Cfin; j++) {
+			if (mat[i][j] != ' ') {
+				cout << "Excepcion lugar ocupado" << endl;
+				return;
+			}
+		}
+	}
+
+	// Colocar el nuevo sub-tablero abajo
+	for (int i = Ffin + 1; i <= Ffin + ancho; i++) {
+		for (int j = Cfin - largo + 1; j <= Cfin; j++) {
+			if ((i - (Ffin + 1)) % 2 == 0 && (j - (Cfin - largo + 1)) % 2 == 0) {
+				mat[i][j] = '+';
+			}
+			else if ((i - (Ffin + 1)) % 2 == 0) {
+				mat[i][j] = '-';
+			}
+			else if ((j - (Cfin - largo + 1)) % 2 == 0) {
+				mat[i][j] = '|';
+			}
+			else {
+				mat[i][j] = 'o';
+			}
+		}
+	}
 }
+
 
 void TableroIrregular::Add(Tablero* tab, int f, int c)
 {
