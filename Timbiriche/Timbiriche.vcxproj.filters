@@ -13,17 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\Excepciones">
+      <UniqueIdentifier>{d8e6fe93-7a64-4d7b-9f23-b2f8e6a728ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Excepcion.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ExcepcionLugarOcupado.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ExcepcionRango.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\Tablero.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -42,11 +36,17 @@
     <ClInclude Include="..\TableroIrregular.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\ExcepcionLugarOcupado.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ExcepcionRango.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Excepcion.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Main.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\Tablero3x3.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -58,6 +58,9 @@
     </ClCompile>
     <ClCompile Include="..\TableroIrregular.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Main.cpp">
+      <Filter>Archivos de recursos</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
