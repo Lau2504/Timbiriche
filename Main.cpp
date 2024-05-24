@@ -16,7 +16,6 @@ int main() {
 	tab->añadirArriba(tab1);
 	tab->añadirAbajo(tab1);
 	cout << tab->toString();
-	
 
 	system("Pause");
 	return 0;
