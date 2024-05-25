@@ -22,6 +22,9 @@
     <Filter Include="Archivos de origen\Tablero">
       <UniqueIdentifier>{18df985a-6226-45ca-b7ed-346012e6cfa5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Templates">
+      <UniqueIdentifier>{92895bd1-6d57-4bec-9706-a4ef272ef7bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ExcepcionRango.h">
@@ -50,6 +53,18 @@
     </ClInclude>
     <ClInclude Include="..\TableroIrregular.h">
       <Filter>Archivos de encabezado\Tablero</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IteradorVector.h">
+      <Filter>Archivos de encabezado\Templates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lista.h">
+      <Filter>Archivos de encabezado\Templates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Nodo.h">
+      <Filter>Archivos de encabezado\Templates</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vector.h">
+      <Filter>Archivos de encabezado\Templates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

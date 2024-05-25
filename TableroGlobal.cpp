@@ -13,7 +13,7 @@ TableroGlobal::~TableroGlobal() {
 }
 
 TableroGlobal* TableroGlobal::getInstancia() {
-	if (instancia == 0) {
+	if (instancia == nullptr) {
 		instancia = new TableroGlobal();
 	}
 	return instancia;

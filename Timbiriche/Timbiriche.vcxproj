@@ -130,12 +130,16 @@
     <ClInclude Include="..\Excepcion.h" />
     <ClInclude Include="..\ExcepcionLugarOcupado.h" />
     <ClInclude Include="..\ExcepcionRango.h" />
+    <ClInclude Include="..\IteradorVector.h" />
+    <ClInclude Include="..\Lista.h" />
+    <ClInclude Include="..\Nodo.h" />
     <ClInclude Include="..\Tablero.h" />
     <ClInclude Include="..\Tablero3x3.h" />
     <ClInclude Include="..\Tablero3x4.h" />
     <ClInclude Include="..\Tablero3x5.h" />
     <ClInclude Include="..\TableroGlobal.h" />
     <ClInclude Include="..\TableroIrregular.h" />
+    <ClInclude Include="..\Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Main.cpp" />

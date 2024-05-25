@@ -31,7 +31,7 @@ string TableroIrregular::toString()
 	for (int i = 0; i < filas; i++) {
 		s << i << "  ";
 		for (int j = 0; j < columnas; j++) {
-			s <</* "      "*/ mat[i][j] << "   ";
+			s <</*"      "*/ mat[i][j] << "   ";
 		}
 		s << endl << endl;
 	}
@@ -39,9 +39,7 @@ string TableroIrregular::toString()
 	return s.str();
 }
 
-void TableroIrregular::llenarMatriz()
-{
-}
+void TableroIrregular::llenarMatriz(){}
 
 void TableroIrregular::añadirIzquierda(Tablero* tab)
 {
@@ -60,7 +58,6 @@ void TableroIrregular::añadirIzquierda(Tablero* tab)
 			
 		}
 		if (FOri != -1) break; // ya se encontro el punto de origen
-
 	}
 	FOri += pos; //posicion randon de la columna de la matriz que ya existe, 6 porque todas las matrices tienen la misma cantidad de filas
 	for (int i = FOri - ancho + 1; i <= FOri; i++) {
@@ -90,13 +87,10 @@ void TableroIrregular::añadirIzquierda(Tablero* tab)
 					}
 					else {
 						mat[i][j] = 'o';
-					}
-				
+					}	
 			}
 		}
 	}
-	
-
 }
 
 void TableroIrregular::añadirDerecha(Tablero* tab) {
