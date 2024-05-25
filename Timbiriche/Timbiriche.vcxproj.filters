@@ -51,12 +51,6 @@
     <ClInclude Include="..\TableroIrregular.h">
       <Filter>Archivos de encabezado\Tablero</Filter>
     </ClInclude>
-    <ClInclude Include="Juego.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Jugador.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Main.cpp">
@@ -77,11 +71,8 @@
     <ClCompile Include="..\TableroGlobal.cpp">
       <Filter>Archivos de origen\Tablero</Filter>
     </ClCompile>
-    <ClCompile Include="Juego.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Jugador.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="..\Jugador.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

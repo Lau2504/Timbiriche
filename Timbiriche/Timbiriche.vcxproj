@@ -136,18 +136,15 @@
     <ClInclude Include="..\Tablero3x5.h" />
     <ClInclude Include="..\TableroGlobal.h" />
     <ClInclude Include="..\TableroIrregular.h" />
-    <ClInclude Include="Juego.h" />
-    <ClInclude Include="Jugador.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Main.cpp" />
+    <ClCompile Include="..\Jugador.h" />
     <ClCompile Include="..\Tablero3x3.cpp" />
     <ClCompile Include="..\Tablero3x4.cpp" />
     <ClCompile Include="..\Tablero3x5.cpp" />
     <ClCompile Include="..\TableroGlobal.cpp" />
     <ClCompile Include="..\TableroIrregular.cpp" />
-    <ClCompile Include="Juego.cpp" />
-    <ClCompile Include="Jugador.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
