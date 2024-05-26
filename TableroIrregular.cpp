@@ -291,6 +291,10 @@ void TableroIrregular::Add(Tablero* tab, int f, int c)
 		vec[cantidad++] = tab;
 	}
 
+	//puntos de origen
+
+	filaOrigen = f;
+	columOrigen = c;
 	
 	int ancho = tab->getFilas() * 2;
 	int largo = tab->getColumnas() * 2;
