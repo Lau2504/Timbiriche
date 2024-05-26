@@ -69,3 +69,12 @@ void Tablero3x3::añadirArriba(Tablero* tab)
 void Tablero3x3::añadirAbajo(Tablero* tab)
 {
 }
+
+bool agregarJugada(int x, int y) {
+	if (x==y or x<0 or y<0) return false;//Coincidir en ambos valores es porque 
+							//es una casilla punto o una casilla para la letra
+	char c;
+	if (x % 2 == 0) c == char(205);
+	else c==char(186);	
+	return true;
+}

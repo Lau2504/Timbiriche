@@ -128,7 +128,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Excepcion.h" />
+    <ClInclude Include="..\ExcepcionLugar.h" />
     <ClInclude Include="..\ExcepcionLugarOcupado.h" />
+    <ClInclude Include="..\ExcepcionLugarReservado.h" />
     <ClInclude Include="..\ExcepcionRango.h" />
     <ClInclude Include="..\IteradorVector.h" />
     <ClInclude Include="..\Lista.h" />

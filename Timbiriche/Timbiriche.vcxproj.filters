@@ -66,6 +66,12 @@
     <ClInclude Include="..\Vector.h">
       <Filter>Archivos de encabezado\Templates</Filter>
     </ClInclude>
+    <ClInclude Include="..\ExcepcionLugarReservado.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ExcepcionLugar.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Main.cpp">
