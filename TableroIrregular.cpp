@@ -2,8 +2,13 @@
 
 TableroIrregular::TableroIrregular()
 {
+	cantidad = 0;
+	tamanio = 6;
 	filas = 30;
 	columnas = 30;
+	for (int i = 0; i < tamanio; i++) {
+		vec[i] = nullptr;
+	}
 	for (int i = 0; i < filas; i++)
 		for (int j = 0; j < columnas; j++) {
 			mat[i][j] = ' ';
@@ -17,6 +22,11 @@ TableroIrregular::TableroIrregular()
 
 TableroIrregular::~TableroIrregular()
 {
+	for (int i = 0; i < cantidad; i++) {
+		if (vec[i] != nullptr)
+			delete vec[i];
+	}
+	delete[] vec;
 }
 
 string TableroIrregular::toString()
@@ -134,7 +144,7 @@ void TableroIrregular::añadirDerecha(Tablero* tab) {
 
 	// Colocar el nuevo sub-tablero a la derecha
 	for (int i = Ffin; i < Ffin + ancho; i++) {
-		for (int j = Cfin + 1; j < Cfin + largo + 1; j++) {
+		for (int j = Cfin + 1; j < Cfin + largo + 2; j++) {
 			if (i % 2 == 0 && j % 2 == 0) {
 				mat[i][j] = '+';
 			}
@@ -276,6 +286,12 @@ void TableroIrregular::añadirAbajo(Tablero* tab)
 
 void TableroIrregular::Add(Tablero* tab, int f, int c)
 {
+	//agregar tablero al vector
+	if (cantidad < tamanio) {
+		vec[cantidad++] = tab;
+	}
+
+	
 	int ancho = tab->getFilas() * 2;
 	int largo = tab->getColumnas() * 2;
 
@@ -322,41 +338,6 @@ void TableroIrregular::Add(Tablero* tab, int f, int c)
 //Hacer una función en juego que le de las coordenadas al Add para que las matrices queden a la par y 
 //y preguntarle al usuario cuando está eligiendo el tamaño de las matrices, no donde ponerlas
  
-//void TableroIrregular::Add(Tablero* tab, int f, int c)
-//{
-//	int ancho = tab->getFilas()*2;
-//	int largo = tab->getColumnas()*2;
-//	bool si = false;
-//	do {
-//		if (f > 30 || f < 0 || c>30 || c < 0) {
-//			cout << "Excepcion rango" << endl;
-//			break;
-//			//throw "Excepcion rango";//
-//		}
-//		if (mat[f][c] != '.') {
-//			cout << "Excepcion lugar ocupado " << endl;
-//			//throw "Excepcion lugar ocupado ";//
-//			break;
-//		}
-//		else {
-//			for (int i = f; i < ancho; i++)
-//				for (int j = c; j < largo; j++) {
-//					if (mat[i][j] != '.')
-//						cout << "Excepcion lugar ocupado " << endl;
-//						break;
-//					/*throw "Excepcion lugar ocupado";*/
-//				}
-//			for (int i = f; i < ancho; i++)
-//				for (int j = c; j < largo; j++) {
-//					/*if (i % 2 == 0 && j % 2 == 0)*/
-//					mat[i][j] = '*';
-//					/*else mat[i][j] = '-';
-//					if (i % 2 != 0 && j % 2 != 0)
-//						mat[i][j] = 'o';*/
-//				}
-//		}
-//	} while (si);
-//}
 
 void TableroIrregular::Delete()
 {
