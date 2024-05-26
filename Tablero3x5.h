@@ -17,5 +17,5 @@ public:
 	virtual void añadirArriba(Tablero* tab);
 	virtual void añadirAbajo(Tablero* tab);
 
-
+	bool agregarJugada(int x, int y);
 };

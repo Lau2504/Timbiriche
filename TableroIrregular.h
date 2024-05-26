@@ -21,4 +21,6 @@ public:
 	virtual int getFilas();
 	virtual int getColumnas();
 	virtual char getValor(int f, int c);
+
+	bool agregarJugada(int x, int y);
 };
