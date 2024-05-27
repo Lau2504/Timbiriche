@@ -2,8 +2,13 @@
 
 TableroIrregular::TableroIrregular()
 {
+	cantidad = 0;
+	tamanio = 6;
 	filas = 30;
 	columnas = 30;
+	for (int i = 0; i < tamanio; i++) {
+		vec[i] = nullptr;
+	}
 	for (int i = 0; i < filas; i++)
 		for (int j = 0; j < columnas; j++) {
 			mat[i][j] = ' ';
@@ -17,6 +22,11 @@ TableroIrregular::TableroIrregular()
 
 TableroIrregular::~TableroIrregular()
 {
+	for (int i = 0; i < cantidad; i++) {
+		if (vec[i] != nullptr)
+			delete vec[i];
+	}
+	delete[] vec;
 }
 
 string TableroIrregular::toString()
@@ -41,7 +51,7 @@ string TableroIrregular::toString()
 
 void TableroIrregular::llenarMatriz(){}
 
-void TableroIrregular::añadirIzquierda(Tablero* tab)
+void TableroIrregular::aÃ±adirIzquierda(Tablero* tab)
 {
 	int ancho = tab->getFilas() * 2;
 	int largo = tab->getColumnas() * 2;
@@ -93,13 +103,13 @@ void TableroIrregular::añadirIzquierda(Tablero* tab)
 	}
 }
 
-void TableroIrregular::añadirDerecha(Tablero* tab) {
+void TableroIrregular::aÃ±adirDerecha(Tablero* tab) {
 	int ancho = tab->getFilas() * 2;
 	int largo = tab->getColumnas() * 2;
 	int Ffin = -1;
 	int Cfin = -1;
 
-	// Encontrar el '+' más a la derecha
+	// Encontrar el '+' mÃ¡s a la derecha
 	for (int i = 0; i < filas; i++) {
 		for (int j = columnas - 1; j >= 0; j--) {
 			if (mat[i][j] == '+') {
@@ -108,11 +118,11 @@ void TableroIrregular::añadirDerecha(Tablero* tab) {
 				break;
 			}
 		}
-		if (Ffin != -1) break; // ya se encontró el punto de origen
+		if (Ffin != -1) break; // ya se encontrÃ³ el punto de origen
 	}
 
 	if (Ffin == -1 || Cfin == -1) {
-		cout << "No se encontró un punto final válido." << endl;
+		cout << "No se encontrÃ³ un punto final vÃ¡lido." << endl;
 		return;
 	}
 
@@ -122,7 +132,7 @@ void TableroIrregular::añadirDerecha(Tablero* tab) {
 		return;
 	}
 
-	// Verificar si el espacio está ocupado
+	// Verificar si el espacio estÃ¡ ocupado
 	for (int i = Ffin; i < Ffin + ancho; i++) {
 		for (int j = Cfin + 1; j < Cfin + 1 + largo; j++) {
 			if (mat[i][j] != ' ') {
@@ -133,7 +143,7 @@ void TableroIrregular::añadirDerecha(Tablero* tab) {
 	}
 	// Colocar el nuevo sub-tablero a la derecha
 	for (int i = Ffin; i < Ffin + ancho; i++) {
-		for (int j = Cfin + 1; j < Cfin + largo + 1; j++) {
+		for (int j = Cfin + 1; j < Cfin + largo + 2; j++) {
 			if (i % 2 == 0 && j % 2 == 0) {
 				mat[i][j] = '+';
 			}
@@ -149,7 +159,7 @@ void TableroIrregular::añadirDerecha(Tablero* tab) {
 		}
 	}
 }
-void TableroIrregular::añadirArriba(Tablero* tab)
+void TableroIrregular::aÃ±adirArriba(Tablero* tab)
 {
 	int ancho = tab->getFilas() * 2;
 	int largo = tab->getColumnas() * 2;
@@ -170,19 +180,19 @@ void TableroIrregular::añadirArriba(Tablero* tab)
 	}
 
 	if (FOri == -1 || COri == -1) {
-		cout << "No se encontró un punto de origen válido." << endl;
+		cout << "No se encontrÃ³ un punto de origen vÃ¡lido." << endl;
 		return;
 	}
 
-	COri += pos; // Ajustar la posición en la columna
+	COri += pos; // Ajustar la posiciÃ³n en la columna
 
-	// Verificar si hay suficiente espacio arriba y si la posición COri es válida
+	// Verificar si hay suficiente espacio arriba y si la posiciÃ³n COri es vÃ¡lida
 	if (FOri - ancho < 0 || COri < 0 || COri + largo > columnas) {
 		cout << "No hay espacio para poner la matriz arriba" << endl;
 		return;
 	}
 
-	// Verificar si el espacio está ocupado
+	// Verificar si el espacio estÃ¡ ocupado
 	for (int i = FOri - ancho; i < FOri; i++) {
 		for (int j = COri; j < COri + largo; j++) {
 			if (mat[i][j] != ' ') {
@@ -213,14 +223,14 @@ void TableroIrregular::añadirArriba(Tablero* tab)
 
 
 
-void TableroIrregular::añadirAbajo(Tablero* tab)
+void TableroIrregular::aÃ±adirAbajo(Tablero* tab)
 {
 	int ancho = tab->getFilas() * 2;
 	int largo = tab->getColumnas() * 2;
 	int Ffin = -1;
 	int Cfin = -1;
 
-	// Encontrar el último punto de origen ('+')
+	// Encontrar el Ãºltimo punto de origen ('+')
 	for (int i = filas - 1; i >= 0; i--) {
 		for (int j = columnas - 1; j >= 0; j--) {
 			if (mat[i][j] == '+') {
@@ -229,11 +239,11 @@ void TableroIrregular::añadirAbajo(Tablero* tab)
 				break;
 			}
 		}
-		if (Ffin != -1) break; // ya se encontró el punto final
+		if (Ffin != -1) break; // ya se encontrÃ³ el punto final
 	}
 
 	if (Ffin == -1 || Cfin == -1) {
-		cout << "No se encontró un punto final válido." << endl;
+		cout << "No se encontrÃ³ un punto final vÃ¡lido." << endl;
 		return;
 	}
 
@@ -243,7 +253,7 @@ void TableroIrregular::añadirAbajo(Tablero* tab)
 		return;
 	}
 
-	// Verificar si el espacio está ocupado
+	// Verificar si el espacio estÃ¡ ocupado
 	for (int i = Ffin + 1; i <= Ffin + ancho; i++) {
 		for (int j = Cfin - largo + 1; j <= Cfin; j++) {
 			if (mat[i][j] != ' ') {
@@ -275,16 +285,26 @@ void TableroIrregular::añadirAbajo(Tablero* tab)
 
 void TableroIrregular::Add(Tablero* tab, int f, int c)
 {
+	//agregar tablero al vector
+	if (cantidad < tamanio) {
+		vec[cantidad++] = tab;
+	}
+
+	//puntos de origen
+
+	filaOrigen = f;
+	columOrigen = c;
+	
 	int ancho = tab->getFilas() * 2;
 	int largo = tab->getColumnas() * 2;
 
-	// Verificar si el tablero a insertar está dentro del rango del TableroIrregular
+	// Verificar si el tablero a insertar estÃ¡ dentro del rango del TableroIrregular
 	if (f < 0 || f + ancho > 30 || c < 0 || c + largo > 30) {
 		cout << "Excepcion rango" << endl;
 		return;
 	}
 
-	// Verificar si el lugar está ocupado
+	// Verificar si el lugar estÃ¡ ocupado
 	for (int i = f; i < f + ancho-1; i++) {
 		for (int j = c; j < c + largo - 1; j++) {
 			if (mat[i][j] != ' ') {
@@ -318,8 +338,8 @@ void TableroIrregular::Add(Tablero* tab, int f, int c)
 // 
 //si va  a jugar para abajo la fila es mayor a la columna o sea es vertical
 
-//Hacer una función en juego que le de las coordenadas al Add para que las matrices queden a la par y 
-//y preguntarle al usuario cuando está eligiendo el tamaño de las matrices, no donde ponerlas
+//Hacer una funciÃ³n en juego que le de las coordenadas al Add para que las matrices queden a la par y 
+//y preguntarle al usuario cuando estÃ¡ eligiendo el tamaÃ±o de las matrices, no donde ponerlas
 
 void TableroIrregular::Delete()
 {

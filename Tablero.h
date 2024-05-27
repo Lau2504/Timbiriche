@@ -8,6 +8,8 @@ using namespace std;
 
 class Tablero {
 protected:
+	int filaOrigen;
+	int columOrigen;
 	int filas;
 	int columnas;
 	char mat[30][30];
