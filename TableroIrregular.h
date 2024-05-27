@@ -6,6 +6,10 @@
 
 class TableroIrregular :public Tablero {
 	//Matriz grande que contiene otras matrices
+private:
+	int cantidad;
+	int tamanio;
+	Tablero* vec[6];
 public:
 
 	TableroIrregular();

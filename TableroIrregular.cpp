@@ -131,7 +131,6 @@ void TableroIrregular::añadirDerecha(Tablero* tab) {
 			}
 		}
 	}
-
 	// Colocar el nuevo sub-tablero a la derecha
 	for (int i = Ffin; i < Ffin + ancho; i++) {
 		for (int j = Cfin + 1; j < Cfin + largo + 1; j++) {
@@ -321,42 +320,6 @@ void TableroIrregular::Add(Tablero* tab, int f, int c)
 
 //Hacer una función en juego que le de las coordenadas al Add para que las matrices queden a la par y 
 //y preguntarle al usuario cuando está eligiendo el tamaño de las matrices, no donde ponerlas
- 
-//void TableroIrregular::Add(Tablero* tab, int f, int c)
-//{
-//	int ancho = tab->getFilas()*2;
-//	int largo = tab->getColumnas()*2;
-//	bool si = false;
-//	do {
-//		if (f > 30 || f < 0 || c>30 || c < 0) {
-//			cout << "Excepcion rango" << endl;
-//			break;
-//			//throw "Excepcion rango";//
-//		}
-//		if (mat[f][c] != '.') {
-//			cout << "Excepcion lugar ocupado " << endl;
-//			//throw "Excepcion lugar ocupado ";//
-//			break;
-//		}
-//		else {
-//			for (int i = f; i < ancho; i++)
-//				for (int j = c; j < largo; j++) {
-//					if (mat[i][j] != '.')
-//						cout << "Excepcion lugar ocupado " << endl;
-//						break;
-//					/*throw "Excepcion lugar ocupado";*/
-//				}
-//			for (int i = f; i < ancho; i++)
-//				for (int j = c; j < largo; j++) {
-//					/*if (i % 2 == 0 && j % 2 == 0)*/
-//					mat[i][j] = '*';
-//					/*else mat[i][j] = '-';
-//					if (i % 2 != 0 && j % 2 != 0)
-//						mat[i][j] = 'o';*/
-//				}
-//		}
-//	} while (si);
-//}
 
 void TableroIrregular::Delete()
 {
@@ -382,5 +345,16 @@ char TableroIrregular::getValor(int f, int c)
 }
 
 bool TableroIrregular::agregarJugada(int x, int y) {
-	if(x==y) throw ExcepcionLugarReserrvado();
+	if (x < 0 || x > 30 || y < 0 || y > 30) {
+		cout << "Excepcion rango" << endl;
+		return false;
+	}
+	if (mat[x][y] == ' ') {
+		mat[x][y] = 'X';
+		return true;
+	}
+	else {
+		cout << "Excepcion lugar ocupado" << endl;
+		return false;
+	}
 }

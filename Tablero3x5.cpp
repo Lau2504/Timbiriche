@@ -72,3 +72,13 @@ void Tablero3x5::añadirArriba(Tablero* tab)
 void Tablero3x5::añadirAbajo(Tablero* tab)
 {
 }
+
+bool Tablero3x5::agregarJugada(int x, int y) {
+	if (x < 0 or y < 0) throw ExcepcionRango();
+	if (mat[x][y] != '\0') throw ExcepcionLugarOcupado();
+	if (x == y) throw ExcepcionLugarReservado();
+
+	char c = '\0';
+	x % 2 == 0 ? c = char(205) : c = char(186);
+	return true;
+}
