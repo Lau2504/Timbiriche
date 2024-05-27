@@ -80,5 +80,10 @@ bool Tablero3x4::agregarJugada(int x, int y) {
 
 	char c = '\0';
 	x % 2 == 0 ? c = char(205) : c = char(186);
+	mat[x][y] = c;
 	return true;
+}
+
+int* Tablero3x4::origen() {
+	return new int[2] {columOrigen, filaOrigen};
 }

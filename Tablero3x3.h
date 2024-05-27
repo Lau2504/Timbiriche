@@ -18,4 +18,5 @@ public:
 	virtual void añadirAbajo(Tablero* tab);
 
 	bool agregarJugada(int x, int y);
+	virtual int* origen()override;
 };

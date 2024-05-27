@@ -86,18 +86,18 @@ void TableroIrregular::añadirIzquierda(Tablero* tab)
 		
 		for (int i = FOri - ancho+1; i <= FOri; i++) {
 			for (int j = COri - largo; j < COri; j++) {
-					if (i % 2 == 0 && j % 2 == 0) {
-						mat[i][j] = '+';
-					}
-					else if (i % 2 == 0) {
-						mat[i][j] = '-';
-					}
-					else if (j % 2 == 0) {
-						mat[i][j] = '|';
-					}
-					else {
-						mat[i][j] = 'o';
-					}	
+				if (i % 2 == 0 && j % 2 == 0) {
+					mat[i][j] = '+';
+				}
+				else if (i % 2 == 0) {
+					mat[i][j] = '-';
+				}
+				else if (j % 2 == 0) {
+					mat[i][j] = '|';
+				}
+				else {
+					mat[i][j] = 'o';
+				}	
 			}
 		}
 	}
@@ -365,16 +365,19 @@ char TableroIrregular::getValor(int f, int c)
 }
 
 bool TableroIrregular::agregarJugada(int x, int y) {
-	if (x < 0 || x > 30 || y < 0 || y > 30) {
-		cout << "Excepcion rango" << endl;
-		return false;
+	int a{ 0 }, b{ 0 }, c{ 0 }, d{ 0 };
+	for (int i = 0; i < cantidad; i++) {
+		//a£x£b y c£y£d
+		a=(vec[i]->origen()[0]);
+		b=a+(vec[i]->getColumnas());
+		c=(vec[i]->origen()[1]);
+		d=c+3;
+		if (a <= x and x <= b and c <= y and y <= d)
+			return vec[i]->agregarJugada(x - a, y - c);
 	}
-	if (mat[x][y] == ' ') {
-		mat[x][y] = 'X';
-		return true;
-	}
-	else {
-		cout << "Excepcion lugar ocupado" << endl;
-		return false;
-	}
+	return false;//probablemente sea una coordenada que no pertenece a ningunga matriz...
+}
+
+int* TableroIrregular::origen() {
+	return nullptr;
 }

@@ -27,4 +27,5 @@ public:
 	virtual char getValor(int f, int c);
 
 	bool agregarJugada(int x, int y);
+	int* origen()override;
 };
