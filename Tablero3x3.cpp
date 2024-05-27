@@ -70,11 +70,12 @@ void Tablero3x3::añadirAbajo(Tablero* tab)
 {
 }
 
-bool agregarJugada(int x, int y) {
-	if (x==y or x<0 or y<0) return false;//Coincidir en ambos valores es porque 
-							//es una casilla punto o una casilla para la letra
-	char c;
-	if (x % 2 == 0) c == char(205);
-	else c==char(186);	
+bool Tablero3x3::agregarJugada(int x, int y) {
+	if (x<0 or y<0) throw ExcepcionRango();
+	if (mat[x][y] != '\0') throw ExcepcionLugarOcupado();
+	if(x==y) throw ExcepcionLugarReservado();
+
+	char c='\0';
+	x%2==0?c=char(205):c=char(186);
 	return true;
 }
