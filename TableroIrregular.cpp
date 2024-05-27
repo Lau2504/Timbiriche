@@ -380,3 +380,7 @@ char TableroIrregular::getValor(int f, int c)
 	else
 		return mat[f][c];
 }
+
+bool TableroIrregular::agregarJugada(int x, int y) {
+	if(x==y) throw ExcepcionLugarReserrvado();
+}
