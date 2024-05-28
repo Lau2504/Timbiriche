@@ -1,4 +1,4 @@
-#include "Tablero3x5.h"
+ï»¿#include "Tablero3x5.h"
 
 Tablero3x5::Tablero3x5()
 {
@@ -57,23 +57,51 @@ char Tablero3x5::getValor(int f, int c)
 	return 0;
 }
 
-void Tablero3x5::añadirIzquierda(Tablero* tab)
+void Tablero3x5::aÃ±adirIzquierda(Tablero* tab)
 {
 }
 
-void Tablero3x5::añadirDerecha(Tablero* tab)
+void Tablero3x5::aÃ±adirDerecha(Tablero* tab)
 {
 }
 
-void Tablero3x5::añadirArriba(Tablero* tab)
+void Tablero3x5::aÃ±adirArriba(Tablero* tab)
 {
 }
 
-void Tablero3x5::añadirAbajo(Tablero* tab)
+void Tablero3x5::aÃ±adirAbajo(Tablero* tab)
 {
 }
-bool Tablero3x5::validarPunto(char c, int x, int y) {
-	return true;
+bool Tablero3x5::validarPunto(char c, int col, int fila) {
+	bool b{ false };
+	bool hayPunto{ false };
+	b = fila % 2;//0 es par, por ende se coloco una linea vertical, y el "escaneo" es horizontal
+	//de lo contrario, si no es a es b...
+	if (b) {
+		if (fila != filas - 1)//leer abajo
+			if (mat[fila + 2][col] != '\0' and mat[fila + 1][col + 1] != '\0' and mat[fila + 1][col - 1]) {
+				mat[fila + 1][col] = c;
+				hayPunto = true;
+			}
+		if (fila != 0)//leer arriba
+			if (mat[fila - 2][col] != '\0' and mat[fila - 1][col + 1] != '\0' and mat[fila - 1][col - 1]) {
+				mat[fila - 1][col] = c;
+				hayPunto = true;
+			}
+	}
+	else {//b==0->b%2==0->b es posicion de columna donde solo hay lineas verticales â•‘
+		if (col != columnas - 1)//leer derecha
+			if (mat[fila][col + 2] != '\0' and mat[fila + 1][col + 1] != '\0' and mat[fila - 1][col + 1]) {
+				mat[fila][col + 1] = c;
+				hayPunto = true;
+			}
+		if (col != 0)//leer izquierda
+			if (mat[fila][col - 2] != '\0' and mat[fila + 1][col - 1] != '\0' and mat[fila - 1][col + 1]) {
+				mat[fila][col - 1] = c;
+				hayPunto = true;
+			}
+	}
+	return hayPunto;
 }
 bool Tablero3x5::agregarJugada(int x, int y) {
 	if (x < 0 or y < 0) throw ExcepcionRango();

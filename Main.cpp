@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 
+
 int main() {
 	//Tablero* tab = new TableroIrregular();
 	//Tablero* tab1 = new Tablero3x3();
@@ -20,10 +21,10 @@ int main() {
 	//tab->añadirAbajo(tab1);
 	//cout << tab->toString();
 		
-	tab->añadirDerecha(tab2);
+	//tab->añadirDerecha(tab2);
 	/*tab->añadirArriba(tab1);*/
-	tab->añadirAbajo(tab1);
-	cout << tab->toString();
+	//tab->añadirAbajo(tab1);
+	//cout << tab->toString();
 
 
 	system("Pause");

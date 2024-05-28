@@ -364,28 +364,31 @@ char TableroIrregular::getValor(int f, int c)
 		return mat[f][c];
 }
 
-bool Tablero3x3::validarPunto(char c, int x, int y) {
-	bool b = false;
-	b = x % 2;//0 es par, por ende se coloco una linea vertical, y el "escaneo" es horizontal
-	//de lo contrario, si no es a es b...
-	if (b) {
-		if (x == 0);
-	}
-
-	
-	return true;
-}
-
-bool TableroIrregular::agregarJugada(int x, int y) {
+bool TableroIrregular::validarPunto(char c, int col, int fila) {
 	int a{ 0 }, b{ 0 }, c{ 0 }, d{ 0 };
 	for (int i = 0; i < cantidad; i++) {
-		
+		int* coords = vec[i]->origen();
+		a = (coords[0]);
+		b = a + (vec[i]->getColumnas());
+		c = (coords[1]);
+		d = c + 3;
+		if (a <= col and col <= b and c <= fila and fila <= d)
+			vec[i]->validarPunto(c, col - a, fila - c);
+		delete coords;
+	}
+}
+
+bool TableroIrregular::agregarJugada(int col, int fila) {
+	int a{ 0 }, b{ 0 }, c{ 0 }, d{ 0 };
+	for (int i = 0; i < cantidad; i++) {
+		int* coords = vec[i]->origen();
 		a=(vec[i]->origen()[0]);
 		b=a+(vec[i]->getColumnas());
 		c=(vec[i]->origen()[1]);
 		d=c+3;
-		if (a <= y and y <= b and c <= x and x <= d)
-			vec[i]->agregarJugada(x - a, y - c);
+		if (a <= col and col <= b and c <= fila and fila <= d)
+			vec[i]->agregarJugada(col - a, fila - c);
+		delete coords;
 	}
 	return true;//probablemente sea una coordenada que no pertenece a ningunga matriz...
 }
