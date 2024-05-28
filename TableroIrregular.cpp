@@ -364,18 +364,26 @@ char TableroIrregular::getValor(int f, int c)
 		return mat[f][c];
 }
 
+bool Tablero3x3::validarPunto(char c, int x, int y) {
+	bool b = false;
+	b = x % 2;//0 es par, por ende se coloco una linea vertical, y el "escaneo" es horizontal
+	//de lo contrario, si no es a es b...
+	
+	return true;
+}
+
 bool TableroIrregular::agregarJugada(int x, int y) {
 	int a{ 0 }, b{ 0 }, c{ 0 }, d{ 0 };
 	for (int i = 0; i < cantidad; i++) {
-		//a£x£b y c£y£d
+		
 		a=(vec[i]->origen()[0]);
 		b=a+(vec[i]->getColumnas());
 		c=(vec[i]->origen()[1]);
 		d=c+3;
 		if (a <= x and x <= b and c <= y and y <= d)
-			return vec[i]->agregarJugada(x - a, y - c);
+			vec[i]->agregarJugada(x - a, y - c);
 	}
-	return false;//probablemente sea una coordenada que no pertenece a ningunga matriz...
+	return true;//probablemente sea una coordenada que no pertenece a ningunga matriz...
 }
 
 int* TableroIrregular::origen() {

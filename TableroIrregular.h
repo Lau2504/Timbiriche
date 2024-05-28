@@ -26,6 +26,7 @@ public:
 	virtual int getColumnas();
 	virtual char getValor(int f, int c);
 
+	virtual bool validarPunto(char, int, int);
 	bool agregarJugada(int x, int y);
 	int* origen()override;
 };

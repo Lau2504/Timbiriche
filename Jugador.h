@@ -6,6 +6,8 @@ public:
 	Jugador();
 	virtual ~Jugador();
 	virtual void setLetra(char)=0;
+	virtual char getLetra()=0;
+
 };
 
 Jugador::Jugador() {}
