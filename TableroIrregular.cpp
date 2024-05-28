@@ -368,6 +368,10 @@ bool Tablero3x3::validarPunto(char c, int x, int y) {
 	bool b = false;
 	b = x % 2;//0 es par, por ende se coloco una linea vertical, y el "escaneo" es horizontal
 	//de lo contrario, si no es a es b...
+	if (b) {
+		if (x == 0);
+	}
+
 	
 	return true;
 }
@@ -380,7 +384,7 @@ bool TableroIrregular::agregarJugada(int x, int y) {
 		b=a+(vec[i]->getColumnas());
 		c=(vec[i]->origen()[1]);
 		d=c+3;
-		if (a <= x and x <= b and c <= y and y <= d)
+		if (a <= y and y <= b and c <= x and x <= d)
 			vec[i]->agregarJugada(x - a, y - c);
 	}
 	return true;//probablemente sea una coordenada que no pertenece a ningunga matriz...
