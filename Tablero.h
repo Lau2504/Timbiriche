@@ -32,5 +32,6 @@ public:
 	virtual bool validarPunto(char, int, int)=0;
 	virtual bool agregarJugada(int x, int y) = 0;
 	virtual int* origen() = 0;
-
+	virtual int puntuacion(char) = 0;
+	virtual bool estaLleno();
 };

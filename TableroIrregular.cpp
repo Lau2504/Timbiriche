@@ -371,7 +371,7 @@ bool TableroIrregular::validarPunto(char c, int col, int fila) {
 		a = (coords[0]);
 		b = a + (vec[i]->getColumnas());
 		c = (coords[1]);
-		d = c + 3;
+		d = c + getFilas();
 		if (a <= col and col <= b and c <= fila and fila <= d)
 			vec[i]->validarPunto(c, col - a, fila - c);
 		delete coords;
@@ -385,7 +385,7 @@ bool TableroIrregular::agregarJugada(int col, int fila) {
 		a=(vec[i]->origen()[0]);
 		b=a+(vec[i]->getColumnas());
 		c=(vec[i]->origen()[1]);
-		d=c+3;
+		d = c + getFilas();
 		if (a <= col and col <= b and c <= fila and fila <= d)
 			vec[i]->agregarJugada(col - a, fila - c);
 		delete coords;
@@ -395,4 +395,19 @@ bool TableroIrregular::agregarJugada(int col, int fila) {
 
 int* TableroIrregular::origen() {
 	return nullptr;
+}
+
+int TableroIrregular::puntuacion(char c) {
+	int n = 0;
+	for(int i=0;i<cantidad;i++)
+		n += vec[i]->puntuacion(c);
+	return n;
+}
+
+bool TableroIrregular::estaLleno() {
+	for (int i = 0; i < cantidad; i++) {
+		if (!estaLleno())
+			return false;
+	}
+	return true;
 }

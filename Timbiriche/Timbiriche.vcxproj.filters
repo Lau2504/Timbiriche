@@ -95,5 +95,8 @@
     <ClCompile Include="..\Jugador.h">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
+    <ClCompile Include="Juego.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

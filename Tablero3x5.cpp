@@ -117,3 +117,13 @@ bool Tablero3x5::agregarJugada(int x, int y) {
 int* Tablero3x5::origen() {
 	return new int[2] {columOrigen, filaOrigen};
 }
+
+int Tablero3x5::puntuacion(char c) {
+	int n = 0;
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			if (mat[i][j] == c) n++;
+		}
+	}
+	return n;
+}

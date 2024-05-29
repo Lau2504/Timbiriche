@@ -20,4 +20,5 @@ public:
 	virtual bool validarPunto(char, int, int);
 	bool agregarJugada(int x, int y);
 	virtual int* origen();
+	virtual int puntuacion(char);
 };
