@@ -133,6 +133,7 @@
     <ClInclude Include="..\ExcepcionLugarReservado.h" />
     <ClInclude Include="..\ExcepcionRango.h" />
     <ClInclude Include="..\IteradorVector.h" />
+    <ClInclude Include="..\Juego.h" />
     <ClInclude Include="..\Lista.h" />
     <ClInclude Include="..\Nodo.h" />
     <ClInclude Include="..\Tablero.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="..\Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Juego.cpp" />
     <ClCompile Include="..\Main.cpp" />
     <ClCompile Include="..\Jugador.h" />
     <ClCompile Include="..\Tablero3x3.cpp" />
@@ -151,7 +153,6 @@
     <ClCompile Include="..\Tablero3x5.cpp" />
     <ClCompile Include="..\TableroGlobal.cpp" />
     <ClCompile Include="..\TableroIrregular.cpp" />
-    <ClCompile Include="Juego.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
