@@ -75,6 +75,9 @@
     <ClInclude Include="..\Juego.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\ExcepcionParametro.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Main.cpp">

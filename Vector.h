@@ -18,7 +18,7 @@ public:
 	T* sacar(int=0);
 	bool agregarInicio(T*);
 	bool agregarFinal(T*);
-	T* operator[](int);
+	T& operator[](int);
 	
 };
 
@@ -80,9 +80,9 @@ bool Vector<T>::agregarFinal(T* dato) {
 }
 
 template <class T>
-T* Vector<T>::operator[](int pos) {
+T& Vector<T>::operator[](int pos) {
 	if (pos < 0 or pos >= can) return nullptr;
-	return vec[pos];
+	return (*(vec[pos]));
 }
 
 #endif

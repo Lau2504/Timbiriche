@@ -5,7 +5,7 @@
 
 class Excepcion{
 	public:
-	virtual const char* que(const char* mensaje) const=0;
+	virtual const char* que() const=0;
 };
 
 #endif 
