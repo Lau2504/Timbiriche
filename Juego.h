@@ -16,5 +16,6 @@ private:
 		//tambien se puede añadir directamente el tablero usando el singleton
 		void hacerJugada(int,int);
 		bool sigueJuego();
+		string dibujar();
 };
 
