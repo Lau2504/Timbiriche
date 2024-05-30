@@ -86,18 +86,18 @@ void TableroIrregular::añadirIzquierda(Tablero* tab)
 		
 		for (int i = FOri - ancho+1; i <= FOri; i++) {
 			for (int j = COri - largo; j < COri; j++) {
-					if (i % 2 == 0 && j % 2 == 0) {
-						mat[i][j] = '+';
-					}
-					else if (i % 2 == 0) {
-						mat[i][j] = '-';
-					}
-					else if (j % 2 == 0) {
-						mat[i][j] = '|';
-					}
-					else {
-						mat[i][j] = 'o';
-					}	
+				if (i % 2 == 0 && j % 2 == 0) {
+					mat[i][j] = '+';
+				}
+				else if (i % 2 == 0) {
+					mat[i][j] = '-';
+				}
+				else if (j % 2 == 0) {
+					mat[i][j] = '|';
+				}
+				else {
+					mat[i][j] = 'o';
+				}	
 			}
 		}
 	}
@@ -364,17 +364,50 @@ char TableroIrregular::getValor(int f, int c)
 		return mat[f][c];
 }
 
-bool TableroIrregular::agregarJugada(int x, int y) {
-	if (x < 0 || x > 30 || y < 0 || y > 30) {
-		cout << "Excepcion rango" << endl;
-		return false;
+bool TableroIrregular::validarPunto(char c, int col, int fila) {
+	int a{ 0 }, b{ 0 }, c{ 0 }, d{ 0 };
+	for (int i = 0; i < cantidad; i++) {
+		int* coords = vec[i]->origen();
+		a = (coords[0]);
+		b = a + (vec[i]->getColumnas());
+		c = (coords[1]);
+		d = c + getFilas();
+		if (a <= col and col <= b and c <= fila and fila <= d)
+			vec[i]->validarPunto(c, col - a, fila - c);
+		delete coords;
 	}
-	if (mat[x][y] == ' ') {
-		mat[x][y] = 'X';
-		return true;
+}
+
+bool TableroIrregular::agregarJugada(int col, int fila) {
+	int a{ 0 }, b{ 0 }, c{ 0 }, d{ 0 };
+	for (int i = 0; i < cantidad; i++) {
+		int* coords = vec[i]->origen();
+		a=(vec[i]->origen()[0]);
+		b=a+(vec[i]->getColumnas());
+		c=(vec[i]->origen()[1]);
+		d = c + getFilas();
+		if (a <= col and col <= b and c <= fila and fila <= d)
+			vec[i]->agregarJugada(col - a, fila - c);
+		delete coords;
 	}
-	else {
-		cout << "Excepcion lugar ocupado" << endl;
-		return false;
+	return true;//probablemente sea una coordenada que no pertenece a ningunga matriz...
+}
+
+int* TableroIrregular::origen() {
+	return nullptr;
+}
+
+int TableroIrregular::puntuacion(char c) {
+	int n = 0;
+	for(int i=0;i<cantidad;i++)
+		n += vec[i]->puntuacion(c);
+	return n;
+}
+
+bool TableroIrregular::estaLleno() {
+	for (int i = 0; i < cantidad; i++) {
+		if (!estaLleno())
+			return false;
 	}
+	return true;
 }

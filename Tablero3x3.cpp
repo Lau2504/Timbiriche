@@ -1,4 +1,4 @@
-#include "Tablero3x3.h"
+ï»¿#include "Tablero3x3.h"
 Tablero3x3::Tablero3x3()
 {
 	filas = 3;
@@ -54,22 +54,51 @@ char Tablero3x3::getValor(int f, int c)
 	return 0;
 }
 
-void Tablero3x3::añadirIzquierda(Tablero* tab)
+void Tablero3x3::aÃ±adirIzquierda(Tablero* tab)
 {
 }
 
-void Tablero3x3::añadirDerecha(Tablero* tab)
+void Tablero3x3::aÃ±adirDerecha(Tablero* tab)
 {
 }
 
-void Tablero3x3::añadirArriba(Tablero* tab)
+void Tablero3x3::aÃ±adirArriba(Tablero* tab)
 {
 }
 
-void Tablero3x3::añadirAbajo(Tablero* tab)
+void Tablero3x3::aÃ±adirAbajo(Tablero* tab)
 {
 }
-
+bool Tablero3x3::validarPunto(char c, int col, int fila) {
+	bool b{ false };
+	bool hayPunto{ false };
+	b = fila % 2;//0 es par, por ende se coloco una linea vertical, y el "escaneo" es horizontal
+	//de lo contrario, si no es a es b...
+	if (b) {
+		if (fila != filas - 1)//leer abajo
+			if (mat[fila + 2][col] != '\0' and mat[fila + 1][col + 1] != '\0' and mat[fila + 1][col - 1]) {
+				mat[fila + 1][col] = c;
+				hayPunto = true;
+			}
+		if (fila != 0)//leer arriba
+			if (mat[fila - 2][col] != '\0' and mat[fila - 1][col + 1] != '\0' and mat[fila - 1][col - 1]) {
+				mat[fila - 1][col] = c;
+				hayPunto = true;
+			}
+	} else {//b==0->b%2==0->b es posicion de columna donde solo hay lineas verticales â•‘
+		if (col != columnas - 1)//leer derecha
+			if (mat[fila][col + 2] != '\0' and mat[fila + 1][col + 1] != '\0' and mat[fila - 1][col + 1]) {
+				mat[fila][col + 1] = c;
+				hayPunto = true;
+			}
+		if (col != 0)//leer izquierda
+			if (mat[fila][col - 2] != '\0' and mat[fila + 1][col - 1] != '\0' and mat[fila - 1][col + 1]) {
+				mat[fila][col - 1] = c;
+				hayPunto = true;
+			}
+	}
+	return hayPunto;
+}
 bool Tablero3x3::agregarJugada(int x, int y) {
 	if (x<0 or y<0) throw ExcepcionRango();
 	if (mat[x][y] != '\0') throw ExcepcionLugarOcupado();
@@ -77,5 +106,20 @@ bool Tablero3x3::agregarJugada(int x, int y) {
 
 	char c='\0';
 	x%2==0?c=char(205):c=char(186);
+	mat[x][y] = c;
 	return true;
+}
+
+int* Tablero3x3::origen() {
+	return new int[2] {columOrigen, filaOrigen};
+}
+
+int Tablero3x3::puntuacion(char c) {
+	int n = 0;
+	for (int i = 0;i < filas; i++) {
+		for (int j = 0;j < columnas; j++) {
+			if (mat[i][j] == c) n++;
+		}
+	}
+	return n;
 }

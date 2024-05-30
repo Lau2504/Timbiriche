@@ -72,6 +72,12 @@
     <ClInclude Include="..\ExcepcionLugar.h">
       <Filter>Archivos de encabezado\Excepciones</Filter>
     </ClInclude>
+    <ClInclude Include="..\Juego.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ExcepcionParametro.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Main.cpp">
@@ -94,6 +100,9 @@
     </ClCompile>
     <ClCompile Include="..\Jugador.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Juego.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

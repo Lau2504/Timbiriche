@@ -131,8 +131,10 @@
     <ClInclude Include="..\ExcepcionLugar.h" />
     <ClInclude Include="..\ExcepcionLugarOcupado.h" />
     <ClInclude Include="..\ExcepcionLugarReservado.h" />
+    <ClInclude Include="..\ExcepcionParametro.h" />
     <ClInclude Include="..\ExcepcionRango.h" />
     <ClInclude Include="..\IteradorVector.h" />
+    <ClInclude Include="..\Juego.h" />
     <ClInclude Include="..\Lista.h" />
     <ClInclude Include="..\Nodo.h" />
     <ClInclude Include="..\Tablero.h" />
@@ -144,6 +146,7 @@
     <ClInclude Include="..\Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Juego.cpp" />
     <ClCompile Include="..\Main.cpp" />
     <ClCompile Include="..\Jugador.h" />
     <ClCompile Include="..\Tablero3x3.cpp" />

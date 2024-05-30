@@ -2,5 +2,5 @@
 #include "Excepcion.h"
 
 class ExcepcionLugar :public Excepcion {
-	virtual const char* que(const char* mensaje) const = 0;
+	virtual const char* que() const = 0;
 };
