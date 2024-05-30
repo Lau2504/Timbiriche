@@ -21,10 +21,7 @@ void Juego::iniciarJuego(Tablero* tab) {
 }
 
 void Juego::hacerJugada(int col, int fil) {
-	TableroGlobal* ptr=TableroGlobal::getInstancia();
-	Tablero* tab=ptr->getTablero();
-	tab->agregarJugada(col, fil);
-	if (!tab->validarPunto(((*jugadores)[turno]).getLetra(), col, fil))//si retorna false, no hubo punto. por lo tanto, cambio de turno
+	if ((*jugadores)[turno].jugar(col,fil))//si retorna false, no hubo punto. por lo tanto, cambio de turno
 		turno = !turno;
 }
 

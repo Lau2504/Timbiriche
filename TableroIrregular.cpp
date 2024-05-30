@@ -406,7 +406,7 @@ int TableroIrregular::puntuacion(char c) {
 
 bool TableroIrregular::estaLleno() {
 	for (int i = 0; i < cantidad; i++) {
-		if (!estaLleno())
+		if (!vec[i]->estaLleno())
 			return false;
 	}
 	return true;
