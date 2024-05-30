@@ -1,7 +1,7 @@
 #ifndef JUGADOR_H
 #define JUGADOR_H
 
-class Jugador {
+class Jugador {//<<Interfaz>>
 public:
 	Jugador();
 	virtual ~Jugador();

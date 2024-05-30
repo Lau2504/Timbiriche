@@ -1,7 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 #include "IteradorVector.h"
-
+#include "ExcepcionRango.h"
 template <class T> class IteradorVector;
 template <class T>
 class Vector {
@@ -81,8 +81,8 @@ bool Vector<T>::agregarFinal(T* dato) {
 
 template <class T>
 T& Vector<T>::operator[](int pos) {
-	if (pos < 0 or pos >= can) return nullptr;
-	return (*(vec[pos]));
+	if (pos < 0 or pos >= can) throw ExcepcionRango();
+	return *(vec[pos]);
 }
 
 #endif
