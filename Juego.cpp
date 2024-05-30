@@ -31,3 +31,14 @@ void Juego::hacerJugada(int col, int fil) {
 bool Juego::sigueJuego() {
 	return !TableroGlobal::getInstancia()->getTablero()->estaLleno();
 }
+
+string Juego::dibujar() {
+	TableroGlobal* ptr = TableroGlobal::getInstancia();
+	Tablero* tab = ptr->getTablero();
+	stringstream s;
+	s << "Puntuacion\n";
+	s << "Jugador " << (*jugadores)[0].getLetra() << ": " << tab->puntuacion((*jugadores)[0].getLetra()) << " puntos\n";
+	s << "Jugador " << (*jugadores)[1].getLetra() << ": " << tab->puntuacion((*jugadores)[0].getLetra()) << " puntos\n";
+	s << tab->toString();
+	return s.str();
+}
