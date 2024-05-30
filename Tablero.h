@@ -34,4 +34,6 @@ public:
 	virtual int* origen() = 0;
 	virtual int puntuacion(char) = 0;
 	virtual bool estaLleno();
+	
 };
+
