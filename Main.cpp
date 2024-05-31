@@ -13,17 +13,17 @@ int main() {
 	/*tab->Add(tab2, 6, 14); */
 
 	tab->Add(tab3, 12, 10);
-	tab->añadirIzquierda(tab1);
-	/*tab->añadirIzquierda(tab1);*/ //Existe la matriz base y de ahí se agregan las otras matrices no se puede agregar a la izquierda porque ya hay una en ese lado
+	tab->agregarIzquierda(tab1);
+	/*tab->agregarIzquierda(tab1);*/ //Existe la matriz base y de ahí se agregan las otras matrices no se puede agregar a la izquierda porque ya hay una en ese lado
 
-	//tab->añadirDerecha(tab2);
-	//tab->añadirArriba(tab1);
-	tab->añadirAbajo(tab1);
+	//tab->agregarDerecha(tab2);
+	//tab->agregarArriba(tab1);
+	tab->agregarAbajo(tab1);
 	cout << tab->toString();
 		
-	tab->añadirDerecha(tab2);
-	/*tab->añadirArriba(tab1);*/
-	tab->añadirAbajo(tab1);
+	tab->agregarDerecha(tab2);
+	/*tab->agregarArriba(tab1);*/
+	tab->agregarAbajo(tab1);
 	cout << tab->toString();
 
 

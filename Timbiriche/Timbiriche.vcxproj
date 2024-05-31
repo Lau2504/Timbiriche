@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Computadora.h" />
+    <ClInclude Include="..\Estrategia.h" />
     <ClInclude Include="..\Excepcion.h" />
     <ClInclude Include="..\ExcepcionLugar.h" />
     <ClInclude Include="..\ExcepcionLugarOcupado.h" />
@@ -135,8 +137,10 @@
     <ClInclude Include="..\ExcepcionRango.h" />
     <ClInclude Include="..\IteradorVector.h" />
     <ClInclude Include="..\Juego.h" />
+    <ClInclude Include="..\Jugador.h" />
     <ClInclude Include="..\Lista.h" />
     <ClInclude Include="..\Nodo.h" />
+    <ClInclude Include="..\Persona.h" />
     <ClInclude Include="..\Tablero.h" />
     <ClInclude Include="..\Tablero3x3.h" />
     <ClInclude Include="..\Tablero3x4.h" />
@@ -146,9 +150,12 @@
     <ClInclude Include="..\Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Computadora.cpp" />
     <ClCompile Include="..\Juego.cpp" />
+    <ClCompile Include="..\Jugador.cpp" />
     <ClCompile Include="..\Main.cpp" />
-    <ClCompile Include="..\Jugador.h" />
+    <ClCompile Include="..\Persona.cpp" />
+    <ClCompile Include="..\Tablero.cpp" />
     <ClCompile Include="..\Tablero3x3.cpp" />
     <ClCompile Include="..\Tablero3x4.cpp" />
     <ClCompile Include="..\Tablero3x5.cpp" />

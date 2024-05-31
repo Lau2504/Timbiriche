@@ -14,7 +14,7 @@ private:
 
 		void iniciarJuego(Tablero*);//recibe por parametro el tablero con el que se va a jugar.
 		//tambien se puede añadir directamente el tablero usando el singleton
-		void hacerJugada(int,int);
+		void hacerJugada(int,int);//si retorna true, hubo punto
 		bool sigueJuego();
 		string dibujar();
 };

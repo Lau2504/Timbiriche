@@ -3,6 +3,7 @@
 Juego::Juego(Jugador* jug1, Jugador* jug2) :turno { false } {
 	if (jug1 == nullptr or jug2 == nullptr)
 		throw ExcepcionParametro();
+	jugadores= new Vector<Jugador>(2);
 	jugadores->agregarInicio(jug1);
 	jugadores->agregarFinal(jug2);
 
@@ -21,10 +22,7 @@ void Juego::iniciarJuego(Tablero* tab) {
 }
 
 void Juego::hacerJugada(int col, int fil) {
-	TableroGlobal* ptr=TableroGlobal::getInstancia();
-	Tablero* tab=ptr->getTablero();
-	tab->agregarJugada(col, fil);
-	if (!tab->validarPunto(((*jugadores)[turno]).getLetra(), col, fil))//si retorna false, no hubo punto. por lo tanto, cambio de turno
+	if ((*jugadores)[turno].jugar(col,fil))//si retorna false, no hubo punto. por lo tanto, cambio de turno
 		turno = !turno;
 }
 

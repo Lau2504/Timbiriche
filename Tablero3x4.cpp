@@ -57,19 +57,19 @@ char Tablero3x4::getValor(int f, int c)
 	return 0;
 }
 
-void Tablero3x4::añadirIzquierda(Tablero* tab)
+void Tablero3x4::agregarIzquierda(Tablero* tab)
 {
 }
 
-void Tablero3x4::añadirDerecha(Tablero* tab)
+void Tablero3x4::agregarDerecha(Tablero* tab)
 {
 }
 
-void Tablero3x4::añadirArriba(Tablero* tab)
+void Tablero3x4::agregarArriba(Tablero* tab)
 {
 }
 
-void Tablero3x4::añadirAbajo(Tablero* tab)
+void Tablero3x4::agregarAbajo(Tablero* tab)
 {
 }
 bool Tablero3x4::validarPunto(char c, int col, int fila) {

@@ -12,10 +12,10 @@ public:
 	virtual int getFilas();
 	virtual int getColumnas();
 	virtual char getValor(int f, int c);
-	virtual void añadirIzquierda(Tablero* tab);
-	virtual void añadirDerecha(Tablero* tab);
-	virtual void añadirArriba(Tablero* tab);
-	virtual void añadirAbajo(Tablero* tab);
+	virtual void agregarIzquierda(Tablero* tab);
+	virtual void agregarDerecha(Tablero* tab);
+	virtual void agregarArriba(Tablero* tab);
+	virtual void agregarAbajo(Tablero* tab);
 
 	virtual bool validarPunto(char, int, int);
 	bool agregarJugada(int x, int y);
