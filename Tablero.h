@@ -21,10 +21,10 @@ public:
 	virtual int getFilas() = 0;
 	virtual int getColumnas() = 0;
 	virtual void llenarMatriz() = 0;
-	virtual void añadirIzquierda(Tablero* tab) = 0;
-	virtual void añadirDerecha(Tablero* tab) = 0;
-	virtual void añadirArriba(Tablero* tab) = 0;
-	virtual void añadirAbajo(Tablero* tab) = 0;
+	virtual void agregarIzquierda(Tablero* tab) = 0;
+	virtual void agregarDerecha(Tablero* tab) = 0;
+	virtual void agregarArriba(Tablero* tab) = 0;
+	virtual void agregarAbajo(Tablero* tab) = 0;
 	virtual void Add(Tablero* tab, int f, int c) = 0;
 	virtual void Delete() = 0;
 	virtual char getValor(int f, int c) = 0;

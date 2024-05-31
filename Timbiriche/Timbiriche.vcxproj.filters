@@ -25,6 +25,12 @@
     <Filter Include="Archivos de encabezado\Templates">
       <UniqueIdentifier>{92895bd1-6d57-4bec-9706-a4ef272ef7bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Jugador">
+      <UniqueIdentifier>{397454b2-584c-491e-bd9a-96a1ef948d7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Jugador">
+      <UniqueIdentifier>{36ca88df-0965-4d01-9bd3-ee6d1827acc4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ExcepcionRango.h">
@@ -72,11 +78,17 @@
     <ClInclude Include="..\ExcepcionLugar.h">
       <Filter>Archivos de encabezado\Excepciones</Filter>
     </ClInclude>
+    <ClInclude Include="..\ExcepcionParametro.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
     <ClInclude Include="..\Juego.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\ExcepcionParametro.h">
-      <Filter>Archivos de encabezado\Excepciones</Filter>
+    <ClInclude Include="..\Jugador.h">
+      <Filter>Archivos de encabezado\Jugador</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Persona.h">
+      <Filter>Archivos de encabezado\Jugador</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -98,14 +110,17 @@
     <ClCompile Include="..\TableroGlobal.cpp">
       <Filter>Archivos de origen\Tablero</Filter>
     </ClCompile>
-    <ClCompile Include="..\Jugador.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
     <ClCompile Include="..\Juego.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\Tablero.cpp">
       <Filter>Archivos de origen\Tablero</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Jugador.cpp">
+      <Filter>Archivos de origen\Jugador</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Persona.cpp">
+      <Filter>Archivos de origen\Jugador</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

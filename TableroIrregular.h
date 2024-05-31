@@ -16,10 +16,10 @@ public:
 	virtual ~TableroIrregular();
 	virtual string toString();
 	virtual void llenarMatriz();
-	virtual void añadirIzquierda(Tablero* tab);
-	virtual void añadirDerecha(Tablero* tab);
-	virtual void añadirArriba(Tablero* tab);
-	virtual void añadirAbajo(Tablero* tab);
+	virtual void agregarIzquierda(Tablero* tab);
+	virtual void agregarDerecha(Tablero* tab);
+	virtual void agregarArriba(Tablero* tab);
+	virtual void agregarAbajo(Tablero* tab);
 	virtual void Add(Tablero* tab, int f, int c);
 	virtual void Delete();
 	virtual int getFilas();
