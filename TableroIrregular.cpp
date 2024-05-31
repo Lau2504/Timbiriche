@@ -30,18 +30,18 @@ TableroIrregular::~TableroIrregular(){
 string TableroIrregular::toString()
 {
 	stringstream s;
-	int col = 0;
-	s << "  ";
+	int col = 1;
+	s << " ";
 	do {
-		s << col << "   ";
+		s << col << "  ";
 		col++;
-	} while (col != 30);
+	} while (col != 31);
 	for (int i = 0; i < filas; i++) {
 		s << i << "  ";
 		for (int j = 0; j < columnas; j++) {
 			s <</*"      "*/ mat[i][j] << "   ";
 		}
-		s << endl << endl;
+		s << endl;
 	}
 	
 	return s.str();

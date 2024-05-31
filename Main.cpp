@@ -23,8 +23,8 @@ int main() {
 		
 	tab->agregarDerecha(tab2);
 	/*tab->agregarArriba(tab1);*/
-	tab->agregarAbajo(tab1);
-	cout << tab->toString();
+	//tab->agregarAbajo(tab1);
+	//cout << tab->toString();
 
 
 	system("Pause");

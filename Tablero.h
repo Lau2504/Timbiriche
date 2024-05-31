@@ -15,8 +15,8 @@ protected:
 	int columnas;
 	char mat[30][30];
 public:
-	Tablero() {}
-	virtual ~Tablero(){}
+	Tablero();
+	virtual ~Tablero();
 	virtual string toString() = 0;
 	virtual int getFilas() = 0;
 	virtual int getColumnas() = 0;
