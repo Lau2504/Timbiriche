@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Computadora.h" />
+    <ClInclude Include="..\Estrategia.h" />
     <ClInclude Include="..\Excepcion.h" />
     <ClInclude Include="..\ExcepcionLugar.h" />
     <ClInclude Include="..\ExcepcionLugarOcupado.h" />
@@ -148,6 +150,7 @@
     <ClInclude Include="..\Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Computadora.cpp" />
     <ClCompile Include="..\Juego.cpp" />
     <ClCompile Include="..\Jugador.cpp" />
     <ClCompile Include="..\Main.cpp" />

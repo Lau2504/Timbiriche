@@ -3,6 +3,7 @@
 Juego::Juego(Jugador* jug1, Jugador* jug2) :turno { false } {
 	if (jug1 == nullptr or jug2 == nullptr)
 		throw ExcepcionParametro();
+	jugadores= new Vector<Jugador>(2);
 	jugadores->agregarInicio(jug1);
 	jugadores->agregarFinal(jug2);
 
