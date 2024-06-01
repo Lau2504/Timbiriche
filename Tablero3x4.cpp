@@ -2,8 +2,8 @@
 
 Tablero3x4::Tablero3x4()
 {
-	filas = 3;
-	columnas = 4;
+	filas = 5;
+	columnas = 7;
 	for (int i = 0; i < filas; i++)
 		for (int j = 0; j < columnas; j++) {
 			if (i % 2 == 0 && j % 2 == 0)
@@ -21,11 +21,11 @@ Tablero3x4::~Tablero3x4()
 string Tablero3x4::toString()
 {
 	stringstream s;
-	//s << "           col = 0    col = 1    col = 2    col = 3    col = 4    col = 5    col = 6    col = 7    col = 8    col = 9    col = 10" << endl;
-	for (int i = 0; i <= filas; i++) {
-		for (int j = 0; j <= columnas; j++) {
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			s << mat[i][j];
 		}
-		s << endl << endl;
+		s << endl;
 	}
 	return s.str();
 }
@@ -54,8 +54,9 @@ int Tablero3x4::getColumnas()
 
 char Tablero3x4::getValor(int f, int c)
 {
-	return 0;
+	return mat[f][c];
 }
+
 
 void Tablero3x4::agregarIzquierda(Tablero* tab)
 {
@@ -109,7 +110,7 @@ bool Tablero3x4::agregarJugada(int x, int y) {
 	if (x == y) throw ExcepcionLugarReservado();
 
 	char c = '\0';
-	x % 2 == 0 ? c = char(205) : c = char(186);
+	x % 2 == 0 ? c = '-' : c = 'l';
 	mat[x][y] = c;
 	return true;
 }

@@ -1,7 +1,7 @@
 ﻿#include "Tablero3x3.h"
 Tablero3x3::Tablero3x3():Tablero(){
-	filas = 3;
-	columnas = 3;
+	filas = 5;
+	columnas = 5;
 	for (int i = 0; i < filas; i++)
 		for (int j = 0; j < columnas; j++) {
 			if (i % 2 == 0 && j % 2 == 0)
@@ -14,14 +14,20 @@ Tablero3x3::Tablero3x3():Tablero(){
 Tablero3x3::~Tablero3x3()
 {
 }
-string Tablero3x3::toString()
-{
-	stringstream s;
+string Tablero3x3::toString(){
+	stringstream s;/*
 	//s << "           col = 0    col = 1    col = 2    col = 3    col = 4    col = 5    col = 6    col = 7    col = 8    col = 9    col = 10" << endl;
 	for (int i = 0; i <= filas; i++) {
 		for (int j = 0; j <= columnas; j++) {
 		}
 		s << endl << endl;
+	}*/
+	
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			s << mat[i][j];
+		}
+		s << endl;
 	}
 	return s.str();
 }
@@ -50,7 +56,7 @@ int Tablero3x3::getColumnas()
 
 char Tablero3x3::getValor(int f, int c)
 {
-	return 0;
+	return mat[f][c];
 }
 
 void Tablero3x3::agregarIzquierda(Tablero* tab)
@@ -73,25 +79,25 @@ bool Tablero3x3::validarPunto(char c, int col, int fila) {
 	bool hayPunto{ false };
 	b = fila % 2;//0 es par, por ende se coloco una linea vertical, y el "escaneo" es horizontal
 	//de lo contrario, si no es a es b...
-	if (b) {
+	if (!b) {
 		if (fila != filas - 1)//leer abajo
-			if (mat[fila + 2][col] != '\0' and mat[fila + 1][col + 1] != '\0' and mat[fila + 1][col - 1]) {
+			if (mat[fila + 2][col] != ' ' and mat[fila + 1][col + 1] != ' ' and mat[fila + 1][col - 1]) {
 				mat[fila + 1][col] = c;
 				hayPunto = true;
 			}
 		if (fila != 0)//leer arriba
-			if (mat[fila - 2][col] != '\0' and mat[fila - 1][col + 1] != '\0' and mat[fila - 1][col - 1]) {
+			if (mat[fila - 2][col] != ' ' and mat[fila - 1][col + 1] != ' ' and mat[fila - 1][col - 1]) {
 				mat[fila - 1][col] = c;
 				hayPunto = true;
 			}
 	} else {//b==0->b%2==0->b es posicion de columna donde solo hay lineas verticales ║
 		if (col != columnas - 1)//leer derecha
-			if (mat[fila][col + 2] != '\0' and mat[fila + 1][col + 1] != '\0' and mat[fila - 1][col + 1]) {
+			if (mat[fila][col + 2] != ' ' and mat[fila + 1][col + 1] != ' ' and mat[fila - 1][col + 1]) {
 				mat[fila][col + 1] = c;
 				hayPunto = true;
 			}
 		if (col != 0)//leer izquierda
-			if (mat[fila][col - 2] != '\0' and mat[fila + 1][col - 1] != '\0' and mat[fila - 1][col + 1]) {
+			if (mat[fila][col - 2] != ' ' and mat[fila + 1][col - 1] != ' ' and mat[fila - 1][col + 1]) {
 				mat[fila][col - 1] = c;
 				hayPunto = true;
 			}
@@ -100,11 +106,11 @@ bool Tablero3x3::validarPunto(char c, int col, int fila) {
 }
 bool Tablero3x3::agregarJugada(int x, int y) {
 	if (x<0 or y<0) throw ExcepcionRango();
-	if (mat[x][y] != '\0') throw ExcepcionLugarOcupado();
+	if (mat[x][y] != ' ') throw ExcepcionLugarOcupado();
 	if(x==y) throw ExcepcionLugarReservado();
 
 	char c='\0';
-	x%2==0?c=char(205):c=char(186);
+	x % 2 == 0 ? c = '-' : c = 'l';
 	mat[x][y] = c;
 	return true;
 }

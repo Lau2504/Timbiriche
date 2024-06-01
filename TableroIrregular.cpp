@@ -1,5 +1,7 @@
 #include "TableroIrregular.h"
 
+
+
 TableroIrregular::TableroIrregular()
 {
 	cantidad = 0;
@@ -30,20 +32,38 @@ TableroIrregular::~TableroIrregular(){
 string TableroIrregular::toString()
 {
 	stringstream s;
-	int col = 1;
+	/*int col = 1;
 	s << " ";
 	do {
 		s << col << "  ";
 		col++;
 	} while (col != 31);
 	for (int i = 0; i < filas; i++) {
-		s << i << "  ";
+		s << i << "``";
 		for (int j = 0; j < columnas; j++) {
-			s <</*"      "*/ mat[i][j] << "   ";
+			s << mat[i][j] << "```";
+		}
+		s << endl;
+	}*/
+	//=========================================
+	
+	for (int i = 0; i < cantidad; i++) {
+		int* coords = vec[i]->origen();
+		for (int j = 0; j < vec[i]->getFilas(); j++) {
+			for (int k = 0; k < vec[i]->getColumnas(); k++) {
+				mat[j+coords[1]][k + coords[0]] = vec[i]->getValor(j,k);
+			}
+		}
+		delete[] coords;
+	}
+
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			s << mat[i][j]<<" ";
 		}
 		s << endl;
 	}
-	
+
 	return s.str();
 }
 
@@ -70,7 +90,7 @@ void TableroIrregular::agregarIzquierda(Tablero* tab)
 	FOri += pos; //posicion randon de la columna de la matriz que ya existe, 6 porque todas las matrices tienen la misma cantidad de filas
 	for (int i = FOri - ancho + 1; i <= FOri; i++) {
 		for (int j = COri - largo; j < COri; j++) {
-			if (mat[i][j] != ' ') {
+			if ((this->mat[i][j]) != ' ') {
 				cout << "Excepcion lugar ocupado" << endl;
 				return;
 			}
@@ -157,6 +177,7 @@ void TableroIrregular::agregarDerecha(Tablero* tab) {
 		}
 	}
 }
+
 void TableroIrregular::agregarArriba(Tablero* tab)
 {
 	int ancho = tab->getFilas() * 2;
@@ -166,8 +187,8 @@ void TableroIrregular::agregarArriba(Tablero* tab)
 	int pos = (rand() % 6) + 1;
 
 	// Encontrar el primer punto de origen ('+')
-	for (int i = 0; i < filas; i++) {
-		for (int j = 0; j < columnas; j++) {
+	for (int i = 0; i < this->filas; i++) {
+		for (int j = 0; j < this->columnas; j++) {
 			if (mat[i][j] == '+') {
 				FOri = i;
 				COri = j;
@@ -218,8 +239,6 @@ void TableroIrregular::agregarArriba(Tablero* tab)
 		}
 	}
 }
-
-
 
 void TableroIrregular::agregarAbajo(Tablero* tab)
 {
@@ -281,15 +300,15 @@ void TableroIrregular::agregarAbajo(Tablero* tab)
 }
 
 
-void TableroIrregular::Add(Tablero* tab, int f, int c)
-{
+void TableroIrregular::Add(Tablero* tab, int f, int c){
+
 	//agregar tablero al vector
 	if (cantidad < tamanio) {
 		vec[cantidad++] = tab;
 	}
 
+	
 	//puntos de origen
-
 	filaOrigen = f;
 	columOrigen = c;
 	
@@ -331,13 +350,7 @@ void TableroIrregular::Add(Tablero* tab, int f, int c)
 		}
 	}
 }
-//Para que se pueda hacer el dibujo bien, se debe poner en una entrada par para que vaya 
-// correctamente 
-// 
-//si va  a jugar para abajo la fila es mayor a la columna o sea es vertical
 
-//Hacer una función en juego que le de las coordenadas al Add para que las matrices queden a la par y 
-//y preguntarle al usuario cuando está eligiendo el tamaño de las matrices, no donde ponerlas
 
 void TableroIrregular::Delete()
 {
@@ -366,33 +379,41 @@ bool TableroIrregular::validarPunto(char ch, int col, int fila) {
 	int a{ 0 }, b{ 0 }, c{ 0 }, d{ 0 };
 	bool hayPunto{false};
 	for (int i = 0; i < cantidad; i++) {
+		//recoger datos
 		int* coords = vec[i]->origen();
 		a = (coords[0]);
 		b = a + (vec[i]->getColumnas());
 		c = (coords[1]);
 		d = c + getFilas();
+		//verificar si el punto pertenece a la matriz
 		if (a <= col and col <= b and c <= fila and fila <= d) {
-			vec[i]->validarPunto(ch, col - a, fila - c);
-			hayPunto = true;
+			//verificar si aumenta la puntuacion
+			if(vec[i]->validarPunto(ch, col - a, fila - c))
+				hayPunto = true;
 		}		
-		delete coords;
+		delete[] coords;
 	}
 	return hayPunto;
 }
 
 bool TableroIrregular::agregarJugada(int col, int fila) {
 	int a{ 0 }, b{ 0 }, c{ 0 }, d{ 0 };
+	bool hayJugada{ false };
 	for (int i = 0; i < cantidad; i++) {
 		int* coords = vec[i]->origen();
 		a=(vec[i]->origen()[0]);
 		b=a+(vec[i]->getColumnas());
 		c=(vec[i]->origen()[1]);
 		d = c + getFilas();
+		//verificar si el punto pertenece a alguna matriz
 		if (a <= col and col <= b and c <= fila and fila <= d)
-			vec[i]->agregarJugada(col - a, fila - c);
-		delete coords;
+			//verificar si se agrega la jugada
+			if(vec[i]->agregarJugada(col - a, fila - c))
+				hayJugada = true;
+
+		delete[] coords;
 	}
-	return true;//probablemente sea una coordenada que no pertenece a ningunga matriz...
+	return hayJugada;
 }
 
 int* TableroIrregular::origen() {
@@ -412,4 +433,29 @@ bool TableroIrregular::estaLleno() {
 			return false;
 	}
 	return true;
+}
+
+void TableroIrregular::agregarTablero(Tablero* tab) {
+	std::srand(std::time(0));
+
+	bool b=rand()%2;
+	if (b) {//empujar todo derecha
+		for (int i = 0; i < cantidad; i++) {
+			int *coords = vec[i]->origen();
+			vec[i]->setColumOrigen(coords[0]+tab->getColumnas()-1);
+			delete[] coords;
+		}
+	}else{//empujar todo abajo
+		for (int i = 0; i < cantidad; i++) {
+			int* coords = vec[i]->origen();
+			vec[i]->setFilaOrigen(coords[1] + tab->getFilas()-1);
+			delete[] coords;
+		}
+	}
+
+	tab->setColumOrigen(0);
+	tab->setFilaOrigen(0);
+
+	if ((cantidad<tamanio))
+		vec[cantidad++] = tab;
 }

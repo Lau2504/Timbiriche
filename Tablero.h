@@ -2,9 +2,12 @@
 #include <iostream>
 #include <sstream>
 
+
 #include "ExcepcionLugarOcupado.h"
 #include "ExcepcionRango.h"
 #include "ExcepcionLugarReservado.h"
+
+
 using namespace std;
 
 class Tablero {
@@ -33,7 +36,10 @@ public:
 	virtual bool agregarJugada(int x, int y) = 0;
 	virtual int* origen() = 0;
 	virtual int puntuacion(char) = 0;
+	
 	virtual bool estaLleno();
+	virtual void setFilaOrigen(int);
+	virtual void setColumOrigen(int);
 	
 };
 
