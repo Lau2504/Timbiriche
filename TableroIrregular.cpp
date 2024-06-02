@@ -46,10 +46,16 @@ string TableroIrregular::toString()
 		s << endl;
 	}*/
 	//=========================================
-	
+	int col = 1;
+	s << " ";
+	do {
+		s << col << "  ";
+		col++;
+	} while (col != 29);
 	for (int i = 0; i < cantidad; i++) {
 		int* coords = vec[i]->origen();
 		for (int j = 0; j < vec[i]->getFilas(); j++) {
+			s << i << "``";
 			for (int k = 0; k < vec[i]->getColumnas(); k++) {
 				mat[j+coords[1]][k + coords[0]] = vec[i]->getValor(j,k);
 			}
@@ -358,11 +364,19 @@ void TableroIrregular::Delete()
 
 int TableroIrregular::getFilas()
 {
+	int filas = 0;
+	for (int i = 0; i < cantidad; i++) {
+		filas += vec[i]->getFilas();
+	}
 	return filas;
 }
 
 int TableroIrregular::getColumnas()
 {
+	int columnas = 0;
+	for (int i = 0; i < cantidad; i++) {
+		columnas += vec[i]->getColumnas();
+	}
 	return columnas;
 }
 
@@ -452,9 +466,9 @@ void TableroIrregular::agregarTablero(Tablero* tab) {
 			delete[] coords;
 		}
 	}
-
-	tab->setColumOrigen(0);
-	tab->setFilaOrigen(0);
+	int col = rand() % 20 + 1, fil = rand() % 20 + 1;
+	tab->setColumOrigen(col);
+	tab->setFilaOrigen(fil);
 
 	if ((cantidad<tamanio))
 		vec[cantidad++] = tab;

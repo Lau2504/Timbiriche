@@ -1,15 +1,16 @@
 #include "TableroIrregular.h"
+#include "Controladora.h"
 #include <iostream>
 
 using namespace std;
 
 
 int main() {
-	
+	/*
 	TableroIrregular* tab = new TableroIrregular();
 	Tablero* tab1 = new Tablero3x3();
 	Tablero* tab2 = new Tablero3x4();
-	Tablero* tab3 = new Tablero3x5();
+	Tablero* tab3 = new Tablero3x5();*/
 	/*tab->Add(tab1, 2, 6);*/
 	//Llamar función que me dice en que rango puedo poner la otra matriz para cuando el usuario la pone manualmente
 	/*tab->Add(tab2, 6, 14); */
@@ -29,11 +30,14 @@ int main() {
 	//cout << tab->toString();
 	
 	//-----------------
+ 
+	//tab->agregarTablero(tab1);
+	//tab->agregarTablero(tab2);
+	//tab->agregarTablero(tab3);
+	//cout << tab->toString() << endl;
 
-	tab->agregarTablero(tab1);
-	tab->agregarTablero(tab2);
-	tab->agregarTablero(tab3);
-	cout << tab->toString() << endl;
+	Controladora* contro = new Controladora();
+	contro->control0();
 	system("Pause");
 	return 0;
 }

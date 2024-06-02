@@ -2,6 +2,7 @@
 #define JUGADOR_H
 //#include "TableroGlobal.h"
 class Jugador {//<<Interfaz>>
+
 public:
 	Jugador();
 	virtual ~Jugador();

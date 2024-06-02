@@ -8,9 +8,9 @@ Tablero3x5::Tablero3x5()
 		for (int j = 0; j < columnas; j++) {
 			if (i % 2 == 0 && j % 2 == 0)
 				mat[i][j] = '+';
-			else mat[i][j] = '-';
-			if (i % 2 != 0 && j % 2 != 0)
-				mat[i][j] = 'o';
+			else mat[i][j] = ' ';
+			/*if (i % 2 != 0 && j % 2 != 0)
+				mat[i][j] = 'o';*/
 		}
 }
 

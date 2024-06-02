@@ -128,13 +128,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Computadora.h" />
+    <ClInclude Include="..\Controladora.h" />
+    <ClInclude Include="..\EstrategiaPeriferica.h" />
     <ClInclude Include="..\Estrategia.h" />
+    <ClInclude Include="..\EstrategiaAleatoria.h" />
+    <ClInclude Include="..\EstrategiaCentral.h" />
+    <ClInclude Include="..\EstrategiaCercana.h" />
+    <ClInclude Include="..\EstrategiaIsla.h" />
     <ClInclude Include="..\Excepcion.h" />
+    <ClInclude Include="..\Excepciones.h" />
     <ClInclude Include="..\ExcepcionLugar.h" />
     <ClInclude Include="..\ExcepcionLugarOcupado.h" />
     <ClInclude Include="..\ExcepcionLugarReservado.h" />
     <ClInclude Include="..\ExcepcionParametro.h" />
     <ClInclude Include="..\ExcepcionRango.h" />
+    <ClInclude Include="..\Interfaz.h" />
     <ClInclude Include="..\IteradorVector.h" />
     <ClInclude Include="..\Juego.h" />
     <ClInclude Include="..\Jugador.h" />
@@ -148,9 +156,17 @@
     <ClInclude Include="..\TableroGlobal.h" />
     <ClInclude Include="..\TableroIrregular.h" />
     <ClInclude Include="..\Vector.h" />
+    <ClInclude Include="Excepciones.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Computadora.cpp" />
+    <ClCompile Include="..\Controladora.cpp" />
+    <ClCompile Include="..\EstrategiaAleatoria.cpp" />
+    <ClCompile Include="..\EstrategiaCentral.cpp" />
+    <ClCompile Include="..\EstrategiaCercana.cpp" />
+    <ClCompile Include="..\EstrategiaIsla.cpp" />
+    <ClCompile Include="..\EstrategiaPeriferica.cpp" />
+    <ClCompile Include="..\Interfaz.cpp" />
     <ClCompile Include="..\Juego.cpp" />
     <ClCompile Include="..\Jugador.cpp" />
     <ClCompile Include="..\Main.cpp" />

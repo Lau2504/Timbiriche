@@ -6,9 +6,10 @@ private:
 	char c;
 	Estrategia* estrategia;
 public:
-	Computadora(char c, Estrategia* estrategia);
+	Computadora(Estrategia* estrat);
 	virtual ~Computadora();
 	char getLetra()override;
 	bool jugar(int,int)override;
+	void setEstrategia(Estrategia* estra);
 
 };

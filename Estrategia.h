@@ -1,6 +1,8 @@
 #pragma once
 #include "TableroGlobal.h"
+#include <cstdlib>
+#include <ctime>
 class Estrategia {
 public:
-	virtual void doSomething()=0;//Cambiele el nombre
+	virtual int* ejecutarEstrategia() = 0;
 };

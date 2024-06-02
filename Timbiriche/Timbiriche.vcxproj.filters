@@ -31,6 +31,12 @@
     <Filter Include="Archivos de origen\Jugador">
       <UniqueIdentifier>{36ca88df-0965-4d01-9bd3-ee6d1827acc4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Estrategias">
+      <UniqueIdentifier>{6fb02605-a5d1-4d18-a6c7-f38ef77ba6ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Estrategias">
+      <UniqueIdentifier>{60f1933f-c64d-4e4f-b998-74da7919d44a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ExcepcionRango.h">
@@ -93,8 +99,35 @@
     <ClInclude Include="..\Computadora.h">
       <Filter>Archivos de encabezado\Jugador</Filter>
     </ClInclude>
-    <ClInclude Include="..\Estrategia.h">
+    <ClInclude Include="Excepciones.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Excepciones.h">
+      <Filter>Archivos de encabezado\Excepciones</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Interfaz.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Controladora.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EstrategiaPeriferica.h">
+      <Filter>Archivos de encabezado\Estrategias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Estrategia.h">
+      <Filter>Archivos de encabezado\Estrategias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EstrategiaAleatoria.h">
+      <Filter>Archivos de encabezado\Estrategias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EstrategiaCentral.h">
+      <Filter>Archivos de encabezado\Estrategias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EstrategiaCercana.h">
+      <Filter>Archivos de encabezado\Estrategias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\EstrategiaIsla.h">
+      <Filter>Archivos de encabezado\Estrategias</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +163,27 @@
     </ClCompile>
     <ClCompile Include="..\Computadora.cpp">
       <Filter>Archivos de origen\Jugador</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Controladora.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Interfaz.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EstrategiaAleatoria.cpp">
+      <Filter>Archivos de origen\Estrategias</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EstrategiaIsla.cpp">
+      <Filter>Archivos de origen\Estrategias</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EstrategiaPeriferica.cpp">
+      <Filter>Archivos de origen\Estrategias</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EstrategiaCentral.cpp">
+      <Filter>Archivos de origen\Estrategias</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EstrategiaCercana.cpp">
+      <Filter>Archivos de origen\Estrategias</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

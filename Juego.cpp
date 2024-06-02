@@ -36,7 +36,21 @@ string Juego::dibujar() {
 	stringstream s;
 	s << "Puntuacion\n";
 	s << "Jugador " << (*jugadores)[0].getLetra() << ": " << tab->puntuacion((*jugadores)[0].getLetra()) << " puntos\n";
-	s << "Jugador " << (*jugadores)[1].getLetra() << ": " << tab->puntuacion((*jugadores)[0].getLetra()) << " puntos\n";
+	s << "Jugador " << (*jugadores)[1].getLetra() << ": " << tab->puntuacion((*jugadores)[1].getLetra()) << " puntos\n";
 	s << tab->toString();
 	return s.str();
+}
+
+void Juego::setTurno(bool n)
+{
+	turno = n;
+}
+
+char Juego::ganador()
+{
+	TableroGlobal* ptr = TableroGlobal::getInstancia();
+	Tablero* tab = ptr->getTablero();
+	if (tab->puntuacion((*jugadores)[0].getLetra()))
+		return ((*jugadores)[0].getLetra());
+	else return ((*jugadores)[1].getLetra());
 }
