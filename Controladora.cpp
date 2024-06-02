@@ -31,10 +31,11 @@ void Controladora::control0()
 			switch (opc)
 			{
 			case 1: // 2 jugadores
-				per2 = Interfaz::otroJugador();
-				juego = new Juego(persona1 = new Persona(per1), persona2 = new Persona(per2));
-				juego->iniciarJuego(tab);
-                
+            {
+                per2 = Interfaz::otroJugador();
+                juego = new Juego(persona1 = new Persona(per1), persona2 = new Persona(per2));
+                juego->iniciarJuego(tab);
+
                 Interfaz::mostrarTablero(tab);
                 while (juego->sigueJuego()) {
                     cout << "Es el turno de:  ";
@@ -48,8 +49,10 @@ void Controladora::control0()
                     /* system("cls");*/
                 }
                 cout << "El ganador es: " << juego->ganador() << endl;
-				break;
+                break;
+            }
 			case 2: //jugar contra la computadora //Corregir esto porque se vuelve loco
+            {
                 estra = this->decidirEstrategia();
                 compu = new Computadora(estra);
                 juego = new Juego(persona1 = new Persona(per1), compu);
@@ -66,24 +69,30 @@ void Controladora::control0()
                             estra = this->decidirEstrategia();
                             compu->setEstrategia(estra);
                         }
-                       
+
                         fi = Interfaz::fila();
                         col = Interfaz::columna();
+
+                        juego->hacerJugada(fi, col);
                     }
-                    juego->hacerJugada(fi, col);
+                    else {
+                        juego->setTurno(true);
+                        juego->hacerJugada(fi, col);
+                    }
                     cout << juego->dibujar();
                     /* system("cls");*/
                 }
                 cout << "El ganador es: " << juego->ganador() << endl;
-				break;
+                break;
+            }
 			default:
 				break;
 			}
 		}
-		catch (...) {
-
+		catch (Excepcion& e) {
+            cout << e.que() << endl;
 		}
-	} while (opc != 3);
+    } while (opc != 1 || opc != 2);
 }
 Tablero* Controladora::crearTablero()
 {

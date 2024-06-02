@@ -4,3 +4,7 @@ int* EstrategiaCercana::ejecutarEstrategia()
 {
 	return nullptr;
 }
+
+EstrategiaCercana::~EstrategiaCercana()
+{
+}

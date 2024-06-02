@@ -4,5 +4,6 @@
 class EstrategiaAleatoria: public Estrategia {
 public:
 	virtual int* ejecutarEstrategia();
+	virtual ~EstrategiaAleatoria();
 };
 

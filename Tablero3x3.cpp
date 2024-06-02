@@ -129,3 +129,8 @@ int Tablero3x3::puntuacion(char c) {
 	}
 	return n;
 }
+
+int Tablero3x3::getCantidad()
+{
+	return 0;
+}

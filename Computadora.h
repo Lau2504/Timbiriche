@@ -11,5 +11,6 @@ public:
 	char getLetra()override;
 	bool jugar(int,int)override;
 	void setEstrategia(Estrategia* estra);
+	Estrategia* getEstrategia();
 
 };

@@ -128,3 +128,8 @@ int Tablero3x4::puntuacion(char c) {
 	}
 	return n;
 }
+
+int Tablero3x4::getCantidad()
+{
+	return 0;
+}

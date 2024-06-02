@@ -4,4 +4,5 @@
 class EstrategiaCercana : public Estrategia {
 public:
 	virtual int* ejecutarEstrategia();
+	virtual ~EstrategiaCercana();
 };

@@ -4,3 +4,7 @@ int* EstrategiaPeriferica::ejecutarEstrategia()
 {
     return nullptr;
 }
+
+EstrategiaPeriferica::~EstrategiaPeriferica()
+{
+}

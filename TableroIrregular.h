@@ -37,4 +37,8 @@ public:
 	//no se puede ver en la interfaz...
 	void agregarTablero(Tablero* tab);
 	//void arriba();
+
+	virtual int getCantidad();
+	Tablero** getTableros();
+
 };

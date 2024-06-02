@@ -21,4 +21,6 @@ public:
 	bool agregarJugada(int x, int y);
 	virtual int* origen()override;
 	virtual int puntuacion(char);
+
+	virtual int getCantidad();
 };

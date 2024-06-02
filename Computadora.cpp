@@ -16,11 +16,16 @@ bool Computadora::jugar(int col, int fila) {
 	Tablero* tab = TableroGlobal::getInstancia()->getTablero();
 	int fil = estrategia->ejecutarEstrategia()[0];
 	int colu = estrategia->ejecutarEstrategia()[1];
-	tab->agregarJugada(colu, fila);
-	return tab->validarPunto(c, colu, fila);
+	tab->agregarJugada(colu, fil);
+	return tab->validarPunto(c, colu, fil);
 }
 
 void Computadora::setEstrategia(Estrategia* estra)
 {
 	estrategia = estra;
+}
+
+Estrategia* Computadora::getEstrategia()
+{
+	return estrategia;
 }

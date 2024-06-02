@@ -4,3 +4,7 @@ int* EstrategiaIsla::ejecutarEstrategia()
 {
     return nullptr;
 }
+
+EstrategiaIsla::~EstrategiaIsla()
+{
+}

@@ -4,5 +4,6 @@
 class EstrategiaPeriferica : public Estrategia {
 public:
 	virtual int* ejecutarEstrategia();
+	virtual ~EstrategiaPeriferica();
 };
 
