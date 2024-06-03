@@ -21,6 +21,17 @@ bool Tablero::estaLleno() {
 	return true;
 }
 
+bool Tablero::agregarJugada(int x, int y) {
+	if (x < 0 or y < 0) throw ExcepcionRango();
+	if (mat[y][x] != ' ') throw ExcepcionLugarOcupado();
+	if (x == y) throw ExcepcionLugarReservado();
+
+	char c = '\0';
+	x % 2 == 0 ? c = 'l' : c = '-';
+	mat[y][x] = c;
+	return true;
+}
+
 void Tablero::setColumOrigen(int n) {columOrigen = n;}
 void Tablero::setFilaOrigen(int n) { filaOrigen = n; }
 

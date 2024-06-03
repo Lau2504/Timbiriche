@@ -30,19 +30,19 @@ int main() {
 	//cout << tab->toString();
 	
 	//-----------------
- 
+ /*
 	tab->agregarTablero(tab1);
 	system("pause ");
 	tab->agregarTablero(tab2);
 	system("pause");
 	tab->agregarTablero(tab3);
 	system("pause");
-	cout << tab->toString() << endl;
+	cout << tab->toString() << endl;*/
 	//----------------
-	/*
+	
 	Controladora* contro = new Controladora();
 	contro->control0();
-	system("Pause");*/
+	system("Pause");
 	
 	return 0;
 }

@@ -1,5 +1,6 @@
 #include "Interfaz.h"
 
+
 Interfaz::Interfaz()
 {
 }
@@ -20,14 +21,13 @@ int Interfaz::menuInicio()
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		throw ExcepcionRango();
 	}
-	return op;
-	
+	return op;	
 }
 
 char Interfaz::inicio()
 {
 	char inicial;
-	cout << "Digite su inicial para comenzar el juego" << endl;
+	cout << "Digite la inicial para el jugador 1" << endl;
 	cin >> inicial;
 	//excepcion char 
 	return inicial;
@@ -36,7 +36,7 @@ char Interfaz::inicio()
 char Interfaz::otroJugador()
 {
 	char inicial;
-	cout << "Digite otra inicial para el Jugador 2" << endl;
+	cout << "Digite la inicial para el Jugador 2" << endl;
 	cin >> inicial;
 	//excepcion char 
 	return inicial;
@@ -45,17 +45,16 @@ char Interfaz::otroJugador()
 int Interfaz::tablero()
 {
 	int op;
-	cout << "Para empezar, desea un tablero: " << endl
+	cout << "Para empezar, escoja un tipo de tablero: " << endl
 		<< " 1) Manual" << endl
 		<< " 2) Aleatorio" << endl;
 	cin >> op;
 	return op;
 }
 
-int Interfaz::cuantosTableros()
-{
+int Interfaz::cuantosTableros(){
 	int op;
-	cout << "Digite la cantidad de tableros que desea añadir: " << endl;
+	cout << "Digite la cantidad irregularidad (1-6): " << endl;
 	cin >> op;
 	return op;
 }

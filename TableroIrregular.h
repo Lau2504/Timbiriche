@@ -31,11 +31,11 @@ public:
 	virtual char getValor(int f, int c);
 
 	virtual bool validarPunto(char, int, int);
-	bool agregarJugada(int x, int y);
+	virtual bool agregarJugada(int x, int y)override;
 	int* origen()override;
 	virtual int puntuacion(char);
 	bool estaLleno()override;
-	//metodo "propio" para agregarr tableros en momento de cuando se pregunte
+	//metodo "propio" para agregar tableros en momento de cuando se pregunte
 	//no se puede ver en la interfaz...
 	void agregarTablero(Tablero* tab);
 	

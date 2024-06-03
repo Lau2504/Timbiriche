@@ -72,7 +72,7 @@ void Tablero3x5::agregarArriba(Tablero* tab)
 void Tablero3x5::agregarAbajo(Tablero* tab)
 {
 }
-bool Tablero3x5::validarPunto(char c, int col, int fila) {
+bool Tablero3x5::validarPunto(char c, int fila, int col) {
 	bool b{ false };
 	bool hayPunto{ false };
 	b = fila % 2;//0 es par, por ende se coloco una linea vertical, y el "escaneo" es horizontal
@@ -103,16 +103,7 @@ bool Tablero3x5::validarPunto(char c, int col, int fila) {
 	}
 	return hayPunto;
 }
-bool Tablero3x5::agregarJugada(int x, int y) {
-	if (x < 0 or y < 0) throw ExcepcionRango();
-	if (mat[x][y] != '\0') throw ExcepcionLugarOcupado();
-	if (x == y) throw ExcepcionLugarReservado();
 
-	char c = '\0';
-	x % 2 == 0 ? c = '-' : c = 'l';
-	mat[x][y] = c;
-	return true;
-}
 
 int* Tablero3x5::origen() {
 	return new int[2] {columOrigen, filaOrigen};

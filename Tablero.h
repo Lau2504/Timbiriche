@@ -33,7 +33,7 @@ public:
 	virtual char getValor(int f, int c) = 0;
 
 	virtual bool validarPunto(char, int, int)=0;
-	virtual bool agregarJugada(int x, int y) = 0;
+	virtual bool agregarJugada(int col, int fil);
 	virtual int* origen() = 0;
 	virtual int puntuacion(char) = 0;
 	
