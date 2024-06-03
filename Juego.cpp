@@ -16,7 +16,7 @@ Juego::~Juego() {
 bool Juego::getTurno() { return turno; }
 
 void Juego::iniciarJuego(Tablero* tab) {
-	std::cout << "Iniciando Juego\n";
+	//std::cout << "Iniciando Juego\n";
 	turno = 0;
 	TableroGlobal::getInstancia()->setTablero(tab);
 }

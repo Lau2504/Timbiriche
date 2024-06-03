@@ -40,6 +40,8 @@ public:
 	virtual bool estaLleno();
 	virtual void setFilaOrigen(int);
 	virtual void setColumOrigen(int);
+	virtual int getFilaOrigen();
+	virtual int getColumOrigen();
 
 	virtual int getCantidad() = 0;
 

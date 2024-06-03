@@ -1,6 +1,8 @@
 #pragma once
 #include <cstdlib> 
 #include <ctime>   
+#include <iomanip>
+#include <random>
 #include "Tablero.h"
 #include "Tablero3x3.h"
 #include "Tablero3x4.h"
@@ -36,7 +38,7 @@ public:
 	//metodo "propio" para agregarr tableros en momento de cuando se pregunte
 	//no se puede ver en la interfaz...
 	void agregarTablero(Tablero* tab);
-	//void arriba();
+	
 
 	virtual int getCantidad();
 	Tablero** getTableros();
