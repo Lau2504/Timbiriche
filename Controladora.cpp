@@ -36,12 +36,13 @@ void Controladora::control0()
                 juego = new Juego(persona1 = new Persona(per1), persona2 = new Persona(per2));
                 juego->iniciarJuego(tab);
 
-                Interfaz::mostrarTablero(tab);
                 while (juego->sigueJuego()) {
+                    cout << juego->dibujar();
                     fi = Interfaz::fila();
                     col = Interfaz::columna();
+                    //try catch aqui para ver los problemas que surgen en hacer jugada (espacios reservados, jugados o errores de dimensiones/posicion)
                     juego->hacerJugada(col, fi);
-                    cout << juego->dibujar();
+                   
                     /* system("cls");*/
                 }
                 cout << "El ganador es: " << juego->ganador() << endl;
@@ -83,6 +84,7 @@ void Controladora::control0()
 		}
 		catch (Excepcion& e) {
             cout << e.que() << endl;
+            system("pause");
 		}
     } while (opc != 1 || opc != 2);
 }

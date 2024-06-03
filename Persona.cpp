@@ -10,6 +10,7 @@ char Persona::getLetra() { return letra; }
 
 bool Persona::jugar(int col, int fila) {
 	Tablero* tab = TableroGlobal::getInstancia()->getTablero();
-	tab->agregarJugada(col, fila);
+	if(!tab->agregarJugada(col, fila))
+		throw "Error: ";
 	return tab->validarPunto(letra, col, fila);
 }

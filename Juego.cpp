@@ -51,7 +51,7 @@ char Juego::ganador()
 {
 	TableroGlobal* ptr = TableroGlobal::getInstancia();
 	Tablero* tab = ptr->getTablero();
-	if (tab->puntuacion((*jugadores)[0].getLetra()))
+	if (tab->puntuacion((*jugadores)[0].getLetra())>tab->puntuacion((*jugadores)[1].getLetra()))
 		return ((*jugadores)[0].getLetra());
 	else return ((*jugadores)[1].getLetra());
 }

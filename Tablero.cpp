@@ -1,4 +1,4 @@
-#include "Tablero.h"
+﻿#include "Tablero.h"
 
 Tablero::Tablero():filaOrigen{0},columOrigen{0},filas{0},columnas{0} {
 	for(int i = 0; i <filas; i++) {
@@ -12,13 +12,44 @@ Tablero::~Tablero() {}
 
 bool Tablero::estaLleno() {
 	for(int i = 0; i < filas; i++) {
-		for(int j = 0; j < columnas; j++) { //Por qu� 3 ? //edit: ups...
+		for(int j = 0; j < columnas; j++) { //Por qué 3 ? //edit: ups...
 			if(mat[i][j] == ' ') {
 				return false;
 			}
 		}
 	}
 	return true;
+}
+bool Tablero::validarPunto(char c, int col, int fil) {
+	bool b{ false };
+	bool hayPunto{ false };
+	b = col % 2;//0 es par, por ende se coloco una linea vertical, y el "escaneo" es horizontal
+	//de lo contrario, si no es a es b...
+	if (b) {
+		if (fil != fil - 1)//leer abajo
+			if (mat[fil + 2][col] != ' ' and mat[fil + 1][col + 1] != ' ' and mat[fil + 1][col - 1]) {
+				mat[fil + 1][col] = c;
+				hayPunto = true;
+			}
+		if (fil != 0)//leer arriba
+			if (mat[fil - 2][col] != ' ' and mat[fil - 1][col + 1] != ' ' and mat[fil - 1][col - 1]) {
+				mat[fil - 1][col] = c;
+				hayPunto = true;
+			}
+	}
+	else {//b==0->b%2==0->b es posicion de columna donde solo hay lineas verticales ║
+		if (col != columnas - 1)//leer derecha
+			if (mat[fil][col + 2] != ' ' and mat[fil + 1][col + 1] != ' ' and mat[fil - 1][col + 1]) {
+				mat[fil][col + 1] = c;
+				hayPunto = true;
+			}
+		if (col != 0)//leer izquierda
+			if (mat[fil][col - 2] != ' ' and mat[fil + 1][col - 1] != ' ' and mat[fil - 1][col + 1]) {
+				mat[fil][col - 1] = c;
+				hayPunto = true;
+			}
+	}
+	return hayPunto;
 }
 
 bool Tablero::agregarJugada(int x, int y) {
@@ -27,7 +58,7 @@ bool Tablero::agregarJugada(int x, int y) {
 	if (x == y) throw ExcepcionLugarReservado();
 
 	char c = '\0';
-	x % 2 == 0 ? c = 'l' : c = '-';
+	x % 2 == 0 ? c = '|' : c = '-';
 	mat[y][x] = c;
 	return true;
 }

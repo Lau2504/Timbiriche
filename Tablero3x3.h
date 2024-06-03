@@ -17,7 +17,7 @@ public:
 	virtual void agregarArriba(Tablero* tab);
 	virtual void agregarAbajo(Tablero* tab);
 
-	virtual bool validarPunto(char, int, int);
+	//virtual bool validarPunto(char, int, int);
 	
 	virtual int* origen()override;
 	virtual int puntuacion(char);

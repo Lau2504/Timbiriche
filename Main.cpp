@@ -44,5 +44,7 @@ int main() {
 	contro->control0();
 	system("Pause");
 	
+	//system("dir /b");
+
 	return 0;
 }
