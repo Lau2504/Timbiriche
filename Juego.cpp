@@ -16,13 +16,13 @@ Juego::~Juego() {
 bool Juego::getTurno() { return turno; }
 
 void Juego::iniciarJuego(Tablero* tab) {
-	std::cout << "Iniciando Juego\n";
+	//std::cout << "Iniciando Juego\n";
 	turno = 0;
 	TableroGlobal::getInstancia()->setTablero(tab);
 }
 
 void Juego::hacerJugada(int col, int fil) {
-	if ((*jugadores)[turno].jugar(col,fil))//si retorna false, no hubo punto. por lo tanto, cambio de turno
+	if (!(*jugadores)[turno].jugar(col-1,fil-1))//si retorna false, no hubo punto. por lo tanto, cambio de turno
 		turno = !turno;
 }
 
@@ -37,6 +37,7 @@ string Juego::dibujar() {
 	s << "Puntuacion\n";
 	s << "Jugador " << (*jugadores)[0].getLetra() << ": " << tab->puntuacion((*jugadores)[0].getLetra()) << " puntos\n";
 	s << "Jugador " << (*jugadores)[1].getLetra() << ": " << tab->puntuacion((*jugadores)[1].getLetra()) << " puntos\n";
+	s<<"\nTurno de: "<<(*jugadores)[turno].getLetra()<<endl;
 	s << tab->toString();
 	return s.str();
 }

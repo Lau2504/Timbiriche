@@ -1,8 +1,11 @@
 #pragma once
 #include <iostream>
 #include <sstream>
+#include <locale>
 #include "Excepciones.h"
-
+//use esto cuando necesite poner la ñ o acentos
+//std::setlocale(LC_ALL, "");
+//se pone adentro de la funcion que tiene el cout
 using namespace std;
 
 class Interfaz {

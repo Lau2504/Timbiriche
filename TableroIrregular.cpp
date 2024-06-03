@@ -13,7 +13,7 @@ TableroIrregular::TableroIrregular()
 	}
 	for (int i = 0; i < filas; i++)
 		for (int j = 0; j < columnas; j++) {
-			mat[i][j] = ' ';
+			mat[i][j] = char(39);
 			/*if (i % 2 == 0 && j % 2 == 0)
 				mat[i][j] = '+';
 			else mat[i][j] = '-';
@@ -29,8 +29,7 @@ TableroIrregular::~TableroIrregular(){
 	}
 }
 
-string TableroIrregular::toString()
-{
+string TableroIrregular::toString(){
 	stringstream s;
 	/*int col = 1;
 	s << " ";
@@ -46,20 +45,34 @@ string TableroIrregular::toString()
 		s << endl;
 	}*/
 	//=========================================
+	int col = vec[0]->getColumnas()+ vec[0]->getColumOrigen();
+	int fil = vec[0]->getFilas()+vec[0]->getFilaOrigen();
+	for (int i = 1; i < cantidad; i++) {
+		int x = vec[i]->getColumOrigen() + vec[i]->getColumnas();
+		int y = vec[i]->getFilaOrigen() + vec[i]->getFilas();
+		(x) > col ? col = x : col;
+		(y) > fil ? fil = y : fil;
+	}
 	
 	for (int i = 0; i < cantidad; i++) {
 		int* coords = vec[i]->origen();
 		for (int j = 0; j < vec[i]->getFilas(); j++) {
 			for (int k = 0; k < vec[i]->getColumnas(); k++) {
-				mat[j+coords[1]][k + coords[0]] = vec[i]->getValor(j,k);
+				mat[j + coords[1]][k + coords[0]] = vec[i]->getValor(j, k);
 			}
 		}
 		delete[] coords;
 	}
-
-	for (int i = 0; i < filas; i++) {
-		for (int j = 0; j < columnas; j++) {
-			s << mat[i][j]<<" ";
+	s << "   ";
+	for (int i = 0; i < col; i++) {
+		s<<i+1<<setw(3);
+	}
+	s <<'\n';
+	
+	for (int i = 0; i < fil; i++) {
+		s << setw(3) <<i+1;
+		for (int j = 0; j <= col+1; j++) {
+			s << mat[i][j]<<"  ";
 		}
 		s << endl;
 	}
@@ -299,7 +312,6 @@ void TableroIrregular::agregarAbajo(Tablero* tab)
 	}
 }
 
-
 void TableroIrregular::Add(Tablero* tab, int f, int c){
 
 	//agregar tablero al vector
@@ -350,7 +362,6 @@ void TableroIrregular::Add(Tablero* tab, int f, int c){
 		}
 	}
 }
-
 
 void TableroIrregular::Delete()
 {
@@ -418,7 +429,6 @@ bool TableroIrregular::agregarJugada(int col, int fila) {
 			//verificar si se agrega la jugada
 			if(vec[i]->agregarJugada(col - a, fila - c))
 				hayJugada = true;
-
 		delete[] coords;
 	}
 	return hayJugada;
@@ -444,26 +454,43 @@ bool TableroIrregular::estaLleno() {
 }
 
 void TableroIrregular::agregarTablero(Tablero* tab) {
+	if (cantidad == 0) {
+		vec[cantidad++] = tab;
+		return;
+	}
 	std::srand(std::time(0));
-
 	bool b=rand()%2;
+	
 	if (b) {//empujar todo derecha
 		for (int i = 0; i < cantidad; i++) {
 			int *coords = vec[i]->origen();
 			vec[i]->setColumOrigen(coords[0]+tab->getColumnas()-1);
 			delete[] coords;
 		}
+		int min = vec[cantidad - 1]->getFilaOrigen() - tab->getFilas();
+		if (min < 0) min = 0;
+		int max = vec[cantidad - 1]->getFilaOrigen() + vec[cantidad - 1]->getFilas();
+		random_device rd;
+		mt19937 gen(rd());
+		uniform_int_distribution<> dis(min, max);
+		int nOrigen = dis(gen);
+		tab->setFilaOrigen(nOrigen-(!(nOrigen%2==0)));
+			
 	}else{//empujar todo abajo
 		for (int i = 0; i < cantidad; i++) {
 			int* coords = vec[i]->origen();
-			vec[i]->setFilaOrigen(coords[1] + tab->getFilas()-1);
+			vec[i]->setFilaOrigen(coords[1] + tab->getFilas() - 1);
 			delete[] coords;
 		}
+		int min = vec[cantidad - 1]->getColumOrigen() - tab->getColumnas();
+		if (min < 0) min = 0;
+		int max = vec[cantidad - 1]->getColumOrigen() + vec[cantidad - 1]->getColumnas();
+		random_device rd;
+		mt19937 gen(rd());
+		uniform_int_distribution<> dis(min, max);
+		int nOrigen = dis(gen);
+		tab->setColumOrigen(nOrigen-(!(nOrigen%2==0)));
 	}
-	int col = rand() % 20 + 1, fil = rand() % 20 + 1;
-	tab->setColumOrigen(col);
-	tab->setFilaOrigen(fil);
-
 	if ((cantidad<tamanio))
 		vec[cantidad++] = tab;
 }

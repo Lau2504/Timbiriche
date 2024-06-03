@@ -24,13 +24,13 @@ void Controladora::control0()
 			tab = this->crearTablero();
             system("pause");
             system("cls");
-			per1 = Interfaz::inicio();
+            opc = Interfaz::menuInicio();
             system("cls");
-            opc= Interfaz::menuInicio(); 
-			
+			per1 = Interfaz::inicio();
+
 			switch (opc)
 			{
-			case 1: // 2 jugadores
+			case 1: // 2 jugadores    
             {
                 per2 = Interfaz::otroJugador();
                 juego = new Juego(persona1 = new Persona(per1), persona2 = new Persona(per2));
@@ -38,13 +38,9 @@ void Controladora::control0()
 
                 Interfaz::mostrarTablero(tab);
                 while (juego->sigueJuego()) {
-                    cout << "Es el turno de:  ";
-                    if (juego->getTurno())
-                        cout << persona1->getLetra() << endl;
-                    else cout << persona2->getLetra() << endl;
                     fi = Interfaz::fila();
                     col = Interfaz::columna();
-                    juego->hacerJugada(fi, col);
+                    juego->hacerJugada(col, fi);
                     cout << juego->dibujar();
                     /* system("cls");*/
                 }
@@ -59,10 +55,6 @@ void Controladora::control0()
                 juego->iniciarJuego(tab);
                 Interfaz::mostrarTablero(tab);
                 while (juego->sigueJuego()) {
-                    cout << "Es el turno de:  ";
-                    if (juego->getTurno())
-                        cout << persona1->getLetra() << endl;
-                    else cout << compu->getLetra() << endl;
                     if (juego->getTurno()) {
                         est = Interfaz::cambiarEstrategia();
                         if (est == 1) {
