@@ -7,6 +7,10 @@ class Juego{
 private:
 	Vector<Jugador>* jugadores;
 	bool turno;
+	int puntoChequeo;
+	//
+	Tablero* tablero;
+
 	public:
 		Juego(Jugador* jugador1,Jugador* jugador2);
 		virtual ~Juego();
@@ -19,5 +23,9 @@ private:
 		string dibujar();
 		void setTurno(bool n);
 		char ganador();
+
+		//Memento
+		int getPuntoChequeo();
+		void setPuntoChequeo(int);
 };
 

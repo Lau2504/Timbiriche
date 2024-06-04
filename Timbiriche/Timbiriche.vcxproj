@@ -147,8 +147,11 @@
     <ClInclude Include="..\Juego.h" />
     <ClInclude Include="..\Jugador.h" />
     <ClInclude Include="..\Lista.h" />
+    <ClInclude Include="..\Memento.h" />
     <ClInclude Include="..\Nodo.h" />
+    <ClInclude Include="..\Originador.h" />
     <ClInclude Include="..\Persona.h" />
+    <ClInclude Include="..\Repositorio.h" />
     <ClInclude Include="..\Tablero.h" />
     <ClInclude Include="..\Tablero3x3.h" />
     <ClInclude Include="..\Tablero3x4.h" />
@@ -156,7 +159,6 @@
     <ClInclude Include="..\TableroGlobal.h" />
     <ClInclude Include="..\TableroIrregular.h" />
     <ClInclude Include="..\Vector.h" />
-    <ClInclude Include="Excepciones.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Computadora.cpp" />

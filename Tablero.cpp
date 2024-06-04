@@ -54,8 +54,8 @@ bool Tablero::validarPunto(char c, int col, int fil) {
 
 bool Tablero::agregarJugada(int x, int y) {
 	if (x < 0 or y < 0) throw ExcepcionRango();
-	if (mat[y][x] != ' ') throw ExcepcionLugarOcupado();
 	if (x == y) throw ExcepcionLugarReservado();
+	if (mat[y][x] != ' ') throw ExcepcionLugarOcupado();
 
 	char c = '\0';
 	x % 2 == 0 ? c = '|' : c = '-';

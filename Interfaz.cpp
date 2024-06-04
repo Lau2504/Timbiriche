@@ -9,8 +9,25 @@ Interfaz::~Interfaz()
 {
 }
 
+int Interfaz::menu()
+{
+	system("cls");
+	int op;
+	cout << " 1) Ver Juegos anteriores" << endl;
+	cout << " 2) Nuevo Juego" << endl;
+	cout << " 3) Salir" << endl;
+	cin >> op;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		throw ExcepcionRango();
+	}
+	return op;
+}
+
 int Interfaz::menuInicio()
 {
+	system("cls");
 	int op;
 	cout << " 1) Jugar contra otro jugador" << endl;
 	cout << " 2) Jugar contra la computadora" << endl;
@@ -49,13 +66,25 @@ int Interfaz::tablero()
 		<< " 1) Manual" << endl
 		<< " 2) Aleatorio" << endl;
 	cin >> op;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		throw ExcepcionRango();
+	}
 	return op;
 }
 
 int Interfaz::cuantosTableros(){
 	int op;
-	cout << "Digite la cantidad irregularidad (1-6): " << endl;
+	cout << "Digite la cantidad irregularidad (1-4): " << endl;
 	cin >> op;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		throw ExcepcionRango();
+	}
+	if (op > 4)
+		throw ExcepcionParametro();
 	return op;
 }
 
@@ -69,6 +98,11 @@ int Interfaz::fila()
 	int op;
 	cout << "Digite la fila: " << endl;
 	cin >> op;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		throw ExcepcionRango();
+	}
 	return op;
 }
 
@@ -77,6 +111,11 @@ int Interfaz::columna()
 	int op;
 	cout << "Digite la columna: " << endl;
 	cin >> op;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		throw ExcepcionRango();
+	}
 	return op;
 }
 
@@ -93,6 +132,11 @@ int Interfaz::escogerEstrategia()
 	cout << "7)Regresar" << endl;
 
 	cin >> op;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		throw ExcepcionRango();
+	}
 	return op;
 }
 
@@ -104,5 +148,33 @@ int Interfaz::cambiarEstrategia()
 	cout << "2) No" << endl;
 
 	cin >> op;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		throw ExcepcionRango();
+	}
 	return op;
+}
+
+int Interfaz::ganador(Juego* juego)
+{
+	int opc;
+	cout << "El ganador es: " << juego->ganador() << endl << endl;
+	cout << "1) Volver al menu principal" << endl;
+	cout << "2)Salir" << endl;
+	cin >> opc;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		throw ExcepcionRango();
+	}
+	if (opc == 2) {
+		opc = 3;
+	}
+	return opc;
+}
+
+void Interfaz::noHayJugadas()
+{
+	cout << "No hay jugadas anteriores para ver " << endl;
 }

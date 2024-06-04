@@ -7,6 +7,9 @@ Juego::Juego(Jugador* jug1, Jugador* jug2) :turno { false } {
 	jugadores->agregarInicio(jug1);
 	jugadores->agregarFinal(jug2);
 
+	//
+	TableroGlobal* ptr = TableroGlobal::getInstancia();
+	tablero = ptr->getTablero();
 }
 
 Juego::~Juego() {
@@ -19,6 +22,8 @@ void Juego::iniciarJuego(Tablero* tab) {
 	//std::cout << "Iniciando Juego\n";
 	turno = 0;
 	TableroGlobal::getInstancia()->setTablero(tab);
+	//
+	tablero = tab;
 }
 
 void Juego::hacerJugada(int col, int fil) {
@@ -33,6 +38,8 @@ bool Juego::sigueJuego() {
 string Juego::dibujar() {
 	TableroGlobal* ptr = TableroGlobal::getInstancia();
 	Tablero* tab = ptr->getTablero();
+	//
+	tablero = tab;
 	stringstream s;
 	s << "Puntuacion\n";
 	s << "Jugador " << (*jugadores)[0].getLetra() << ": " << tab->puntuacion((*jugadores)[0].getLetra()) << " puntos\n";
@@ -54,4 +61,14 @@ char Juego::ganador()
 	if (tab->puntuacion((*jugadores)[0].getLetra())>tab->puntuacion((*jugadores)[1].getLetra()))
 		return ((*jugadores)[0].getLetra());
 	else return ((*jugadores)[1].getLetra());
+}
+
+int Juego::getPuntoChequeo()
+{
+	return puntoChequeo;
+}
+
+void Juego::setPuntoChequeo(int n)
+{
+	puntoChequeo = n;
 }

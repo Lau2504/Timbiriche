@@ -37,6 +37,9 @@
     <Filter Include="Archivos de origen\Estrategias">
       <UniqueIdentifier>{60f1933f-c64d-4e4f-b998-74da7919d44a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Memento">
+      <UniqueIdentifier>{2e45fa17-b6a9-4b41-acd4-880977e58312}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ExcepcionRango.h">
@@ -99,9 +102,6 @@
     <ClInclude Include="..\Computadora.h">
       <Filter>Archivos de encabezado\Jugador</Filter>
     </ClInclude>
-    <ClInclude Include="Excepciones.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\Excepciones.h">
       <Filter>Archivos de encabezado\Excepciones</Filter>
     </ClInclude>
@@ -128,6 +128,15 @@
     </ClInclude>
     <ClInclude Include="..\EstrategiaIsla.h">
       <Filter>Archivos de encabezado\Estrategias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Memento.h">
+      <Filter>Archivos de encabezado\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Originador.h">
+      <Filter>Archivos de encabezado\Memento</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Repositorio.h">
+      <Filter>Archivos de encabezado\Memento</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

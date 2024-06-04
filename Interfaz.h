@@ -12,6 +12,7 @@ class Interfaz {
 public:
 	Interfaz();
 	virtual ~Interfaz();
+	static int menu();
 	static int menuInicio();
 	static char inicio();
 	static char otroJugador();
@@ -22,4 +23,6 @@ public:
 	static int columna();
 	static int escogerEstrategia();
 	static int cambiarEstrategia();
+	static int ganador(Juego*);
+	static void noHayJugadas();
 };

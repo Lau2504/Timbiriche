@@ -5,7 +5,7 @@
 TableroIrregular::TableroIrregular()
 {
 	cantidad = 0;
-	tamanio = 6;
+	tamanio = 4;
 	filas = 30;
 	columnas = 30;
 	for (int i = 0; i < tamanio; i++) {
@@ -31,19 +31,7 @@ TableroIrregular::~TableroIrregular(){
 
 string TableroIrregular::toString(){
 	stringstream s;
-	/*int col = 1;
-	s << " ";
-	do {
-		s << col << "  ";
-		col++;
-	} while (col != 31);
-	for (int i = 0; i < filas; i++) {
-		s << i << "``";
-		for (int j = 0; j < columnas; j++) {
-			s << mat[i][j] << "```";
-		}
-		s << endl;
-	}*/
+
 	//=========================================
 	int col = vec[0]->getColumnas()+ vec[0]->getColumOrigen();
 	int fil = vec[0]->getFilas()+vec[0]->getFilaOrigen();
@@ -369,19 +357,11 @@ void TableroIrregular::Delete()
 
 int TableroIrregular::getFilas()
 {
-	/*int filas = 0;
-	for (int i = 0; i < cantidad; i++) {
-		filas += vec[i]->getFilas();
-	}*/
 	return filas;
 }
 
 int TableroIrregular::getColumnas()
 {
-	/*int columnas = 0;
-	for (int i = 0; i < cantidad; i++) {
-		columnas += vec[i]->getColumnas();
-	}*/
 	return columnas;
 }
 

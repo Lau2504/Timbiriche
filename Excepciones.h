@@ -15,3 +15,6 @@
 #include "EstrategiaPeriferica.h"
 #include "EstrategiaIsla.h"
 #include "EstrategiaCercana.h"
+#include "Originador.h"
+#include "Memento.h"
+#include "Repositorio.h"
