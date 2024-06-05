@@ -7,17 +7,9 @@ Controladora::Controladora()
 Controladora::~Controladora()
 {
 }
-
 void Controladora::control0()
 {
-    int opc, fi = 0, col = 0, est, op, contJugadas = 0;
-    char per1, per2, comp;
-    Juego* juego = nullptr;
-    Persona* persona1 = nullptr;
-    Persona* persona2 = nullptr;
-    Computadora* compu = nullptr;
-    Tablero* tab = nullptr;
-    Estrategia* estra = nullptr;
+    int op;
     Originador* originador = new Originador();
     Repositorio* repo = new Repositorio();
 
@@ -26,106 +18,16 @@ void Controladora::control0()
             op = Interfaz::menu();
             switch (op)
             {
-            case 1: { //Memento
-                if (repo->getCan() != 0) {
-                    repo->toString();
-                }
-                else Interfaz::noHayJugadas();
-
+            case 1:
+                mostrarMementos(repo);
                 break;
-            }
-            case 2: {//Nueva partida
-                system("cls");
-                tab = this->crearTablero();
-                system("pause");
-                system("cls");
-                opc = Interfaz::menuInicio();
-                if (opc == 3)
-                    break;
-                system("cls");
-                per1 = Interfaz::inicio();
-                 
-                
-                switch (opc) 
-                {
-                case 1: // 2 jugadores    
-                {
-                    per2 = Interfaz::otroJugador();
-                    juego = new Juego(persona1 = new Persona(per1), persona2 = new Persona(per2));
-                    juego->iniciarJuego(tab);
-
-                    //memento chequeo
-                    //Será que siempre muestra el mismo Singleton en el juego
-                    contJugadas = 0;
-                    juego->setPuntoChequeo(contJugadas++);
-                    originador->setEstado(juego);
-                    repo->agregaMemento(originador->retornarMemento());
-
-                    while (juego->sigueJuego()) {
-                        cout << juego->dibujar();
-                        fi = Interfaz::fila();
-                        col = Interfaz::columna();
-                        //try catch aqui para ver los problemas que surgen en hacer jugada (espacios reservados, jugados o errores de dimensiones/posicion)
-                        try {
-                            juego->hacerJugada(col, fi);
-                        }
-                        catch (Excepcion& e) {
-                            cout << e.que() << endl;
-                        }
-                        juego->setPuntoChequeo(contJugadas++);
-                        originador->setEstado(juego);
-                        repo->agregaMemento(originador->retornarMemento());
-
-                    }
-                    opc = Interfaz::ganador(juego);
-                    break;
-                }
-                case 2: //jugar contra la computadora //Corregir esto porque se vuelve loco
-                {
-                    estra = this->decidirEstrategia();
-                    compu = new Computadora(estra);
-                    juego = new Juego(persona1 = new Persona(per1), compu);
-                    juego->iniciarJuego(tab);
-                    Interfaz::mostrarTablero(tab);
-                    while (juego->sigueJuego()) {
-                        if (juego->getTurno()) {
-                            est = Interfaz::cambiarEstrategia();
-                            if (est == 1) {
-                                estra = this->decidirEstrategia();
-                                compu->setEstrategia(estra);
-                            }
-
-                            fi = Interfaz::fila();
-                            col = Interfaz::columna();
-
-                            juego->hacerJugada(fi, col);
-                        }
-                        else {
-                            juego->setTurno(true);
-                            juego->hacerJugada(fi, col);
-                        }
-                        cout << juego->dibujar();
-                        /* system("cls");*/
-                    }
-                    cout << "El ganador es: " << juego->ganador() << endl;
-                    break;
-                }
-                case 3: {
-                    op = 3;
-                    break;
-                }
-                default:
-                    break;
-                
-                }
+            case 2:
+                iniciarNuevaPartida(originador, repo);
                 break;
-            }
-            case 3: {
+            case 3:
                 op = 3;
                 break;
-            }
             default:
-                
                 break;
             }
         }
@@ -133,8 +35,110 @@ void Controladora::control0()
             cout << e.que() << endl;
             system("pause");
         }
-    } while (op !=3);
+    } while (op != 3);
+
+    delete originador;
+    delete repo;
 }
+
+
+void Controladora::mostrarMementos(Repositorio* repo) {
+    if (repo->getCan() != 0) {
+        cout << repo->toString() << endl;
+        system("pause");
+    }
+    else {
+        Interfaz::noHayJugadas();
+    }
+}
+
+void Controladora::iniciarNuevaPartida(Originador* originador, Repositorio* repo) {
+    system("cls");
+    Tablero* tab = crearTablero();
+    system("pause");
+    system("cls");
+    int opc = Interfaz::menuInicio();
+    if (opc == 3) return;
+
+    system("cls");
+    char per1 = Interfaz::inicio();
+    Juego* juego = nullptr;
+
+    switch (opc)
+    {
+    case 1:
+        iniciarJuegoDosJugadores(juego, per1, originador, repo, tab);
+        break;
+    case 2:
+        iniciarJuegoContraComputadora(juego, per1, originador, repo, tab);
+        break;
+    default:
+        break;
+    }
+}
+
+void Controladora::iniciarJuegoDosJugadores(Juego* juego, char per1, Originador* originador, Repositorio* repo, Tablero* tab) {
+    char per2 = Interfaz::otroJugador();
+    juego = new Juego(new Persona(per1), new Persona(per2));
+    juego->iniciarJuego(tab);
+
+    int contJugadas = 0;
+    guardarMemento(juego, originador, repo, contJugadas);
+
+    while (juego->sigueJuego()) {
+        cout << juego->dibujar();
+        int fi = Interfaz::fila();
+        int col = Interfaz::columna();
+
+        try {
+            juego->hacerJugada(col, fi);
+        }
+        catch (Excepcion& e) {
+            cout << e.que() << endl;
+        }
+
+        guardarMemento(juego, originador, repo, contJugadas);
+    }
+
+    Interfaz::ganador(juego);
+}
+
+void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Originador* originador, Repositorio* repo, Tablero* tab) {
+    Estrategia* estra = decidirEstrategia();
+    Computadora* compu = new Computadora(estra);
+    juego = new Juego(new Persona(per1), compu);
+    int fi = 0, col = 0;
+    juego->iniciarJuego(tab);
+
+    Interfaz::mostrarTablero(tab);
+    while (juego->sigueJuego()) {
+        if (juego->getTurno()) {
+            int est = Interfaz::cambiarEstrategia();
+            if (est == 1) {
+                estra = decidirEstrategia();
+                compu->setEstrategia(estra);
+            }
+
+           fi = Interfaz::fila();
+           col = Interfaz::columna();
+            juego->hacerJugada(fi, col);
+        }
+        else {
+            juego->setTurno(true);
+            juego->hacerJugada(fi, col);
+        }
+        cout << juego->dibujar();
+    }
+
+    cout << "El ganador es: " << juego->ganador() << endl;
+}
+
+void Controladora::guardarMemento(Juego* juego, Originador* originador, Repositorio* repo, int& contJugadas) {
+    juego->setPuntoChequeo(contJugadas++);
+    originador->setEstado(juego);
+    repo->agregaMemento(originador->retornarMemento());
+}
+
 Tablero* Controladora::crearTablero()
 {
     int op = Interfaz::tablero();

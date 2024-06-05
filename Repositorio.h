@@ -42,7 +42,7 @@ public:
 			s << "No. " << i + 1 << "    Punto de Chequeo = "
 				<< vec[i]->getPtrFoto()->getPuntoChequeo() << endl
 				<< endl
-				<< vec[i]->getPtrFoto()->dibujar() << endl << endl;
+				<< vec[i]->getPtrFoto()->getTablero()->toString() << endl << endl; //esta llamando al tablero global no al tablero del memento
 		}
 		return s.str();
 	}

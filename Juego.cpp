@@ -91,3 +91,8 @@ Juego& Juego::operator=(const Juego& otro)
 	this->tablero = new TableroIrregular(*dynamic_cast<TableroIrregular*>(otro.tablero));
 	return *this;
 }
+
+Tablero* Juego::getTablero()
+{
+	return tablero;
+}
