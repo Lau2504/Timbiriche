@@ -93,3 +93,22 @@ int Tablero3x4::getCantidad()
 {
 	return 0;
 }
+
+Tablero* Tablero3x4::clone()
+{
+	Tablero3x4* tablerito = new Tablero3x4();
+
+	tablerito->filas = this->filas;
+	tablerito->columnas = this->columnas;
+	tablerito->filaOrigen = this->filaOrigen;
+	tablerito->columOrigen = this->columOrigen;
+
+
+	for (int i = 0; i < this->filas; ++i) {
+		for (int j = 0; j < this->columnas; ++j) {
+			tablerito->mat[i][j] = this->mat[i][j];
+		}
+	}
+
+	return tablerito;
+}

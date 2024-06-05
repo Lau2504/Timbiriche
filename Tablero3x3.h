@@ -23,4 +23,6 @@ public:
 	virtual int puntuacion(char);
 
 	virtual int getCantidad();
+
+	virtual Tablero* clone();
 };

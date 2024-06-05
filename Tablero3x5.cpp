@@ -92,3 +92,22 @@ int Tablero3x5::getCantidad()
 {
 	return 0;
 }
+
+Tablero* Tablero3x5::clone()
+{
+	Tablero3x5* tablerito = new Tablero3x5();
+
+	tablerito->filas = this->filas;
+	tablerito->columnas = this->columnas;
+	tablerito->filaOrigen = this->filaOrigen;
+	tablerito->columOrigen = this->columOrigen;
+
+
+	for (int i = 0; i < this->filas; ++i) {
+		for (int j = 0; j < this->columnas; ++j) {
+			tablerito->mat[i][j] = this->mat[i][j];
+		}
+	}
+
+	return tablerito;
+}

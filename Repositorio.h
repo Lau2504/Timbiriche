@@ -10,7 +10,7 @@ private:
 public:
 	Repositorio() {
 		can = 0;
-		tam = 10;
+		tam = 60;
 		for (int i = 0; i < tam; i++)
 			vec[i] = nullptr;
 	}
@@ -18,8 +18,13 @@ public:
 	void agregaMemento(Memento* m) {
 		if (can < tam) {
 			vec[can++] = m;
+			cout << "Memento agregado en la posición: " << (can - 1) << endl;
+		}
+		else {
+			cout << "No se puede agregar más mementos, el repositorio está lleno." << endl;
 		}
 	}
+
 
 	Memento* getMemento(int pos) {
 		if (pos >= 0 && pos < can)

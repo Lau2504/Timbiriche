@@ -43,4 +43,6 @@ public:
 	virtual int getCantidad();
 	Tablero** getTableros();
 
+	TableroIrregular(const TableroIrregular& otro);
+	virtual Tablero* clone();
 };

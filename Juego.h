@@ -27,5 +27,7 @@ private:
 		//Memento
 		int getPuntoChequeo();
 		void setPuntoChequeo(int);
+		Juego(const Juego& otro);
+		Juego& operator=(const Juego& otro);
 };
 

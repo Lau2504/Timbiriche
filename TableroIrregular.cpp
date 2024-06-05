@@ -484,3 +484,30 @@ Tablero** TableroIrregular::getTableros()
 {
 	return vec;
 }
+
+TableroIrregular::TableroIrregular(const TableroIrregular& otro){
+	cantidad = otro.cantidad;
+	tamanio = otro.tamanio;
+	filas = otro.filas;
+	columnas = otro.columnas;
+
+	
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			mat[i][j] = otro.mat[i][j];
+		}
+	}
+	for (int i = 0; i < cantidad; i++) {
+		if (otro.vec[i] != nullptr) {
+			vec[i] = otro.vec[i]->clone(); 
+		}
+		else {
+			vec[i] = nullptr;
+		}
+	}
+}
+
+Tablero* TableroIrregular::clone()
+{
+	return nullptr;
+}

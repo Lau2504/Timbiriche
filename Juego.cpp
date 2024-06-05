@@ -72,3 +72,22 @@ void Juego::setPuntoChequeo(int n)
 {
 	puntoChequeo = n;
 }
+
+Juego::Juego(const Juego& otro) {
+	this->turno = otro.turno;
+	this->puntoChequeo = otro.puntoChequeo;
+	this->jugadores = new Vector<Jugador>(*otro.jugadores);
+	this->tablero = new TableroIrregular(*dynamic_cast<TableroIrregular*>(otro.tablero));
+}
+
+Juego& Juego::operator=(const Juego& otro)
+{
+	if (this == &otro) return *this; 
+	delete this->jugadores;
+	delete this->tablero;
+	this->turno = otro.turno;
+	this->puntoChequeo = otro.puntoChequeo;
+	this->jugadores = new Vector<Jugador>(*otro.jugadores);
+	this->tablero = new TableroIrregular(*dynamic_cast<TableroIrregular*>(otro.tablero));
+	return *this;
+}
