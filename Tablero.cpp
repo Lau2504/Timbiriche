@@ -27,24 +27,24 @@ bool Tablero::validarPunto(char c, int col, int fil) {
 	//de lo contrario, si no es a es b...
 	if (b) {
 		if (fil != fil - 1)//leer abajo
-			if (mat[fil + 2][col] != ' ' and mat[fil + 1][col + 1] != ' ' and mat[fil + 1][col - 1]) {
+			if (mat[fil + 2][col] != ' ' and mat[fil + 1][col + 1] != ' ' and mat[fil + 1][col - 1] != ' ') {
 				mat[fil + 1][col] = c;
 				hayPunto = true;
 			}
 		if (fil != 0)//leer arriba
-			if (mat[fil - 2][col] != ' ' and mat[fil - 1][col + 1] != ' ' and mat[fil - 1][col - 1]) {
+			if (mat[fil - 2][col] != ' ' and mat[fil - 1][col + 1] != ' ' and mat[fil - 1][col - 1] != ' ') {
 				mat[fil - 1][col] = c;
 				hayPunto = true;
 			}
 	}
 	else {//b==0->b%2==0->b es posicion de columna donde solo hay lineas verticales ║
 		if (col != columnas - 1)//leer derecha
-			if (mat[fil][col + 2] != ' ' and mat[fil + 1][col + 1] != ' ' and mat[fil - 1][col + 1]) {
+			if (mat[fil][col + 2] != ' ' and mat[fil + 1][col + 1] != ' ' and mat[fil - 1][col + 1] != ' ') {
 				mat[fil][col + 1] = c;
 				hayPunto = true;
 			}
 		if (col != 0)//leer izquierda
-			if (mat[fil][col - 2] != ' ' and mat[fil + 1][col - 1] != ' ' and mat[fil - 1][col + 1]) {
+			if (mat[fil][col - 2] != ' ' and mat[fil + 1][col - 1] != ' ' and mat[fil - 1][col + 1] != ' ') {
 				mat[fil][col - 1] = c;
 				hayPunto = true;
 			}
@@ -54,7 +54,7 @@ bool Tablero::validarPunto(char c, int col, int fil) {
 
 bool Tablero::agregarJugada(int x, int y) {
 	if (x < 0 or y < 0) throw ExcepcionRango();
-	if (x == y) throw ExcepcionLugarReservado();
+	if (!(x%2 xor y%2)) throw ExcepcionLugarReservado();
 	if (mat[y][x] != ' ') throw ExcepcionLugarOcupado();
 
 	char c = '\0';

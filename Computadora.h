@@ -8,7 +8,7 @@ private:
 public:
 	Computadora(Estrategia* estrat);
 	virtual ~Computadora();
-	char getLetra()override;
+	virtual char getLetra()override;
 	bool jugar(int,int)override;
 	void setEstrategia(Estrategia* estra);
 	Estrategia* getEstrategia();

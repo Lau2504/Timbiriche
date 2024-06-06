@@ -44,7 +44,9 @@ int main() {
 	contro->control0();
 	system("Pause");
 	
-	//system("dir /b");
+	//esto muestra el nombre de todos los archivos txt en la carpeta actual
+	//(for %f in (*.txt) do @echo %~nf) > partidas.log
+
 
 	return 0;
 }

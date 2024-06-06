@@ -35,11 +35,10 @@ public:
 	int* origen()override;
 	virtual int puntuacion(char);
 	bool estaLleno()override;
-	//metodo "propio" para agregar tableros en momento de cuando se pregunte
-	//no se puede ver en la interfaz...
+	
+	
 	void agregarTablero(Tablero* tab);
 	
-
 	virtual int getCantidad();
 	Tablero** getTableros();
 

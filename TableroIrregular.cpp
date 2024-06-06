@@ -471,8 +471,7 @@ void TableroIrregular::agregarTablero(Tablero* tab) {
 		int nOrigen = dis(gen);
 		tab->setColumOrigen(nOrigen-(!(nOrigen%2==0)));
 	}
-	if ((cantidad<tamanio))
-		vec[cantidad++] = tab;
+	vec[cantidad++] = tab;
 }
 
 int TableroIrregular::getCantidad()
