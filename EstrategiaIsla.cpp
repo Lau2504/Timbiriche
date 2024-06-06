@@ -21,7 +21,7 @@ void EstrategiaIsla::arreglarJugadas() {
 		mt19937 gen(rd());
 		uniform_int_distribution<> dis(tab->getColumOrigen(), tab->getColumnas() + tab->getColumOrigen() - 2);
 		Co = dis(gen);
-		Co-=(!(Co%2));
+		Co-=((Co%2));
 	}
 	int Fo = 0;
 	{
@@ -29,7 +29,7 @@ void EstrategiaIsla::arreglarJugadas() {
 		mt19937 gen(rd());
 		uniform_int_distribution<> dis(tab->getFilaOrigen(), tab->getFilas() + tab->getFilaOrigen() - 2);
 		Fo = dis(gen);
-		Fo -= (!(Fo % 2));
+		Fo -= ((Fo % 2));
 	}
 	//ahora buscamos una magnitud para el tamaño de la isla que no supere el tamaño de el tablero
 	int Cm = 0;
@@ -39,14 +39,14 @@ void EstrategiaIsla::arreglarJugadas() {
 		//
 		random_device rd;
 		mt19937 gen(rd());
-		uniform_int_distribution<> dis(1, (Co-tab->getColumOrigen())/2);
+		uniform_int_distribution<> dis(1, ((Co-tab->getColumOrigen()))/2);
 		Cm = dis(gen);
 	}
 	int Fm = 0;
 	{
 		random_device rd;
 		mt19937 gen(rd());
-		uniform_int_distribution<> dis(1, (Fo-tab->getFilaOrigen())/2);
+		uniform_int_distribution<> dis(1, ((Fo-tab->getFilaOrigen()))/2);
 		Fm = dis(gen);
 	}
 

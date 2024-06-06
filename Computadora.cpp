@@ -14,8 +14,10 @@ char Computadora::getLetra() { return c; }
 
 bool Computadora::jugar(int col, int fila) {
 	Tablero* tab = TableroGlobal::getInstancia()->getTablero();
-	int fil = estrategia->ejecutarEstrategia()[0];
-	int colu = estrategia->ejecutarEstrategia()[1];
+
+	int* par=estrategia->ejecutarEstrategia();
+	int colu = par[0],fil=par[1];
+	delete[] par;
 	tab->agregarJugada(colu, fil);
 	return tab->validarPunto(c, colu, fil);
 }
