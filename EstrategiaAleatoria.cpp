@@ -35,7 +35,7 @@ int* EstrategiaAleatoria::ejecutarEstrategia() {
     int col = rand() % (maxColumna - minColumna + 1) + minColumna;
 
 
-    while (tableroIrregular->getValor(fil, col) != ' ') {
+    while (!tableroIrregular->agregarJugadaCompu(fil, col)) {
         fil = rand() % (maxFila - minFila + 1) + minFila;
         col = rand() % (maxColumna - minColumna + 1) + minColumna;
     }

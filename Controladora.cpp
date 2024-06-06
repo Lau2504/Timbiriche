@@ -110,24 +110,27 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
     int fi = 0, col = 0;
     juego->iniciarJuego(tab);
 
-    Interfaz::mostrarTablero(tab);
+    //Interfaz::mostrarTablero(tab);
     while (juego->sigueJuego()) {
-        if (juego->getTurno()) {
+        cout << endl << "---------------------------------------" << endl;
+        cout << juego->dibujar();
+        
+        if (!juego->getTurno()) {/*
             int est = Interfaz::cambiarEstrategia();
             if (est == 1) {
                 estra = decidirEstrategia();
                 compu->setEstrategia(estra);
-            }
+            }*/
 
            fi = Interfaz::fila();
            col = Interfaz::columna();
-            juego->hacerJugada(fi, col);
+           juego->hacerJugada(col, fi);
         }
         else {
-            juego->setTurno(true);
+            //juego->setTurno(true);
             juego->hacerJugada(fi, col);
         }
-        cout << juego->dibujar();
+        
     }
 
     cout << "El ganador es: " << juego->ganador() << endl;

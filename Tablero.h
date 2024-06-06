@@ -46,6 +46,7 @@ public:
 	virtual int getCantidad() = 0;
 
 	virtual Tablero* clone() = 0;
+	bool agregarJugadaCompu(int col, int fil);
 	
 };
 

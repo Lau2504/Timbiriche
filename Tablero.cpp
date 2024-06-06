@@ -3,7 +3,7 @@
 Tablero::Tablero():filaOrigen{0},columOrigen{0},filas{0},columnas{0} {
 	for(int i = 0; i <filas; i++) {
 		for(int j = 0; j < columnas; j++) {
-			mat[i][j] = '\0';
+			mat[i][j] = ' ';
 		}
 	}
 }
@@ -55,7 +55,7 @@ bool Tablero::validarPunto(char c, int col, int fil) {
 bool Tablero::agregarJugada(int x, int y) {
 	if (x < 0 or y < 0) throw ExcepcionRango();
 	if (!(x%2 xor y%2)) throw ExcepcionLugarReservado();
-	if (mat[y][x] != ' ') throw ExcepcionLugarOcupado();
+	if (mat[y][x] == '|' or mat[y][x]=='-') throw ExcepcionLugarOcupado();
 
 	char c = '\0';
 	x % 2 == 0 ? c = '|' : c = '-';
@@ -67,4 +67,15 @@ void Tablero::setColumOrigen(int n) {columOrigen = n;}
 void Tablero::setFilaOrigen(int n) { filaOrigen = n; }
 
 int Tablero::getColumOrigen() { return columOrigen; }
+bool Tablero::agregarJugadaCompu(int col, int fil)
+{
+	if (col < 0 or fil < 0) return false;
+	if (!(col % 2 xor fil % 2)) return false;
+	if (mat[fil][col] != ' ') return false;
+
+	char c = '\0';
+	col % 2 == 0 ? c = '|' : c = '-';
+	mat[fil][col] = c;
+	return true;
+}
 int Tablero::getFilaOrigen() { return filaOrigen; }
