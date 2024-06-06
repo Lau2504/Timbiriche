@@ -6,8 +6,8 @@ EstrategiaIsla::EstrategiaIsla(){
 }
 
 void EstrategiaIsla::arreglarJugadas() {
-	if (jugadas != nullptr);
-		delete jugadas;
+	/*if (jugadas != nullptr);
+		delete jugadas;*/
 	Tablero* tab = TableroGlobal::getInstancia()->getTablero();
 	TableroIrregular* tabI = dynamic_cast<TableroIrregular*>(tab);
 	if (tabI) {
@@ -34,19 +34,17 @@ void EstrategiaIsla::arreglarJugadas() {
 	//ahora buscamos una magnitud para el tamaño de la isla que no supere el tamaño de el tablero
 	int Cm = 0;
 	{
-		//posibles jugadas totales
-		//(tab->getColumnas()/2)
-		//
+
 		random_device rd;
 		mt19937 gen(rd());
-		uniform_int_distribution<> dis(1, ((Co-tab->getColumOrigen()))/2);
+		uniform_int_distribution<> dis(1, ((tab->getColumnas()-Co+tab->getColumOrigen()))/2);
 		Cm = dis(gen);
 	}
 	int Fm = 0;
 	{
 		random_device rd;
 		mt19937 gen(rd());
-		uniform_int_distribution<> dis(1, ((Fo-tab->getFilaOrigen()))/2);
+		uniform_int_distribution<> dis(1, ((tab->getFilas() - Fo + tab->getFilaOrigen())) / 2);
 		Fm = dis(gen);
 	}
 
