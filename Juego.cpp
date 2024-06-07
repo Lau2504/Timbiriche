@@ -38,7 +38,7 @@ bool Juego::sigueJuego() {
 string Juego::dibujar() {
 	TableroGlobal* ptr = TableroGlobal::getInstancia();
 	Tablero* tab = ptr->getTablero();
-	//
+	
 	tablero = tab;
 	stringstream s;
 	s << "Puntuacion\n";

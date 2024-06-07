@@ -1,8 +1,8 @@
 ﻿#include "Tablero.h"
 
-Tablero::Tablero():filaOrigen{0},columOrigen{0},filas{0},columnas{0} {
-	for(int i = 0; i <filas; i++) {
-		for(int j = 0; j < columnas; j++) {
+Tablero::Tablero(int c,int f):filaOrigen{0},columOrigen{0},filas{f},columnas{c} {
+	for(int i = 0; i <30; i++) {
+		for(int j = 0; j < 30; j++) {
 			mat[i][j] = ' ';
 		}
 	}
@@ -12,7 +12,7 @@ Tablero::~Tablero() {}
 
 bool Tablero::estaLleno() {
 	for(int i = 0; i < filas; i++) {
-		for(int j = 0; j < columnas; j++) { //Por qué 3 ? //edit: ups...
+		for(int j = 0; j < columnas; j++) { 
 			if(mat[i][j] == ' ') {
 				return false;
 			}
@@ -26,7 +26,7 @@ bool Tablero::validarPunto(char c, int col, int fil) {
 	b = col % 2;//0 es par, por ende se coloco una linea vertical, y el "escaneo" es horizontal
 	//de lo contrario, si no es a es b...
 	if (b) {
-		if (fil != fil - 1)//leer abajo
+		if (fil != filas - 1)//leer abajo
 			if (mat[fil + 2][col] != ' ' and mat[fil + 1][col + 1] != ' ' and mat[fil + 1][col - 1] != ' ') {
 				mat[fil + 1][col] = c;
 				hayPunto = true;
@@ -36,15 +36,14 @@ bool Tablero::validarPunto(char c, int col, int fil) {
 				mat[fil - 1][col] = c;
 				hayPunto = true;
 			}
-	}
-	else {//b==0->b%2==0->b es posicion de columna donde solo hay lineas verticales ║
+	}else {//b==0->b%2==0->b es posicion de columna donde solo hay lineas verticales 
 		if (col != columnas - 1)//leer derecha
 			if (mat[fil][col + 2] != ' ' and mat[fil + 1][col + 1] != ' ' and mat[fil - 1][col + 1] != ' ') {
 				mat[fil][col + 1] = c;
 				hayPunto = true;
 			}
 		if (col != 0)//leer izquierda
-			if (mat[fil][col - 2] != ' ' and mat[fil + 1][col - 1] != ' ' and mat[fil - 1][col + 1] != ' ') {
+			if (mat[fil][col - 2] != ' ' and mat[fil + 1][col - 1] != ' ' and mat[fil - 1][col - 1] != ' ') {
 				mat[fil][col - 1] = c;
 				hayPunto = true;
 			}

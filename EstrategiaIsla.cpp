@@ -64,7 +64,7 @@ void EstrategiaIsla::arreglarJugadas() {
 
 int* EstrategiaIsla::ejecutarEstrategia(){
 	if (isla == -1) {
-		return nullptr;
+		isla=TableroGlobal::getInstancia()->getTablero()->getCantidad() - 1;
 	}
 	if (jugadas == nullptr) {
 		arreglarJugadas();

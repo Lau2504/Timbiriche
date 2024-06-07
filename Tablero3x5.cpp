@@ -1,6 +1,6 @@
 ﻿#include "Tablero3x5.h"
 
-Tablero3x5::Tablero3x5()
+Tablero3x5::Tablero3x5():Tablero(9,5)
 {
 	filas = 5;
 	columnas = 9;

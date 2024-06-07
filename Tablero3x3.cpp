@@ -1,5 +1,5 @@
 ﻿#include "Tablero3x3.h"
-Tablero3x3::Tablero3x3():Tablero(){
+Tablero3x3::Tablero3x3():Tablero(5,5){
 	filas = 5;
 	columnas = 5;
 	for (int i = 0; i < filas; i++)

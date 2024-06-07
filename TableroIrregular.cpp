@@ -2,7 +2,7 @@
 
 
 
-TableroIrregular::TableroIrregular()
+TableroIrregular::TableroIrregular():Tablero(30,30)
 {
 	cantidad = 0;
 	tamanio = 4;
@@ -383,7 +383,7 @@ bool TableroIrregular::validarPunto(char ch, int col, int fila) {
 		a = (coords[0]);
 		b = a + (vec[i]->getColumnas());
 		c = (coords[1]);
-		d = c + getFilas();
+		d = c + vec[i]->getFilas();
 		//verificar si el punto pertenece a la matriz
 		if (a <= col and col <= b and c <= fila and fila <= d) {
 			//verificar si aumenta la puntuacion
@@ -403,7 +403,7 @@ bool TableroIrregular::agregarJugada(int col, int fila) {
 		a=(vec[i]->origen()[0]);
 		b=a+(vec[i]->getColumnas());
 		c=(vec[i]->origen()[1]);
-		d = c + getFilas();
+		d = c + vec[i]->getFilas();
 		//verificar si el punto pertenece a alguna matriz
 		if (a <= col and col <= b and c <= fila and fila <= d)
 			//verificar si se agrega la jugada
@@ -484,7 +484,7 @@ Tablero** TableroIrregular::getTableros()
 	return vec;
 }
 
-TableroIrregular::TableroIrregular(const TableroIrregular& otro){
+TableroIrregular::TableroIrregular(const TableroIrregular& otro):Tablero(30,30){
 	cantidad = otro.cantidad;
 	tamanio = otro.tamanio;
 	filas = otro.filas;
