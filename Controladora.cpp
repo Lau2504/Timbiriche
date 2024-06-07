@@ -121,14 +121,13 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
                 estra = decidirEstrategia();
                 compu->setEstrategia(estra);
             }*/
-
            fi = Interfaz::fila();
            col = Interfaz::columna();
            juego->hacerJugada(col, fi);
         }
         else {
             //juego->setTurno(true);
-            juego->hacerJugada(fi, col);
+            juego->hacerJugada(col, fi);
         }
         
     }
