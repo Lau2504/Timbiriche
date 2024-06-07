@@ -178,3 +178,7 @@ void Interfaz::noHayJugadas()
 {
 	cout << "No hay jugadas anteriores para ver " << endl;
 }
+
+void Interfaz::mostrarJuego(Juego* j) {
+	cout << j->dibujar();
+}

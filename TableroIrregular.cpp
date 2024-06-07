@@ -59,12 +59,16 @@ string TableroIrregular::toString(){
 	
 	for (int i = 0; i < fil; i++) {
 		s << setw(3) <<i+1;
-		for (int j = 0; j <= col+1; j++) {
+		for (int j = 0; j < col; j++) {
 			s << mat[i][j]<<"  ";
 		}
-		s << endl;
+		s <<i+1<< endl;
 	}
-
+	s << "   ";
+	for (int i = 0; i < col; i++) {
+		s << i + 1 << setw(3);
+	}
+	s << '\n';
 	return s.str();
 }
 
