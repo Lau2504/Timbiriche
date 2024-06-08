@@ -47,6 +47,4 @@ public:
 
 	virtual Tablero* clone() = 0;
 	bool agregarJugadaCompu(int col, int fil);
-	
 };
-
