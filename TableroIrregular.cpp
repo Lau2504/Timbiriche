@@ -41,7 +41,8 @@ string TableroIrregular::toString(){
 		(x) > col ? col = x : col;
 		(y) > fil ? fil = y : fil;
 	}
-	
+	this->filas = fil;
+	this->columnas = col;
 	for (int i = 0; i < cantidad; i++) {
 		int* coords = vec[i]->origen();
 		for (int j = 0; j < vec[i]->getFilas(); j++) {
@@ -439,6 +440,7 @@ bool TableroIrregular::estaLleno() {
 }
 
 void TableroIrregular::agregarTablero(Tablero* tab) {
+	if (tamanio < cantidad)throw ExcepcionRango();
 	if (cantidad == 0) {
 		vec[cantidad++] = tab;
 		return;
@@ -476,6 +478,20 @@ void TableroIrregular::agregarTablero(Tablero* tab) {
 		int nOrigen = dis(gen);
 		tab->setColumOrigen(nOrigen-(!(nOrigen%2==0)));
 	}
+
+	{//ajustar filas y columnas
+		int col = vec[0]->getColumnas() + vec[0]->getColumOrigen();
+		int fil = vec[0]->getFilas() + vec[0]->getFilaOrigen();
+		for (int i = 1; i < cantidad; i++) {
+			int x = vec[i]->getColumOrigen() + vec[i]->getColumnas();
+			int y = vec[i]->getFilaOrigen() + vec[i]->getFilas();
+			(x) > col ? col = x : col;
+			(y) > fil ? fil = y : fil;
+		}
+		this->filas = fil;
+		this->columnas = col;
+	}
+
 	vec[cantidad++] = tab;
 }
 
