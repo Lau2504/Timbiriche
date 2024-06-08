@@ -78,3 +78,4 @@ bool Tablero::agregarJugadaCompu(int col, int fil)
 	return true;
 }
 int Tablero::getFilaOrigen() { return filaOrigen; }
+

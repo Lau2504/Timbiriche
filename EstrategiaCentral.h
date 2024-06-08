@@ -3,7 +3,8 @@
 #include "TableroGlobal.h"
 class EstrategiaCentral: public Estrategia {
 private:
-	int* puntoInicio;
+	int x;
+	int y;
 public:
 	EstrategiaCentral();
 	virtual int* ejecutarEstrategia();

@@ -415,6 +415,7 @@ bool TableroIrregular::agregarJugada(int col, int fila) {
 				hayJugada = true;
 		delete[] coords;
 	}
+	if(!hayJugada)throw ExcepcionRango();
 	return hayJugada;
 }
 

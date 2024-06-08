@@ -29,7 +29,7 @@ Vector<T>::Vector(int tam_dato) :can{ 0 }, tam{ tam_dato }, vec{ new T * [tam_da
 
 template <class T>
 Vector<T>::~Vector() {//este vector borra todos los elementos que contiene
-	for (int i = 0; i < tam; i++) {
+	for (int i = 0; i < can; i++) {
 		if (vec[i] != nullptr) delete vec[i];
 	}
 	delete[] vec;
@@ -52,7 +52,7 @@ IteradorVector<T> Vector<T>::ultimo() {
 
 template <class T>
 T* Vector<T>::sacar(int pos) {
-	if (pos < 0 or pos >= can) return nullptr;
+	if (pos < 0 or pos >= can) throw ExcepcionRango();
 	T* dato = vec[pos];
 	for (int i = pos; i < can - 1; i++) {
 		vec[i] = vec[i + 1];
