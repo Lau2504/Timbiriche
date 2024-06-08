@@ -467,7 +467,7 @@ void TableroIrregular::agregarTablero(Tablero* tab) {
 		for (int i = 0; i < cantidad; i++) {
 			int* coords = vec[i]->origen();
 			vec[i]->setFilaOrigen(coords[1] + tab->getFilas() - 1);
-			delete[] coords;
+			delete[] coords; 
 		}
 		int min = vec[cantidad - 1]->getColumOrigen() - tab->getColumnas();
 		if (min < 0) min = 0;
@@ -478,6 +478,7 @@ void TableroIrregular::agregarTablero(Tablero* tab) {
 		int nOrigen = dis(gen);
 		tab->setColumOrigen(nOrigen-(!(nOrigen%2==0)));
 	}
+	vec[cantidad++] = tab;
 
 	{//ajustar filas y columnas
 		int col = vec[0]->getColumnas() + vec[0]->getColumOrigen();
@@ -492,7 +493,6 @@ void TableroIrregular::agregarTablero(Tablero* tab) {
 		this->columnas = col;
 	}
 
-	vec[cantidad++] = tab;
 }
 
 int TableroIrregular::getCantidad()
