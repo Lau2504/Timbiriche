@@ -4,13 +4,13 @@
 
 class Repositorio {    // Repositorio de Mementos...
 private:
-	Memento* vec[60];
+	Memento* vec[128];
 	int can;
 	int tam;
 public:
 	Repositorio() {
 		can = 0;
-		tam = 60;
+		tam = 128;
 		for (int i = 0; i < tam; i++)
 			vec[i] = nullptr;
 	}
