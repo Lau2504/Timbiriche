@@ -8,6 +8,9 @@
 #include "Tablero3x4.h"
 #include "Tablero3x5.h"
 
+
+#include "Vector.h"
+
 class TableroIrregular :public Tablero {
 	//Matriz grande que contiene otras matrices
 private:
@@ -41,4 +44,7 @@ public:
 
 	TableroIrregular(const TableroIrregular& otro);
 	virtual Tablero* clone();
+	Vector<int>* posicionesVertical();
+	Vector<int>* posicionesHorizontal();
+
 };

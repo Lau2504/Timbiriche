@@ -12,9 +12,9 @@ void Controladora::control0()
     int op;
     Originador* originador = new Originador();
     Repositorio* repo = new Repositorio();
+    try {
+        do {
 
-    do {
-        try {
             op = Interfaz::menu();
             switch (op)
             {
@@ -30,13 +30,13 @@ void Controladora::control0()
             default:
                 break;
             }
-        }
-        catch (Excepcion& e) {
-            cout << e.que() << endl;
-            system("pause");
-        }
-    } while (op != 3);
 
+        } while (op != 3);
+    }
+    catch (Excepcion& e) {
+        cout << e.que() << endl;
+        system("pause");
+    }
     delete originador;
     delete repo;
 }
@@ -124,12 +124,13 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
                 estra = decidirEstrategia();
                 compu->setEstrategia(estra);
             }*/
+            //Falta agregar que quiera cambiar la estrategia
            fi = Interfaz::fila();
            col = Interfaz::columna();
            juego->hacerJugada(col, fi);
         }
         else {
-            //juego->setTurno(true);
+            
             juego->hacerJugada(col, fi);
         }
         this->guardarMemento(juego, originador, repo, contJugadas);
@@ -196,6 +197,7 @@ Estrategia* Controladora::decidirEstrategia()
     case 3: estra = new EstrategiaPeriferica(); break;
     case 4: estra = new EstrategiaIsla(); break;
     case 5: estra = new EstrategiaCercana(); break;
+    case 6: estra = new EstrategiaPropia(); break;
     default: break;
     }
   return estra;

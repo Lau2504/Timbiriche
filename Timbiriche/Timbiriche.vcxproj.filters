@@ -138,6 +138,9 @@
     <ClInclude Include="..\Repositorio.h">
       <Filter>Archivos de encabezado\Memento</Filter>
     </ClInclude>
+    <ClInclude Include="..\EstrategiaPropia.h">
+      <Filter>Archivos de encabezado\Estrategias</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Main.cpp">
@@ -193,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="..\Tablero3x5.cpp">
       <Filter>Archivos de origen\Tablero</Filter>
+    </ClCompile>
+    <ClCompile Include="..\EstrategiaPropia.cpp">
+      <Filter>Archivos de origen\Estrategias</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

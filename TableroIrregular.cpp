@@ -307,3 +307,47 @@ Tablero* TableroIrregular::clone()
 {
 	return new TableroIrregular(*this);
 }
+
+//Métodos que nos van a ayudar a buscar hacer hileras
+Vector<int>* TableroIrregular::posicionesVertical()
+{
+	int a{ 0 }, b{ 0 }, c{ 0 }, d{ 0 };
+	Vector<int>* verticales = new Vector<int>(100);
+	for (int i = 0; i < cantidad; i++) {
+		int* coords = vec[i]->origen();
+		a = (vec[i]->origen()[0]); //x de donde empieza la matriz pequeña
+		b = a + (vec[i]->getColumnas()); // x donde termina la matriz pequeña
+		c = (vec[i]->origen()[1]);//y de donde empieza la matriz pequeña
+		d = c + vec[i]->getFilas();// y donde termina la matriz pequeña
+		for (int i = a; i < b; i++) {
+			for (int j = c; j < d; j++) {
+				if (mat[i][j] == '|')
+					verticales->agregarFinal(new int[2] {i, j});
+			}
+		}
+		delete[] coords;
+	}
+
+	return verticales;
+}
+
+Vector<int>* TableroIrregular::posicionesHorizontal()
+{
+	int a{ 0 }, b{ 0 }, c{ 0 }, d{ 0 };
+	Vector<int>* horizontales = new Vector<int>(100);
+	for (int i = 0; i < cantidad; i++) {
+		int* coords = vec[i]->origen();
+		a = (vec[i]->origen()[0]); //x de donde empieza la matriz pequeña
+		b = a + (vec[i]->getColumnas()); // x donde termina la matriz pequeña
+		c = (vec[i]->origen()[1]);//y de donde empieza la matriz pequeña
+		d = c + vec[i]->getFilas();// y donde termina la matriz pequeña
+		for (int i = a; i < b; i++) {
+			for (int j = c; j < d; j++) {
+				if (mat[i][j] == '-')
+					horizontales->agregarFinal(new int[2] {i, j});
+			}
+		}
+		delete[] coords;
+	}
+	return horizontales;
+}

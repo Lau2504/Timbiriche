@@ -135,6 +135,7 @@
     <ClInclude Include="..\EstrategiaCentral.h" />
     <ClInclude Include="..\EstrategiaCercana.h" />
     <ClInclude Include="..\EstrategiaIsla.h" />
+    <ClInclude Include="..\EstrategiaPropia.h" />
     <ClInclude Include="..\Excepcion.h" />
     <ClInclude Include="..\Excepciones.h" />
     <ClInclude Include="..\ExcepcionLugar.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="..\EstrategiaCercana.cpp" />
     <ClCompile Include="..\EstrategiaIsla.cpp" />
     <ClCompile Include="..\EstrategiaPeriferica.cpp" />
+    <ClCompile Include="..\EstrategiaPropia.cpp" />
     <ClCompile Include="..\Interfaz.cpp" />
     <ClCompile Include="..\Juego.cpp" />
     <ClCompile Include="..\Jugador.cpp" />

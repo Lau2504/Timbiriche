@@ -32,6 +32,7 @@ Estrategia* Computadora::getEstrategia()
 	return estrategia;
 }
 
+//hacer método en Tablero Irregular
 bool Computadora::juegaPunto(int& col, int& fila) {
     Tablero* tab = TableroGlobal::getInstancia()->getTablero();
     TableroIrregular* tableroIrregular = dynamic_cast<TableroIrregular*>(tab);
