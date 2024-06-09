@@ -1,19 +1,20 @@
 #pragma once
-#pragma once
 #include"Memento.h"
-
+#include <string>
 class Repositorio {    // Repositorio de Mementos...
 private:
-	Memento* vec[60];
+	Memento* vec[128];
 	int can;
 	int tam;
 public:
 	Repositorio() {
 		can = 0;
-		tam = 60;
+		tam = 128;
 		for (int i = 0; i < tam; i++)
 			vec[i] = nullptr;
 	}
+
+	virtual ~Repositorio() {}
 
 	void agregaMemento(Memento* m) {
 		if (can < tam) {
@@ -45,6 +46,60 @@ public:
 				<< vec[i]->getPtrFoto()->getTablero()->toString() << endl << endl; //esta llamando al tablero global no al tablero del memento
 		}
 		return s.str();
+	}
+
+	void guardarMementos() {
+	
+		int nPartida = 1;
+		string aux;
+		system("dir /b *.txt> archivos.txt");
+		ifstream archivo("archivos.txt");
+		if(!archivo.is_open()){
+			cout<< "Error al abrir el archivo"<<endl;
+			return;
+		}
+
+		while (getline(archivo, aux, '\n')) 
+			nPartida++;
+		archivo.close();
+
+		for (int i = 0; i < can; i++) 
+			vec[i]->getPtrFoto()->guardarPartida("partida" + (nPartida));
+		system("del archivos.txt");
+	}
+
+	string listarPartidas() {
+		system("dir /b *.txt > archivos.txt");
+		ifstream archivo("archivos.txt");
+		string nombreArchivo;
+		stringstream ss;
+		if (!archivo.is_open()) {	
+			cout << "Error al abrir el archivo" << endl;
+			return "";
+		}
+
+		while (getline(archivo, nombreArchivo)) {
+			nombreArchivo.erase(nombreArchivo.end() - 4, nombreArchivo.end());
+			ss << nombreArchivo << std::endl;
+		}
+		archivo.close();
+		
+		system("del archivos.txt");
+		return ss.str();
+	}
+
+	string mostrarPartida(string nombreArchivo) {
+		ifstream archivo(nombreArchivo + ".txt");
+		stringstream ss;
+		string aux;
+		if (!archivo.is_open()) {
+			cout << "Error al abrir el archivo" << endl;
+			return "";
+		}
+		archivo>>aux;
+		ss<<aux<<endl;
+		archivo.close();
+		return ss.str();
 	}
 
 };

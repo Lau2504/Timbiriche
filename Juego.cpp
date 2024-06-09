@@ -96,3 +96,20 @@ Tablero* Juego::getTablero()
 {
 	return tablero;
 }
+
+void Juego::guardarPartida(string nombreArchivo) {
+	ofstream archivo(nombreArchivo+".txt");
+	if (!archivo.is_open()) {
+		cout<<"Error al abrir el archivo"<<endl;
+		return;
+	}
+	
+	archivo << "===============================================" << endl;
+	archivo << "Punto de chequeo: " << puntoChequeo << endl;
+	archivo << "Jugador " << (*jugadores)[0].getLetra() << ": " << tablero->puntuacion((*jugadores)[0].getLetra()) << " puntos\n";
+	archivo<< "Jugador " << (*jugadores)[1].getLetra() << ": " << tablero->puntuacion((*jugadores)[1].getLetra()) << " puntos\n";
+	archivo<< "\nTurno de: " << (*jugadores)[turno].getLetra() << endl;
+	archivo << tablero->toString();
+	archivo << "===============================================" << endl;
+	archivo.close();
+}
