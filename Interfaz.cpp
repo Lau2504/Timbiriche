@@ -129,13 +129,15 @@ int Interfaz::escogerEstrategia()
 	cout << "4)Isla" << endl;
 	cout << "5)Cercana" << endl;
 	cout << "6)Sorpresa" << endl;
-	cout << "7)Regresar" << endl;
 
 	cin >> op;
 	if (cin.fail()) {
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		throw ExcepcionRango();
+	}
+	if (op > 6 || op < 0) {
+		throw ExcepcionParametro();
 	}
 	return op;
 }

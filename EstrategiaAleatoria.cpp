@@ -7,7 +7,6 @@
 int* EstrategiaAleatoria::ejecutarEstrategia() {
     TableroIrregular* tableroIrregular = dynamic_cast<TableroIrregular*>(TableroGlobal::getInstancia()->getTablero());
     if (!tableroIrregular) {
-     
         return nullptr;
     }
 

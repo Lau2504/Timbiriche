@@ -1,6 +1,6 @@
 ﻿#include "Tablero.h"
 
-Tablero::Tablero(int c,int f):filaOrigen{0},columOrigen{0},filas{f},columnas{c} {
+Tablero::Tablero(int c, int f) :filaOrigen{ 0 }, columOrigen{ 0 }, filas{ f }, columnas{ c }, ultimaColumna{ 0 }, ultimaFila{ 0 } {
 	for(int i = 0; i <30; i++) {
 		for(int j = 0; j < 30; j++) {
 			mat[i][j] = ' ';
@@ -59,6 +59,8 @@ bool Tablero::agregarJugada(int x, int y) {
 	char c = '\0';
 	x % 2 == 0 ? c = '|' : c = '-';
 	mat[y][x] = c;
+	ultimaColumna = x;
+	ultimaFila = y;
 	return true;
 }
 
@@ -75,7 +77,26 @@ bool Tablero::agregarJugadaCompu(int col, int fil)
 	char c = '\0';
 	col % 2 == 0 ? c = '|' : c = '-';
 	mat[fil][col] = c;
+	ultimaColumna = col;
+	ultimaFila = fil;
 	return true;
 }
 int Tablero::getFilaOrigen() { return filaOrigen; }
 
+void Tablero::deshacerJugada(int col, int fila) {
+	mat[fila][col] = ' ';
+}
+
+int* Tablero::ultimaJugada()
+{
+	return new int[2]{ ultimaColumna, ultimaFila};
+}
+
+bool Tablero::espacioValido(int col, int fil)
+{
+	if (col < 0 or fil < 0) return false;
+	if (!(col % 2 xor fil % 2)) return false;
+	if (mat[fil][col] != ' ') return false;
+
+	return true;
+}

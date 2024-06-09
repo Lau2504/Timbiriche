@@ -82,7 +82,7 @@ void Controladora::iniciarJuegoDosJugadores(Juego* juego, char per1, Originador*
     juego = new Juego(new Persona(per1), new Persona(per2));
     juego->iniciarJuego(tab);
 
-    int contJugadas = 0;
+    int contJugadas = 1;
     guardarMemento(juego, originador, repo, contJugadas);
 
     while (juego->sigueJuego()) {
@@ -107,7 +107,7 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
     Estrategia* estra = decidirEstrategia();
     Computadora* compu = new Computadora(estra);
     juego = new Juego(new Persona(per1), compu);
-    int fi = 0, col = 0;
+    int fi = 0, col = 0, contJugadas=1;
     juego->iniciarJuego(tab);
 
     //Interfaz::mostrarTablero(tab);
@@ -129,6 +129,7 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
             //juego->setTurno(true);
             juego->hacerJugada(col, fi);
         }
+        this->guardarMemento(juego, originador, repo, contJugadas);
         
     }
 
@@ -183,7 +184,7 @@ Tablero* Controladora::crearTablero()
 
 Estrategia* Controladora::decidirEstrategia()
 {
-    Estrategia* estra = nullptr;
+    Estrategia* estra = new EstrategiaAleatoria(); 
     int est = Interfaz::escogerEstrategia();
     switch (est)
     {

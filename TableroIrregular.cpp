@@ -73,236 +73,8 @@ string TableroIrregular::toString(){
 	return s.str();
 }
 
-void TableroIrregular::llenarMatriz(){}
-
-void TableroIrregular::agregarIzquierda(Tablero* tab)
+void TableroIrregular::llenarMatriz()
 {
-	int ancho = tab->getFilas() * 2;
-	int largo = tab->getColumnas() * 2;
-	int FOri = -1;
-	int COri = -1;
-	int pos = (rand() % 6) + 1;
-	for (int i = 0; i < filas; i++) {
-		for (int j = 0; j < columnas; j++) {
-			if (mat[i][j] == '+') {
-				FOri = i;
-				COri = j;
-				break;
-			}
-			
-		}
-		if (FOri != -1) break; // ya se encontro el punto de origen
-	}
-	FOri += pos; //posicion randon de la columna de la matriz que ya existe, 6 porque todas las matrices tienen la misma cantidad de filas
-	for (int i = FOri - ancho + 1; i <= FOri; i++) {
-		for (int j = COri - largo; j < COri; j++) {
-			if ((this->mat[i][j]) != ' ') {
-				cout << "Excepcion lugar ocupado" << endl;
-				return;
-			}
-		}
-	}
-	if (COri < largo) {
-		cout << "No hay espacio para poner la matriz a la izquierda" << endl;
-		return;
-	}
-	else {
-		
-		for (int i = FOri - ancho+1; i <= FOri; i++) {
-			for (int j = COri - largo; j < COri; j++) {
-				if (i % 2 == 0 && j % 2 == 0) {
-					mat[i][j] = '+';
-				}
-				else if (i % 2 == 0) {
-					mat[i][j] = '-';
-				}
-				else if (j % 2 == 0) {
-					mat[i][j] = '|';
-				}
-				else {
-					mat[i][j] = 'o';
-				}	
-			}
-		}
-	}
-}
-
-void TableroIrregular::agregarDerecha(Tablero* tab) {
-	int ancho = tab->getFilas() * 2;
-	int largo = tab->getColumnas() * 2;
-	int Ffin = -1;
-	int Cfin = -1;
-
-	// Encontrar el '+' más a la derecha
-	for (int i = 0; i < filas; i++) {
-		for (int j = columnas - 1; j >= 0; j--) {
-			if (mat[i][j] == '+') {
-				Ffin = i;
-				Cfin = j;
-				break;
-			}
-		}
-		if (Ffin != -1) break; // ya se encontró el punto de origen
-	}
-
-	if (Ffin == -1 || Cfin == -1) {
-		cout << "No se encontró un punto final válido." << endl;
-		return;
-	}
-
-	// Verificar si hay suficiente espacio a la derecha
-	if (Cfin + 1 + largo > columnas || Ffin + ancho > filas) {
-		cout << "No hay espacio para poner la matriz a la derecha" << endl;
-		return;
-	}
-
-	// Verificar si el espacio está ocupado
-	for (int i = Ffin; i < Ffin + ancho; i++) {
-		for (int j = Cfin + 1; j < Cfin + 1 + largo; j++) {
-			if (mat[i][j] != ' ') {
-				cout << "Excepcion lugar ocupado" << endl;
-				return;
-			}
-		}
-	}
-	// Colocar el nuevo sub-tablero a la derecha
-	for (int i = Ffin; i < Ffin + ancho; i++) {
-		for (int j = Cfin + 1; j < Cfin + largo + 2; j++) {
-			if (i % 2 == 0 && j % 2 == 0) {
-				mat[i][j] = '+';
-			}
-			else if (i % 2 == 0) {
-				mat[i][j] = '-';
-			}
-			else if (j % 2 == 0) {
-				mat[i][j] = '|';
-			}
-			else {
-				mat[i][j] = 'o';
-			}
-		}
-	}
-}
-
-void TableroIrregular::agregarArriba(Tablero* tab)
-{
-	int ancho = tab->getFilas() * 2;
-	int largo = tab->getColumnas() * 2;
-	int FOri = -1;
-	int COri = -1;
-	int pos = (rand() % 6) + 1;
-
-	// Encontrar el primer punto de origen ('+')
-	for (int i = 0; i < this->filas; i++) {
-		for (int j = 0; j < this->columnas; j++) {
-			if (mat[i][j] == '+') {
-				FOri = i;
-				COri = j;
-				break;
-			}
-		}
-		if (FOri != -1) break;
-	}
-
-	if (FOri == -1 || COri == -1) {
-		cout << "No se encontró un punto de origen válido." << endl;
-		return;
-	}
-
-	COri += pos; // Ajustar la posición en la columna
-
-	// Verificar si hay suficiente espacio arriba y si la posición COri es válida
-	if (FOri - ancho < 0 || COri < 0 || COri + largo > columnas) {
-		cout << "No hay espacio para poner la matriz arriba" << endl;
-		return;
-	}
-
-	// Verificar si el espacio está ocupado
-	for (int i = FOri - ancho; i < FOri; i++) {
-		for (int j = COri; j < COri + largo; j++) {
-			if (mat[i][j] != ' ') {
-				cout << "Excepcion lugar ocupado" << endl;
-				return;
-			}
-		}
-	}
-
-	// Colocar el nuevo sub-tablero arriba
-	for (int i = FOri - ancho; i < FOri; i++) {
-		for (int j = COri; j < COri + largo; j++) {
-			if (i % 2 == 0 && j % 2 == 0) {
-				mat[i][j] = '+';
-			}
-			else if (i % 2 == 0) {
-				mat[i][j] = '-';
-			}
-			else if (j % 2 == 0) {
-				mat[i][j] = '|';
-			}
-			else {
-				mat[i][j] = 'o';
-			}
-		}
-	}
-}
-
-void TableroIrregular::agregarAbajo(Tablero* tab)
-{
-	int ancho = tab->getFilas() * 2;
-	int largo = tab->getColumnas() * 2;
-	int Ffin = -1;
-	int Cfin = -1;
-
-	// Encontrar el último punto de origen ('+')
-	for (int i = filas - 1; i >= 0; i--) {
-		for (int j = columnas - 1; j >= 0; j--) {
-			if (mat[i][j] == '+') {
-				Ffin = i;
-				Cfin = j;
-				break;
-			}
-		}
-		if (Ffin != -1) break; // ya se encontró el punto final
-	}
-
-	if (Ffin == -1 || Cfin == -1) {
-		cout << "No se encontró un punto final válido." << endl;
-		return;
-	}
-
-	// Verificar si hay suficiente espacio abajo
-	if (Ffin + 1 + ancho > filas || Cfin - largo + 1 < 0) {
-		cout << "No hay espacio para poner la matriz abajo" << endl;
-		return;
-	}
-
-	// Verificar si el espacio está ocupado
-	for (int i = Ffin + 1; i <= Ffin + ancho; i++) {
-		for (int j = Cfin - largo + 1; j <= Cfin; j++) {
-			if (mat[i][j] != ' ') {
-				cout << "Excepcion lugar ocupado" << endl;
-				return;
-			}
-		}
-	}
-
-	// Colocar el nuevo sub-tablero abajo
-	for (int i = Ffin + 1; i <= Ffin + ancho; i++) {
-		for (int j = Cfin - largo + 1; j <= Cfin; j++) {
-			if ((i - (Ffin + 1)) % 2 == 0 && (j - (Cfin - largo + 1)) % 2 == 0) {
-				mat[i][j] = '+';
-			}
-			else if ((i - (Ffin + 1)) % 2 == 0) {
-				mat[i][j] = '-';
-			}
-			else if ((j - (Cfin - largo + 1)) % 2 == 0) {
-				mat[i][j] = '|';
-			}
-			else {
-				mat[i][j] = 'o';
-			}
-		}
-	}
 }
 
 void TableroIrregular::Add(Tablero* tab, int f, int c){
@@ -397,6 +169,8 @@ bool TableroIrregular::validarPunto(char ch, int col, int fila) {
 		}		
 		delete[] coords;
 	}
+	ultimaColumna = col;
+	ultimaFila = fila;
 	return hayPunto;
 }
 
@@ -417,6 +191,8 @@ bool TableroIrregular::agregarJugada(int col, int fila) {
 		delete[] coords;
 	}
 	if(!hayJugada)throw ExcepcionRango();
+	ultimaColumna = col;
+	ultimaFila = fila;
 	return hayJugada;
 }
 
@@ -529,5 +305,5 @@ TableroIrregular::TableroIrregular(const TableroIrregular& otro):Tablero(30,30){
 
 Tablero* TableroIrregular::clone()
 {
-	return nullptr;
+	return new TableroIrregular(*this);
 }

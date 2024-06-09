@@ -57,21 +57,7 @@ char Tablero3x5::getValor(int f, int c)
 	return mat[f][c];
 }
 
-void Tablero3x5::agregarIzquierda(Tablero* tab)
-{
-}
 
-void Tablero3x5::agregarDerecha(Tablero* tab)
-{
-}
-
-void Tablero3x5::agregarArriba(Tablero* tab)
-{
-}
-
-void Tablero3x5::agregarAbajo(Tablero* tab)
-{
-}
 
 
 int* Tablero3x5::origen() {

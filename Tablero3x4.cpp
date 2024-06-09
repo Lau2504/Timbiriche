@@ -59,21 +59,6 @@ char Tablero3x4::getValor(int f, int c)
 }
 
 
-void Tablero3x4::agregarIzquierda(Tablero* tab)
-{
-}
-
-void Tablero3x4::agregarDerecha(Tablero* tab)
-{
-}
-
-void Tablero3x4::agregarArriba(Tablero* tab)
-{
-}
-
-void Tablero3x4::agregarAbajo(Tablero* tab)
-{
-}
 
 
 int* Tablero3x4::origen() {

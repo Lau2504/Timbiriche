@@ -17,6 +17,8 @@ protected:
 	int filas;
 	int columnas;
 	char mat[30][30];
+	int ultimaColumna; 
+	int ultimaFila;    
 public:
 	Tablero(int col,int fil);
 	virtual ~Tablero();
@@ -24,10 +26,10 @@ public:
 	virtual int getFilas() = 0;
 	virtual int getColumnas() = 0;
 	virtual void llenarMatriz() = 0;
-	virtual void agregarIzquierda(Tablero* tab) = 0;
+	/*virtual void agregarIzquierda(Tablero* tab) = 0;
 	virtual void agregarDerecha(Tablero* tab) = 0;
 	virtual void agregarArriba(Tablero* tab) = 0;
-	virtual void agregarAbajo(Tablero* tab) = 0;
+	virtual void agregarAbajo(Tablero* tab) = 0;*/
 	virtual void Add(Tablero* tab, int f, int c) = 0;
 	virtual void Delete() = 0;
 	virtual char getValor(int f, int c) = 0;
@@ -47,4 +49,7 @@ public:
 
 	virtual Tablero* clone() = 0;
 	bool agregarJugadaCompu(int col, int fil);
+	void deshacerJugada(int col, int fila);
+	int* ultimaJugada();
+	bool espacioValido(int col, int fil);
 };
