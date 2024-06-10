@@ -46,5 +46,5 @@ public:
 	virtual Tablero* clone();
 	Vector<int>* posicionesVertical();
 	Vector<int>* posicionesHorizontal();
-
+	Vector<int>* oportunidadPunto();
 };

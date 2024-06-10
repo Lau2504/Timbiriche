@@ -351,3 +351,54 @@ Vector<int>* TableroIrregular::posicionesHorizontal()
 	}
 	return horizontales;
 }
+
+Vector<int>* TableroIrregular::oportunidadPunto()
+{
+	Vector<int>* oportunidades = new Vector<int>(100);
+	int lados = 0;
+	bool arriba = false, abajo = false, derecha = false, izquierda = false;
+	//buscamos en toda la matriz
+	for (int i = 0; i < filas; i++) {
+		for (int j = 0; j < columnas; j++) {
+			if (i > 0 && j > 0 && i < filas - 1 && j < columnas - 1) { // si esta dentro de los limites
+				if (!(i % 2 xor j % 2)) {//si es un lugar reservado para un char de punto
+					if (mat[i][j] == ' ') { // si está vacío
+						lados = 0; //Empezamos en 0
+						arriba = false;
+						abajo = false;
+						derecha = false;
+						izquierda = false;
+						//Validamos si hay raya arriba, abajo, izquierda y derecha
+						if (mat[i - 1][j] == '-') {
+							lados++;
+							arriba = true;
+						}
+						if (mat[i + 1][j] == '-') {
+							lados++;
+							abajo = true;
+						}
+						if (mat[i][j + 1] == '|') {
+							lados++;
+							derecha = true;
+						}
+						if (mat[i][j - 1] == '|') {
+							lados++;
+							izquierda = true;
+						}
+
+						//Verificamos si hay 3 lados para confirmar que hay la posibilidad de hacer un punto
+						if (lados == 3) {
+							//ahora añadimos al vector de posibilidades el único lado que no tiene raya
+							if (!arriba) oportunidades->agregarFinal(new int[2] {i - 1, j});
+							else if (!abajo) oportunidades->agregarFinal(new int[2] {i + 1, j});
+							else if (!derecha) oportunidades->agregarFinal(new int[2] {i, j + 1});
+							else if (!izquierda) oportunidades->agregarFinal(new int[2] {i, j - 1});
+						}
+					}
+				}
+			}
+		}
+	}
+	return oportunidades;
+}
+
