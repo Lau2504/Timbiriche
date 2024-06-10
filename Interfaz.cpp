@@ -184,3 +184,16 @@ void Interfaz::noHayJugadas()
 void Interfaz::mostrarJuego(Juego* j) {
 	cout << j->dibujar();
 }
+
+string Interfaz::mostrarHistorial(Repositorio* rep) {
+	string input;
+	cout << "lista de partidas: \n";
+	cout << rep->listarPartidas();
+	cout<<"Escriba el nombre de la partida que desea ver: ";
+	cin>> input;
+	return input;
+}
+
+void Interfaz::mostrarPartida(string nombre,Repositorio* repo) {
+	cout<<repo->mostrarPartida(nombre);
+}

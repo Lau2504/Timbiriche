@@ -26,4 +26,6 @@ public:
 	static int ganador(Juego*);
 	static void noHayJugadas();
 	static void mostrarJuego(Juego*);
+	static string mostrarHistorial(Repositorio*);
+	static void mostrarPartida(string nombre, Repositorio* re);
 };

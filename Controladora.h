@@ -17,5 +17,5 @@ public:
 	void iniciarJuegoDosJugadores(Juego*, char, Originador*, Repositorio*, Tablero*);
 	void iniciarJuegoContraComputadora(Juego*,char, Originador*, Repositorio*, Tablero*);
 	void guardarMemento(Juego*, Originador*, Repositorio*, int&);
-
+	
 };
