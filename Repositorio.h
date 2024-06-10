@@ -52,8 +52,8 @@ public:
 	
 		int nPartida = 1;
 		string aux;
-		system("dir /b *.txt> archivos.txt");
-		ifstream archivo("archivos.txt");
+		system("dir /b *.txt 1> archivos.log 2>nul");
+		ifstream archivo("archivos.log");
 		if(!archivo.is_open()){
 			cout<< "Error al abrir el archivo"<<endl;
 			return;
@@ -65,12 +65,12 @@ public:
 
 		for (int i = 0; i < can; i++) 
 			vec[i]->getPtrFoto()->guardarPartida("partida" + (nPartida));
-		system("del archivos.txt");
+		system("del archivos.log");
 	}
 
 	string listarPartidas() {
-		system("dir /b *.txt > archivos.txt");
-		ifstream archivo("archivos.txt");
+		system("dir /b *.txt 1> archivos.log 2>nul");
+		ifstream archivo("archivos.log");
 		string nombreArchivo;
 		stringstream ss;
 		if (!archivo.is_open()) {	
@@ -84,12 +84,16 @@ public:
 		}
 		archivo.close();
 		
-		system("del archivos.txt");
+		system("del archivos.log");
+
+		if (ss.str().empty()) {
+			ss<<"No hay partidas guardadas"<<endl;
+		}
 		return ss.str();
 	}
 
 	string mostrarPartida(string nombreArchivo) {
-		ifstream archivo(nombreArchivo + ".txt");
+		ifstream archivo(nombreArchivo + ".log");
 		stringstream ss;
 		string aux;
 		if (!archivo.is_open()) {
@@ -99,7 +103,7 @@ public:
 		archivo>>aux;
 		ss<<aux<<endl;
 		archivo.close();
+	
 		return ss.str();
 	}
-
 };

@@ -43,9 +43,12 @@ void Controladora::control0()
 
 
 void Controladora::mostrarMementos(Repositorio* repo) {
+    string partida;
     if (repo->getCan() != 0) {
-        cout << repo->toString() << endl;
-        system("pause");
+        partida=Interfaz::mostrarHistorial(repo);
+        system("cls");
+        Interfaz::mostrarPartida(partida, repo);
+        system("pause");   
     }
     else {
         Interfaz::noHayJugadas();
