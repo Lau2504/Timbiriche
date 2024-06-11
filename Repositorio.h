@@ -64,7 +64,7 @@ public:
 		archivo.close();
 
 		for (int i = 0; i < can; i++) 
-			vec[i]->getPtrFoto()->guardarPartida("partida" + (nPartida));
+			vec[i]->getPtrFoto()->guardarPartida("partida" + to_string(nPartida));
 		system("del archivos.log");
 	}
 
@@ -93,15 +93,17 @@ public:
 	}
 
 	string mostrarPartida(string nombreArchivo) {
-		ifstream archivo(nombreArchivo + ".log");
+		ifstream archivo(nombreArchivo + ".txt");
 		stringstream ss;
 		string aux;
 		if (!archivo.is_open()) {
 			cout << "Error al abrir el archivo" << endl;
 			return "";
 		}
-		archivo>>aux;
-		ss<<aux<<endl;
+		
+		while(getline(archivo,aux))
+			ss << aux << endl;
+
 		archivo.close();
 	
 		return ss.str();

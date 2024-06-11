@@ -43,16 +43,13 @@ void Controladora::control0()
 
 
 void Controladora::mostrarMementos(Repositorio* repo) {
-    string partida;
-    if (repo->getCan() != 0) {
-        partida=Interfaz::mostrarHistorial(repo);
-        system("cls");
-        Interfaz::mostrarPartida(partida, repo);
-        system("pause");   
-    }
-    else {
-        Interfaz::noHayJugadas();
-    }
+    string NombrePartida;
+
+    NombrePartida =Interfaz::mostrarHistorial(repo);
+    system("cls");
+    Interfaz::mostrarPartida(NombrePartida, repo);
+    system("pause");   
+
 }
 
 void Controladora::iniciarNuevaPartida(Originador* originador, Repositorio* repo) {
@@ -117,27 +114,34 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
     while (juego->sigueJuego()) {
         cout << endl << "---------------------------------------" << endl;
         cout << juego->dibujar();
-        
-        if (!juego->getTurno()) {/*
-            int est = Interfaz::cambiarEstrategia();
-            if (est == 1) {
-                estra = decidirEstrategia();
-                compu->setEstrategia(estra);
-            }*/
+        try {
+            if (!juego->getTurno()) {
+                int est = Interfaz::cambiarEstrategia();
+                if (est == 1) {
+                    estra = decidirEstrategia();
+                    compu->setEstrategia(estra);
+                }
             //Falta agregar que quiera cambiar la estrategia
-           fi = Interfaz::fila();
-           col = Interfaz::columna();
-           juego->hacerJugada(col, fi);
-        }
-        else {
-            
-            juego->hacerJugada(col, fi);
-        }
-        this->guardarMemento(juego, originador, repo, contJugadas);
-        
-    }
+                fi = Interfaz::fila();
+                col = Interfaz::columna();
+                juego->hacerJugada(col, fi);
+            }
+            else {
 
-    cout << "El ganador es: " << juego->ganador() << endl;
+                juego->hacerJugada(col, fi);
+            }
+            this->guardarMemento(juego, originador, repo, contJugadas);
+        }
+        catch (Excepcion& e) {
+            cout<<e.que()<<endl;
+        }
+        catch (...) {
+            cout<<"error desconocido"<<endl;
+        }
+    }
+    Interfaz::ganador(juego);
+    repo->guardarMementos();
+    system("pause");
 }
 
 void Controladora::guardarMemento(Juego* juego, Originador* originador, Repositorio* repo, int& contJugadas) {
