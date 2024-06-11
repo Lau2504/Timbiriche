@@ -1,11 +1,6 @@
 #include "EstrategiaPropia.h"
 
-//La estrategia propia consiste en tomar cada uno de los tableros pequeños que están en el tablero irregular
-// e ir armando la figura de una esvastica en el centro lo cual va cortando la posibilidad de que 
-// el contrincante arme hilos largos que le permitan obtener la victoria
-// cuando ya se hicieron las figuras en el centro se harán los hilos más largos
-// La figura de la esvastica se va formando al siempre poner una línea 
-//adyacente a la cual el jugador acaba de poner 
+//Estrategia Esvástica
 int* EstrategiaPropia::ejecutarEstrategia()
 {
     Tablero* tab = TableroGlobal::getInstancia()->getTablero();
