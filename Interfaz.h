@@ -28,4 +28,6 @@ public:
 	static void mostrarJuego(Juego*);
 	static string mostrarHistorial(Repositorio*);
 	static void mostrarPartida(string nombre, Repositorio* re);
+	static int jugarSiempreMismaEstrategia();
+
 };

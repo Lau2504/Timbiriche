@@ -112,19 +112,22 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
     juego = new Juego(new Persona(per1), compu);
     int fi = 0, col = 0, contJugadas=1;
     juego->iniciarJuego(tab);
+    int est = 0, opi = 0;
 
-    //Interfaz::mostrarTablero(tab);
+    opi = Interfaz::jugarSiempreMismaEstrategia();
     while (juego->sigueJuego()) {
         cout << endl << "---------------------------------------" << endl;
         cout << juego->dibujar();
         
-        if (!juego->getTurno()) {/*
-            int est = Interfaz::cambiarEstrategia();
-            if (est == 1) {
-                estra = decidirEstrategia();
-                compu->setEstrategia(estra);
-            }*/
-            //Falta agregar que quiera cambiar la estrategia
+        if (!juego->getTurno()) {
+            if (opi == 2) { // Si había decidido ir cambiando la estrategia
+                est = Interfaz::cambiarEstrategia(); //Consulta si quiere seguir con la misma o no
+                if (est == 1) {
+                    estra = decidirEstrategia();
+                    compu->setEstrategia(estra);
+                }
+            }
+            
            fi = Interfaz::fila();
            col = Interfaz::columna();
            juego->hacerJugada(col, fi);
@@ -136,8 +139,7 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
         this->guardarMemento(juego, originador, repo, contJugadas);
         
     }
-
-    cout << "El ganador es: " << juego->ganador() << endl;
+    Interfaz::ganador(juego);
 }
 
 void Controladora::guardarMemento(Juego* juego, Originador* originador, Repositorio* repo, int& contJugadas) {

@@ -197,3 +197,19 @@ string Interfaz::mostrarHistorial(Repositorio* rep) {
 void Interfaz::mostrarPartida(string nombre,Repositorio* repo) {
 	cout<<repo->mostrarPartida(nombre);
 }
+
+int Interfaz::jugarSiempreMismaEstrategia()
+{
+	int op;
+	cout << "Desea jugar con la misma estrategia toda la partida contra la computadora:" << endl;
+	cout << "1) Si" << endl;
+	cout << "2) No" << endl;
+
+	cin >> op;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		throw ExcepcionRango();
+	}
+	return op;
+}
