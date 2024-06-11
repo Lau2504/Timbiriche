@@ -116,6 +116,7 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
         cout << endl << "---------------------------------------" << endl;
         cout << juego->dibujar();
 <<<<<<< HEAD
+<<<<<<< HEAD
         try {
             if (!juego->getTurno()) {
                 int est = Interfaz::cambiarEstrategia();
@@ -125,6 +126,16 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
             if (opi == 2) { // Si había decidido ir cambiando la estrategia
                 est = Interfaz::cambiarEstrategia(); //Consulta si quiere seguir con la misma o no
 >>>>>>> origin/main
+=======
+
+        try {
+
+        
+         if (!juego->getTurno()) {
+             if (opi == 2) { // Si habÃ­a decidido ir cambiando la estrategia
+                 est = Interfaz::cambiarEstrategia(); //Consulta si quiere seguir con la misma o no
+
+>>>>>>> f558a83e8079692d36c6e3b508c093fe0c4b5f9e
                 if (est == 1) {
                     estra = decidirEstrategia();
                     compu->setEstrategia(estra);
@@ -140,6 +151,7 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
                 juego->hacerJugada(col, fi);
             }
             this->guardarMemento(juego, originador, repo, contJugadas);
+
         }
         catch (Excepcion& e) {
             cout<<e.que()<<endl;
@@ -149,6 +161,7 @@ void Controladora::iniciarJuegoContraComputadora(Juego* juego, char per1, Origin
         }
     }
     Interfaz::ganador(juego);
+
     repo->guardarMementos();
     system("pause");
 =======
