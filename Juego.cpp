@@ -58,6 +58,8 @@ char Juego::ganador()
 {
 	TableroGlobal* ptr = TableroGlobal::getInstancia();
 	Tablero* tab = ptr->getTablero();
+	if (tab->puntuacion((*jugadores)[0].getLetra()) == tab->puntuacion((*jugadores)[1].getLetra()))
+		return '!';//empate
 	if (tab->puntuacion((*jugadores)[0].getLetra())>tab->puntuacion((*jugadores)[1].getLetra()))
 		return ((*jugadores)[0].getLetra());
 	else return ((*jugadores)[1].getLetra());
@@ -98,7 +100,8 @@ Tablero* Juego::getTablero()
 }
 
 void Juego::guardarPartida(string nombreArchivo) {
-	ofstream archivo(nombreArchivo+".txt");
+	ofstream archivo(nombreArchivo + ".txt", ios::app);
+
 	if (!archivo.is_open()) {
 		cout<<"Error al abrir el archivo"<<endl;
 		return;

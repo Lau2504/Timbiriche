@@ -161,7 +161,14 @@ int Interfaz::cambiarEstrategia()
 int Interfaz::ganador(Juego* juego)
 {
 	int opc;
-	cout << "El ganador es: " << juego->ganador() << endl << endl;
+	cout << juego->dibujar();
+	cout << "El ganador es: ";
+	if (juego->ganador() == '!') {
+		cout<< "Empate" << endl;
+	}
+	else {
+		cout << juego->ganador() << endl;
+	}
 	cout << "1) Volver al menu principal" << endl;
 	cout << "2)Salir" << endl;
 	cin >> opc;
@@ -176,8 +183,7 @@ int Interfaz::ganador(Juego* juego)
 	return opc;
 }
 
-void Interfaz::noHayJugadas()
-{
+void Interfaz::noHayJugadas(){
 	cout << "No hay jugadas anteriores para ver " << endl;
 }
 
